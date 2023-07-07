@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("serie_id")->references("id")->on("series")->onDelete("cascade");
             $table->string("title");
             $table->string("video_url");
             $table->integer("order");
