@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TopicSerie extends Model
 {
     use HasFactory;
+
+
+   
 }

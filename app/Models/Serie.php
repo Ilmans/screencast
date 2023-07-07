@@ -14,6 +14,6 @@ class Serie extends Model
     }
 
     public function topics () {
-        return $this->belongsToMany(Topic::class,"topic_series");
+        return $this->belongsToMany(Topic::class,TopicSerie::class);
     }
 }
