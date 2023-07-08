@@ -1,14 +1,15 @@
 import Button from "@/Components/Button";
+import Jumbotron from "@/Components/Jumbotron";
 import PublicLayout from "@/Layouts/PublicLayout";
 import { Head } from "@inertiajs/react";
 
 export default function Home({ series }) {
-   
     return (
         <div>
             <Head>
                 <title>CodingAsik</title>
             </Head>
+            <Jumbotron />
             <div className="px-8 py-4 text-black font-poppins">
                 <h2 className="text-lg font-bold">
                     Baru baru ini di tambahkan.
