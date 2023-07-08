@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
     return (
-        <footer className=" bg-slate-950">
+        <footer className="p-8 dark:bg-slate-950">
             <div className="flex justify-between p-8 wrapper">
                 <div className="w-1/4">
                     <img className="mb-4 -ml-6" src="/images/logo.png" alt="" />

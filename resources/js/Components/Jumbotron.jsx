@@ -3,8 +3,9 @@ import Button from "./Button";
 
 function Jumbotron() {
     return (
-        <div className="px-48 mt-4 space-y-6 text-center py-28 font-poppins">
-            <h1 className="text-3xl font-semibold ">
+        <section className="relative px-48 space-y-6 text-center bg-white font-poppins dark:bg-grid-emerald-900/40 bg-grid-emerald-100 dark:bg-slate-950 lg:py-32">
+            <div className="absolute inset-0 grid grid-cols-12 overflow-hidden bg-gradient-to-b via-slate-950 to-white z-1"></div>
+            <h1 className="text-3xl font-semibold z-2 ">
                 Lorem <span className="text-slate-400">Ipsum</span> dolor sit,
                 amet{" "}
             </h1>
@@ -15,10 +16,10 @@ function Jumbotron() {
                 consequatur sapiente incidunt iste rerum corrupti.
             </p>
             <div className="space-x-4">
-                <Button bg={"primary"}>Jelajahi artikel</Button>
+                <Button bg={"primary"}>Jelajahi Video</Button>
                 <Button bg={"secondary"}>Baca Artikel</Button>
             </div>
-        </div>
+        </section>
     );
 }
 

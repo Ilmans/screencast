@@ -4,13 +4,16 @@ import Jumbotron from "@/Components/Jumbotron";
 import Footer from "./Footer";
 
 function PublicLayout({ children }) {
+    const currentTheme = localStorage.getItem("theme") || "dark";
     return (
-        <main className="dark:noise-bg  dark:text-white from-zinc-50 to-zinc-100 bg-gradient-to-tr  dark:from-slate-950 via-slate-800 dark:from-70% dark:to-slate-900 h-screen">
-            <Header />
-            <Jumbotron />
-            <div className="p-4 bg-slate-100 wrapper">{children}</div>
-            <Footer />
-        </main>
+        <div className={`${currentTheme} text-slate-600 themeprovider`}>
+            <div className="min-h-screen dark:noise-bg dark:text-white">
+                <Header />
+                <Jumbotron />
+                <div className="p-4 bg-slate-100 wrapper">{children}</div>
+                <Footer />
+            </div>
+        </div>
     );
 }
 
