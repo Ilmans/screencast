@@ -3,8 +3,8 @@ import React from "react";
 function Footer() {
     return (
         <footer className="p-8 dark:bg-slate-950">
-            <div className="flex justify-between p-8 wrapper">
-                <div className="w-1/4">
+            <div className="flex flex-col justify-between gap-4 p-8 lg:flex-row wrapper">
+                <div className="lg:w-1/4">
                     <img className="mb-4 -ml-6" src="/images/logo.png" alt="" />
                     <p>
                         Lorem ipsum dolor sit amet consectetur, adipisicing
@@ -52,7 +52,7 @@ function Footer() {
                 <p className="text-xs font-slate-500">
                     Coding asik adalah merek dagang dari Ilman Sunanuddin
                 </p>
-                <p className="text-sm">
+                <p className="text-sm text-center">
                     <span className="font-semibold">
                         @Copyright 2023 CodingAsik.
                     </span>{" "}

@@ -12,7 +12,7 @@ function ThemeProvider({ theme, setTheme }) {
         }
     };
     return (
-        <button className="p-2 border border-orange-300 rounded-lg">
+        <button className="p-2 rounded-lg bg-slate-800">
             {theme === "dark" ? (
                 <MoonIcon handleThemeChange={handleThemeChange} />
             ) : (
@@ -26,7 +26,7 @@ function SunIcon({ handleThemeChange }) {
     return (
         <svg
             onClick={() => handleThemeChange("dark")}
-            className="w-6 h-6 text-orange-300 cursor-pointer"
+            className="w-4 h-4 text-orange-300 cursor-pointer"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="none"
@@ -51,7 +51,7 @@ function MoonIcon({ handleThemeChange }) {
     return (
         <svg
             onClick={() => handleThemeChange("light")}
-            className="w-6 h-6 text-orange-300 cursor-pointer"
+            className="w-4 h-4 text-orange-300 cursor-pointer"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="none"

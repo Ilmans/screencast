@@ -4,11 +4,9 @@
 
 
 
-.wrapper {
-  padding-left: 3rem;
-  padding-right: 3rem;
- 
-}
+
+
+
 @font-face {
   font-family: 'poppins';
   src: url("../fonts/poppins/Poppins-Regular.ttf");

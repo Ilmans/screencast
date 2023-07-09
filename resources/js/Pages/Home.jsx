@@ -19,7 +19,7 @@ export default function Home({ series }) {
                     Nisi
                 </p>
             </div>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid gap-4 lg:grid-cols-3">
                 {series.data.map((serie, i) => (
                     <div
                         className="p-8 space-y-2 rounded-lg font-poppins"
