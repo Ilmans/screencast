@@ -6,6 +6,7 @@ import PublicLayout from "@/Layouts/PublicLayout";
 import { Link } from "@inertiajs/react";
 import ListTopics from "@/Components/Page/ListTopics";
 import FilterSeries from "@/Components/Page/FilterSeries";
+import Pagination from "@/Components/Page/Pagination";
 
 function Show({ currentTopic, topics, series }) {
     return (
@@ -29,6 +30,9 @@ function Show({ currentTopic, topics, series }) {
                     {series.data.map((serie) => (
                         <Serie serie={serie} />
                     ))}
+                </div>
+                <div className="flex justify-center py-12">
+                    <Pagination links={series.links} />
                 </div>
             </section>
         </Fragment>

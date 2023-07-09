@@ -6,8 +6,11 @@ import React, { Fragment } from "react";
 import { SearchIcon } from "../../../lib/Icon";
 import ListTopics from "@/Components/Page/ListTopics";
 import FilterSeries from "@/Components/Page/FilterSeries";
+import { Link } from "@inertiajs/react";
+import Pagination from "@/Components/Page/Pagination";
 
 function Index({ topics, series }) {
+    console.log(series);
     return (
         <Fragment>
             <section className="relative py-12 space-y-6 bg-white font-poppins dark:bg-grid-emerald-900/40 bg-grid-emerald-100 dark:bg-slate-950 lg:py-16">
@@ -30,6 +33,9 @@ function Index({ topics, series }) {
                     {series.data.map((serie) => (
                         <Serie serie={serie} />
                     ))}
+                </div>
+                <div className="flex justify-center py-12">
+                    <Pagination links={series.links} />
                 </div>
             </section>
         </Fragment>
