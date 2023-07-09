@@ -10,31 +10,31 @@ import { Link } from "@inertiajs/react";
 import Pagination from "@/Components/Page/Pagination";
 
 function Index({ topics, series }) {
-    console.log(series);
+
     return (
         <Fragment>
             <section className="relative py-12 space-y-6 bg-white font-poppins dark:bg-grid-emerald-900/40 bg-grid-emerald-100 dark:bg-slate-950 lg:py-16">
-                <h1 className="text-2xl font-semibold z-2 ">
+                <h1 className="text-xl font-semibold lg:text-2xl z-2 ">
                     Pilihan <span className="text-slate-400">Vidoe</span>{" "}
                     pemrograman
                 </h1>
-                <p className="w-1/3 text-sm lg:text-sm">
+                <p className="text-xs lg:text-sm lg:w-1/3">
                     Cari video yang ingin anda pelajari , jadikan ngodik asik
                     dengan mempelajari apa yang ingin anda pelajari
                 </p>
-                <div className="flex flex-wrap items-center w-3/5 text-sm border-gray-600 rounded-md shadow gap-x-4 font-poppins ">
+                <div className="flex flex-wrap items-center text-xs border-gray-600 rounded-md shadow lg:text-sm lg:w-3/5 gap-x-4 font-poppins ">
                     <ListTopics topics={topics} />
                 </div>
             </section>
 
             <section className="py-4 border-t bg-slate-200 dark:bg-slate-950 border-slate-900">
                 <FilterSeries />
-                <div className="grid grid-cols-3 gap-16">
+                <div className="grid gap-16 lg:grid-cols-3">
                     {series.data.map((serie) => (
                         <Serie serie={serie} />
                     ))}
                 </div>
-                <div className="flex justify-center py-12">
+                <div className="flex py-12 lg:justify-center">
                     <Pagination links={series.links} />
                 </div>
             </section>

@@ -10,7 +10,7 @@ function ListTopics({ topics }) {
             key={i}
             className={`${
                 currentRoute === topic.slug ? "text-blue-400" : ""
-            } flex items-center py-2 font-semibold rounded-lg gap-x-2 hover:text-blue-400`}
+            } flex items-center py-2 lg:font-semibold rounded-lg gap-x-2 hover:text-blue-400`}
         >
             <img
                 className="rounded-lg"
