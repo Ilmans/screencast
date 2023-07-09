@@ -31,7 +31,7 @@ class SerieService {
 
 
     public function getSeries() {
-      return $this->series->with("topics")->paginate(12);
+      return $this->series->with("topics")->paginate(9);
     }
 }
 ?>
