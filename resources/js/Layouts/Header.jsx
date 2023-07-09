@@ -22,7 +22,7 @@ function Header() {
 
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
     return (
-        <header className="flex items-center justify-between px-4 pt-4 pb-2 border-b lg:px-32 dark:bg-slate-950 dark:border-slate-700">
+        <section className="flex items-center justify-between pt-4 pb-2 border-b dark:bg-slate-950 dark:border-slate-700">
             <Logo theme={theme} />
             <ul className="items-center hidden lg:flex">
                 {menu.map((title, i) => (
@@ -46,7 +46,7 @@ function Header() {
                 <ThemeProvider theme={theme} setTheme={setTheme} />
                 <MobileNavButton />
             </div>
-        </header>
+        </section>
     );
 }
 

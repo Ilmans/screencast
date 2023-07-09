@@ -25,6 +25,7 @@ Route::get('/', function () {
 });
 
 Route::get("/topics",[TopicController::class,"index"])->name("topics");
+Route::get("/topic/{topic:slug}",[TopicController::class,'show'])->name("topic.show");
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

@@ -18,7 +18,7 @@ class SerieFactory extends Factory
     {
         return [
             'slug' => $this->faker->slug,
-            'title' => $this->faker->sentence,
+            'title' => $this->faker->sentence(5),
             'description' => $this->faker->paragraph,
             'image' => "https://ik.imagekit.io/vpaoovtzwz/images/series/ui-laravel-dan-react-nqp6j.jpg?tr=n-thumbnail",
         ];

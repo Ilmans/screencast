@@ -5,7 +5,17 @@
 
 
 
+section {
+  padding-right : 6rem;
+  padding-left : 6rem;
+}
 
+@media screen  and (max-width:920px){
+  section {
+  padding-right : 0.1rem;
+  padding-left : 0.1rem;
+}
+}
 
 @font-face {
   font-family: 'poppins';

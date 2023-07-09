@@ -12,13 +12,13 @@ function ThemeProvider({ theme, setTheme }) {
         }
     };
     return (
-        <button className="p-2 rounded-lg bg-slate-800">
+        <div className="px-4 py-2 rounded-lg bg-slate-800">
             {theme === "dark" ? (
                 <MoonIcon handleThemeChange={handleThemeChange} />
             ) : (
                 <SunIcon handleThemeChange={handleThemeChange} />
             )}
-        </button>
+        </div>
     );
 }
 
