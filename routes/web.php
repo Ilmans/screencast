@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SerieController;
 use App\Http\Controllers\TopicController;
 use App\Models\Serie;
 use Illuminate\Foundation\Application;
@@ -26,6 +27,8 @@ Route::get('/', function () {
 
 Route::get("/topics",[TopicController::class,"index"])->name("topics");
 Route::get("/topic/{topic:slug}",[TopicController::class,'show'])->name("topic.show");
+
+Route::get("/serie/{serie:slug}",[SerieController::class,"show"])->name("serie.show");
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

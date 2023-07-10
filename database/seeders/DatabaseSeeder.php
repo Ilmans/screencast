@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Serie;
 use App\Models\Topic;
+use App\Models\Video;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,10 +23,20 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        \App\Models\Topic::factory(5)->create()->each(function ($topic) {
-            $series = Serie::factory()->count(20)->create();
-            $topic->series()->attach($series);
-        });
-        
+        \App\Models\Topic::factory(5)
+            ->create()
+            ->each(function ($topic) {
+                $series = Serie::factory()
+                    ->count(20)
+                    ->create();
+                $topic->series()->attach($series);
+                $series->each(function ($serie) {
+                    Video::factory()
+                        ->count(10)->create(
+                            ['serie_id' => $serie->id]
+                        );
+                        
+                });
+            });
     }
 }

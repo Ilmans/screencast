@@ -12,7 +12,7 @@ function ThemeProvider({ theme, setTheme }) {
         }
     };
     return (
-        <div className="px-4 py-2 rounded-lg bg-slate-800">
+        <div className="px-4 py-2 border rounded-lg border-slate-900 dark:bg-slate-800">
             {theme === "dark" ? (
                 <MoonIcon handleThemeChange={handleThemeChange} />
             ) : (

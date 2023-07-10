@@ -1,9 +1,14 @@
 import React from "react";
 import { BookIcon, ClockIcon } from "../../../lib/Icon";
+import { Link } from "@inertiajs/react";
 
 function Serie({ serie }) {
     return (
-        <div className="space-y-2 rounded-lg  font-poppins" key={serie.id}>
+        <Link
+            href={`/serie/${serie.slug}`}
+            className="space-y-2 rounded-lg font-poppins"
+            key={serie.id}
+        >
             {" "}
             <img className="mb-4 rounded-lg" src={serie.image} alt="" />
             <div className="flex gap-2 text-gray-500">
@@ -29,7 +34,7 @@ function Serie({ serie }) {
                     <span className="text-xs">50 Episode</span>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 }
 

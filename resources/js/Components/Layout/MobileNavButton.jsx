@@ -18,7 +18,7 @@ function MobileNavButton() {
                     onClick={() => {
                         setShowNav(!showNav);
                     }}
-                    className="relative text-center px-2 py-1.5 hover:bg-slate-700 duration-200 ease-in-out transition-all  bg-slate-800 rounded-lg text-xs border-slate-400 text-slate-400 hover:border-slate-300"
+                    className="relative text-center px-2 py-1.5 hover:bg-slate-700 duration-200 ease-in-out transition-all  dark:bg-slate-800 rounded-lg text-xs border-slate-400 text-slate-400 hover:border-slate-300"
                 >
                     {user.name.slice(1, 7)} ...
                     <span>
@@ -30,7 +30,7 @@ function MobileNavButton() {
                 <>
                     <Link
                         href="/login"
-                        className="relative hidden lg:block text-center px-2 py-1.5 hover:bg-slate-700 duration-200 ease-in-out transition-all  bg-slate-800 rounded-lg text-xs border-slate-400 text-slate-200 hover:border-slate-300"
+                        className="relative hidden px-4 py-1 text-xs text-center transition-all duration-200 ease-in-out border rounded-lg lg:block dark:hover:bg-slate-700 dark:bg-slate-800 dark:border-slate-400 dark:text-slate-200 hover:border-slate-300"
                     >
                         Masuk
                     </Link>
@@ -38,7 +38,7 @@ function MobileNavButton() {
                         onClick={() => {
                             setShowNav(!showNav);
                         }}
-                        className="relative lg:hidden   text-center px-2 py-1.5 hover:bg-slate-700 duration-200 ease-in-out transition-all  bg-slate-800 rounded-lg text-xs border-slate-400 text-slate-200 hover:border-slate-300"
+                        className="relative px-4 py-2 text-xs text-center transition-all duration-200 ease-in-out rounded-lg lg:hidden hover:bg-slate-700 bg-slate-800 border-slate-400 text-slate-200 hover:border-slate-300"
                     >
                         {!showNav ? (
                             <RightBar className="w-4 h-4" />
