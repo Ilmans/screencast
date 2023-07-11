@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import BadgeButton from "@/Components/BadgeButton";
+import { Link } from "@inertiajs/react";
+import React, { Fragment, useState } from "react";
 
 function ThemeProvider({ theme, setTheme }) {
     const handleThemeChange = (newTheme) => {
@@ -12,13 +14,17 @@ function ThemeProvider({ theme, setTheme }) {
         }
     };
     return (
-        <div className="px-4 py-2 border rounded-lg border-slate-900 dark:bg-slate-800">
-            {theme === "dark" ? (
-                <MoonIcon handleThemeChange={handleThemeChange} />
-            ) : (
-                <SunIcon handleThemeChange={handleThemeChange} />
-            )}
-        </div>
+        <Fragment>
+            <BadgeButton className="py-3">
+                <Link className="">
+                    {theme === "dark" ? (
+                        <MoonIcon handleThemeChange={handleThemeChange} />
+                    ) : (
+                        <SunIcon handleThemeChange={handleThemeChange} />
+                    )}
+                </Link>
+            </BadgeButton>
+        </Fragment>
     );
 }
 
@@ -51,7 +57,7 @@ function MoonIcon({ handleThemeChange }) {
     return (
         <svg
             onClick={() => handleThemeChange("light")}
-            className="w-4 h-4 text-orange-300 cursor-pointer"
+            className="w-4 h-4 cursor-pointer"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="none"

@@ -3,7 +3,7 @@ import React, { Fragment } from "react";
 function Footer() {
     return (
         <Fragment>
-            <section className="py-12 border-t dark:bg-slate-950 border-slate-900">
+            <section className="relative py-12 border-t dark:bg-slate-950 border-slate-900">
                 <div className="flex flex-col justify-between gap-4 lg:flex-row wrapper">
                     <div className="lg:w-1/4">
                         <img

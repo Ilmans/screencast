@@ -29,6 +29,7 @@ Route::get("/topics",[TopicController::class,"index"])->name("topics");
 Route::get("/topic/{topic:slug}",[TopicController::class,'show'])->name("topic.show");
 
 Route::get("/serie/{serie:slug}",[SerieController::class,"show"])->name("serie.show");
+Route::get("/serie/{serie:slug}/{video:order_num}",[SerieController::class,"watch"])->name("serie.watch");
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

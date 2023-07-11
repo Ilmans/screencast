@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
                 $topic->series()->attach($series);
                 $series->each(function ($serie) {
                     Video::factory()
-                        ->count(10)->create(
+                        ->count(20)->create(
                             ['serie_id' => $serie->id]
                         );
                         

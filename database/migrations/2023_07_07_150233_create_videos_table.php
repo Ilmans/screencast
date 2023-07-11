@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId("serie_id")->references("id")->on("series")->onDelete("cascade");
             $table->string("title");
             $table->string("video_url");
-            $table->integer("order")->nullable();
+            $table->integer("order_num");
             $table->integer("seconds_time");
             $table->text("description")->nullable();
             $table->boolean("is_free");

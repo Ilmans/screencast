@@ -2,6 +2,8 @@ import PublicLayout from "@/Layouts/PublicLayout";
 import React from "react";
 import { convertSecondsToMinutes } from "../../../lib/Helper";
 import ShareSosmed from "@/Components/ShareSosmed";
+import { Link } from "@inertiajs/react";
+import VideoList from "./VideoList";
 
 function Show({ serie }) {
     console.log(serie);
@@ -138,54 +140,7 @@ function Show({ serie }) {
                                         sekarang.
                                     </p>
                                 </div>
-                                <ul className="relative divide-y dark:divide-slate-800">
-                                    {serie.videos.map((video, i) => (
-                                        <li key={i} className>
-                                            <a
-                                                className="flex items-center text-slate-800 dark:text-slate-50 dark:hover:text-primary-400 justify-between hover:text-primary-500 py-3.5 font-medium fade group"
-                                                href="/series/ui-laravel-dan-react-nqp6j/1"
-                                            >
-                                                <span className="flex">
-                                                    <span className="flex-shrink-0 mr-2 print:hidden md:mr-3 group-hover:text-slate-500 text-slate-500">
-                                                        {i + 1}.
-                                                    </span>
-                                                    <span>
-                                                        <span className="mb-0.5 block text-sm line-clamp-1 md:text-tiny">
-                                                            {video.title}
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                                <div className="flex items-center gap-x-2">
-                                                    {!video.is_free && (
-                                                        <div className="flex items-center justify-center rounded-full w-7 h-7 bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-300">
-                                                            <svg
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                width={24}
-                                                                height={24}
-                                                                viewBox="0 0 24 24"
-                                                                fill="none"
-                                                                stroke="currentColor"
-                                                                strokeWidth={2}
-                                                                strokeLinecap="round"
-                                                                strokeLinejoin="round"
-                                                                className="w-5 h-5 stroke-1"
-                                                            >
-                                                                <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z" />
-                                                                <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />
-                                                                <path d="M8 11v-4a4 4 0 1 1 8 0v4" />
-                                                            </svg>
-                                                        </div>
-                                                    )}
-                                                    <span className="w-8 text-right text-muted lg:w-12">
-                                                        {convertSecondsToMinutes(
-                                                            video.seconds_time
-                                                        )}
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
+                                <VideoList serie={serie} />
                             </div>
                         </div>
                     </div>

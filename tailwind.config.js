@@ -13,6 +13,9 @@ export default {
 
     theme: {
         extend: {
+            backgroundImage: {
+                "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+            },
             fontFamily: {
                 sans: ["syne", ...defaultTheme.fontFamily.sans],
                 poppins: ["poppins"],
@@ -42,5 +45,5 @@ export default {
         },
     },
 
-    plugins: [forms],
+    plugins: [forms, require("tailwind-scrollbar")],
 };

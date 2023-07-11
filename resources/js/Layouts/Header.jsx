@@ -1,12 +1,7 @@
 import Logo from "@/Components/Logo";
 import React, { useState } from "react";
 import ThemeProvider from "../../lib/ThemeProvider";
-import {
-    ChevronDownIcon,
-    HomeIcon,
-    SearchIcon,
-    UserIcon,
-} from "../../lib/Icon";
+import { SearchIcon } from "../../lib/Icon";
 import { Link, usePage } from "@inertiajs/react";
 import InputWithIcon from "@/Components/InputWithIcon";
 import MobileNav from "../Components/Layout/MobileNav";
@@ -22,7 +17,7 @@ function Header() {
 
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
     return (
-        <section className="flex items-center justify-between pt-4 pb-2 border-b dark:bg-slate-950 dark:border-slate-700">
+        <section className="flex items-center justify-between pt-4 pb-2 border-b dark:bg-slate-950 border-slate-200 dark:border-slate-700">
             <Logo theme={theme} />
             <ul className="items-center hidden lg:flex">
                 {menu.map((title, i) => (

@@ -19,7 +19,7 @@ class VideoFactory extends Factory
         return [
         'title' => $this->faker->sentence,
         'video_url' => "https://www.youtube.com/watch?v=83ntBBDC8Xs",
-     //   'order' => $this->faker->unique()->numberBetween(1, 500),
+        'order_num' => $this->faker->unique()->numberBetween(1, 100000),
         'seconds_time' => $this->faker->numberBetween(60, 600),
         'description' => $this->faker->paragraph,   
         'is_free' => $this->faker->boolean,

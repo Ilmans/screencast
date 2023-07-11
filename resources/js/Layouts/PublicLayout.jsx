@@ -3,15 +3,17 @@ import Header from "./Header";
 import Jumbotron from "@/Components/Jumbotron";
 import Footer from "./Footer";
 
-function PublicLayout({ children }) {
+function PublicLayout({ children, header = true, footer = true }) {
     const currentTheme = localStorage.getItem("theme") || "dark";
     return (
-        <div className={`${currentTheme} text-slate-600 themeprovider `}>
-            <div className="dark:noise-bg dark:text-white">
-                <Header />
+        <div
+            className={`${currentTheme}  dark:text-slate-200 dark:bg-slate-950 themeprovider  `}
+        >
+            <div className=" dark:noise-bg dark:text-white">
+                {header && <Header />}
 
                 {children}
-                <Footer />
+                {footer && <Footer />}
             </div>
         </div>
     );
