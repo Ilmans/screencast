@@ -65,7 +65,11 @@ function Watch({ serie, video }) {
                 </div>
 
                 {/* Video Player */}
-                <Player video={video} />
+                <div className="relative p-2">
+                    <div className="absolute inset-0 bgkeren"></div>
+
+                    <Player video={video} />
+                </div>
 
                 <h2 className="px-4 py-8 text-3xl font-semibold font-poppins">
                     {video.title}

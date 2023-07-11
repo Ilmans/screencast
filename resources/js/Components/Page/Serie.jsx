@@ -18,13 +18,13 @@ function Serie({ serie }) {
                     </div>
                 ))}
             </div>
-            <h2 className="mb-2 text-sm font-semibold text-slate-100 ">
+            <h2 className="mb-2 text-sm font-semibold dark:text-slate-100 text-slate-800 ">
                 {serie.title}
             </h2>
-            <p className="mb-2 text-xs text-gray-400 line-clamp-2">
+            <p className="mb-2 text-xs dark:text-slate-100 text-slate-700 line-clamp-2">
                 {serie.description}
             </p>
-            <div className="flex gap-2 mt-2 text-teal-200">
+            <div className="flex gap-2 mt-2 text-teal-600 dark:text-teal-200">
                 <div className="flex items-center gap-1">
                     <ClockIcon />
                     <span className="text-xs">50 minutes</span>
