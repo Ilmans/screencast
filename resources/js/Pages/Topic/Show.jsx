@@ -11,20 +11,28 @@ import Pagination from "@/Components/Page/Pagination";
 function Show({ currentTopic, topics, series }) {
     return (
         <Fragment>
-            <section className="relative py-12 space-y-6 bg-white font-poppins dark:bg-grid-emerald-900/40 bg-grid-emerald-100 dark:bg-slate-950 lg:py-16">
-                <h1 className="text-xl font-semibold lg:text-2xl z-2 ">
-                    Belajar{" "}
-                    <span className="text-slate-400">{currentTopic.name}</span>{" "}
-                </h1>
-                <p className="text-sm lg:w-1/3 lg:text-sm">
-                    {currentTopic.description}
-                </p>
-                <div className="flex flex-wrap items-center text-sm border-gray-600 rounded-md shadow lg:w-3/5 gap-x-4 font-poppins ">
-                    <ListTopics topics={topics} />
+            <section className="container relative bg-primary font-poppins   lg:py-16">
+                <div className="absolute top-0 bottom-0 left-0 w-full bgkeren"></div>
+                <div className="absolute inset-0   bg-gradient-to-br from-transparent to-70% to-primary"></div>
+                <div className="absolute inset-0   bg-gradient-to-tr from-transparent to-90% to-primary"></div>
+
+                <div className="relative py-12 space-y-6">
+                    <h1 className="text-xl font-semibold lg:text-2xl z-2 ">
+                        Belajar Pemrograman
+                        <span className="text-slate-400">
+                            {currentTopic.name}
+                        </span>{" "}
+                    </h1>
+                    <p className="text-xs lg:text-sm lg:w-1/3">
+                        {currentTopic.description}
+                    </p>
+                    <div className="flex flex-wrap items-center text-xs border-gray-600 rounded-md lg:text-sm lg:w-3/5 gap-x-4 font-poppins ">
+                        <ListTopics topics={topics} />
+                    </div>
                 </div>
             </section>
 
-            <section className="py-4 border-t bg-slate-200 dark:bg-slate-950 border-slate-900">
+            <section className="py-4 border-t container">
                 <FilterSeries />
                 <div className="grid gap-16 lg:grid-cols-3">
                     {series.data.map((serie) => (

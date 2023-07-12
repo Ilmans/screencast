@@ -11,20 +11,20 @@ function Serie({ serie }) {
         >
             {" "}
             <img className="mb-4 rounded-lg" src={serie.image} alt="" />
-            <div className="flex gap-2 text-gray-500">
+            <div className="flex gap-2 ">
                 {serie.topics.map((topic, i) => (
                     <div className="text-sm font-semibold text-blue-400 rounded-lg font-poppins ">
                         {topic.name}
                     </div>
                 ))}
             </div>
-            <h2 className="mb-2 text-sm font-semibold dark:text-slate-100 text-slate-800 ">
+            <h2 className="mb-2 text-sm font-semibold text-foreground ">
                 {serie.title}
             </h2>
-            <p className="mb-2 text-xs dark:text-slate-100 text-slate-700 line-clamp-2">
+            <p className="mb-2 text-xs text-muted-foreground line-clamp-2">
                 {serie.description}
             </p>
-            <div className="flex gap-2 mt-2 text-teal-600 dark:text-teal-200">
+            <div className="flex gap-2 mt-2 text-muted text-teal-600 dark:text-teal-200">
                 <div className="flex items-center gap-1">
                     <ClockIcon />
                     <span className="text-xs">50 minutes</span>

@@ -34,18 +34,18 @@ export default function Login({ status, canResetPassword }) {
     };
 
     return (
-        <div className="flex items-center h-screen bg-gradient-to-b from-slate-950  from-65% to-slate-900">
+        <div className="flex items-center h-screen bg-slate-100  dark:bg-primary">
             <div className="hidden w-1/2 p-24 lg:block">
-                <p className="text-lg font-semibold text-slate-300">
+                <p className="text-sm font-semibold text-foreground font-poppins">
                     "Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     Quidem, ut? Atque vero aut saepe ut adipisci. Ratione,
                     deleniti? Aliquam repellendus consequuntur voluptas possimus
                     eum placeat doloribus cumque minima! Repudiandae, eum.""
+                    <p>- John Doe</p>
                 </p>
-                <p>- John Doe</p>
             </div>
             <div className="flex items-center w-full p-12 lg:w-1/2">
-                <div className="w-full p-8 shadow-lg lg:w-2/3 shadow-slate-700 bg-slate-800">
+                <div className="w-full p-8 shadow-lg lg:w-2/3  dark:bg-muted dark:shadow-slate-700">
                     <div className="mb-8">
                         <h2 className="text-lg font-semibold font-poppins">
                             Masuk ke akun anda

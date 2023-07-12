@@ -4,11 +4,12 @@ import { convertSecondsToMinutes } from "../../../lib/Helper";
 import ShareSosmed from "@/Components/ShareSosmed";
 import { Link } from "@inertiajs/react";
 import VideoList from "./VideoList";
+import { ChevronRight } from "../../../lib/Icon";
 
 function Show({ serie }) {
     console.log(serie);
     return (
-        <div className="relative py-8 bg-white dark:bg-slate-950 lg:py-20">
+        <div className="container relative py-8 bg-primary   lg:py-20">
             <div className="grid grid-cols-12 mx-auto max-w-screen-2xl">
                 <section className="col-span-12 ">
                     <div className="relative flex flex-col items-start gap-12 md:flex-row">
@@ -43,46 +44,14 @@ function Show({ serie }) {
                                         href="/series/ui-laravel-dan-react-nqp6j/1"
                                     >
                                         Mulai
-                                        <svg
-                                            className="mt-0.5 ml-2 -mr-1 stroke-current stroke-[1.5]"
-                                            fill="none"
-                                            width={10}
-                                            height={10}
-                                            viewBox="0 0 10 10"
-                                            aria-hidden="true"
-                                        >
-                                            <path
-                                                className="transition opacity-0 group-hover:opacity-100"
-                                                d="M0 5h7"
-                                            />
-                                            <path
-                                                className="transition group-hover:translate-x-[3px]"
-                                                d="M1 1l4 4-4 4"
-                                            />
-                                        </svg>
+                                        <ChevronRight />
                                     </a>
                                     <a
                                         className="transition duration-200 ease-in group inline-flex items-center rounded-full px-4 py-1.5 font-medium transition dark:bg-white/20 text-slate-800 dark:text-white dark:hover:bg-white/30 bg-slate-300 hover:bg-slate-200"
                                         href="/login"
                                     >
                                         <span>Tonton nanti</span>
-                                        <svg
-                                            className="mt-0.5 ml-2 -mr-1 stroke-current stroke-[1.5]"
-                                            fill="none"
-                                            width={10}
-                                            height={10}
-                                            viewBox="0 0 10 10"
-                                            aria-hidden="true"
-                                        >
-                                            <path
-                                                className="transition opacity-0 group-hover:opacity-100"
-                                                d="M0 5h7"
-                                            />
-                                            <path
-                                                className="transition group-hover:translate-x-[3px]"
-                                                d="M1 1l4 4-4 4"
-                                            />
-                                        </svg>
+                                        <ChevronRight />
                                     </a>
                                     <a
                                         className="transition duration-200 ease-in group inline-flex items-center rounded-full px-4 py-1.5 font-medium transition dark:bg-white/20 text-slate-800 dark:text-white dark:hover:bg-white/30 bg-slate-300 hover:bg-slate-200"
@@ -92,23 +61,7 @@ function Show({ serie }) {
                                             Source
                                         </span>{" "}
                                         code
-                                        <svg
-                                            className="mt-0.5 ml-2 -mr-1 stroke-current stroke-[1.5]"
-                                            fill="none"
-                                            width={10}
-                                            height={10}
-                                            viewBox="0 0 10 10"
-                                            aria-hidden="true"
-                                        >
-                                            <path
-                                                className="transition opacity-0 group-hover:opacity-100"
-                                                d="M0 5h7"
-                                            />
-                                            <path
-                                                className="transition group-hover:translate-x-[3px]"
-                                                d="M1 1l4 4-4 4"
-                                            />
-                                        </svg>
+                                        <ChevronRight />
                                     </a>
                                 </div>
                                 <p className="leading-relaxed text-slate-500 dark:text-slate-400">

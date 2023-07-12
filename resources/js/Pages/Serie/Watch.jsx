@@ -11,12 +11,12 @@ function Watch({ serie, video }) {
     const [showMobileList, setShowMobileList] = useState(false);
 
     return (
-        <div className="relative min-h-screen lg:px-4 lg:flex dark:bg-slate-950 lg:gap-x-4">
+        <div className="relative min-h-screen lg:px-4 lg:flex   lg:gap-x-4">
             {/* List video */}
             <div
                 className={`fixed lg:static top-0  ${
                     showMobileList ? "" : "-translate-x-full lg:translate-x-0"
-                } z-10 p-4  duration-200 ease-in-out border-r rounded-lg transiton-all dark:bg-slate-950 lg:rounded-none lg:sticky lg:w-1/4 border-slate-200 dark:border-slate-800`}
+                } z-10 p-4  duration-200 ease-in-out border-r rounded-lg transiton-all   lg:rounded-none lg:sticky lg:w-1/4 border-slate-200 dark:border-slate-800`}
             >
                 <div className="absolute right-0 p-4 lg:hidden dark:text-slate-400">
                     <button
@@ -51,7 +51,7 @@ function Watch({ serie, video }) {
             </div>
 
             {/* Video Player */}
-            <div className="lg:w-3/4 dark:bg-slate-950 lg:p-4">
+            <div className="lg:w-3/4   lg:p-4">
                 <div className="px-4 py-2 lg:hidden">
                     <button
                         onClick={() => {

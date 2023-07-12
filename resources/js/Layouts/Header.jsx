@@ -1,6 +1,6 @@
 import Logo from "@/Components/Logo";
 import React, { useState } from "react";
-import ThemeProvider from "../../lib/ThemeProvider";
+import ThemeProvider from "../Components/ThemeProvider";
 import { SearchIcon } from "../../lib/Icon";
 import { Link, usePage } from "@inertiajs/react";
 import InputWithIcon from "@/Components/InputWithIcon";
@@ -13,18 +13,15 @@ const menu = [
     { name: "Artikel", url: "/articles" },
 ];
 function Header() {
-    
-
-    const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
     return (
-        <section className="flex items-center justify-between pt-4 pb-2 border-b dark:bg-slate-950 border-slate-200 dark:border-slate-700">
-            <Logo theme={theme} />
+        <section className="flex container items-center  justify-between pt-4 pb-2 border-b ">
+            <Logo />
             <ul className="items-center hidden lg:flex">
                 {menu.map((title, i) => (
                     <li key={i} className="inline-block p-4 ">
                         <Link
                             href={title.url}
-                            className="text-sm font-bold text-slate-500 hover:text-slate-950 dark:text-slate-300 dark:hover:text-slate-100"
+                            className="text-sm font-bold text-muted-foreground hover:text-foreground duration-100 ease-in-out transition-all"
                         >
                             {title.name}
                         </Link>
@@ -38,7 +35,7 @@ function Header() {
                         icon={<SearchIcon />}
                     />
                 </div>
-                <ThemeProvider theme={theme} setTheme={setTheme} />
+                <ThemeProvider />
                 <MobileNavButton />
             </div>
         </section>

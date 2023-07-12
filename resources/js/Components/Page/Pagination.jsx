@@ -2,8 +2,6 @@ import { Link } from "@inertiajs/react";
 import React from "react";
 
 function Pagination({ links }) {
-  
-
     const handleClick = (link) => {
         if (link.url === null) {
             return;
@@ -22,10 +20,10 @@ function Pagination({ links }) {
                     key={i}
                     className={`${
                         link.url === null
-                            ? "bg-slate-700 text-slate-400"
-                            : "hover:bg-slate-800"
+                            ? "bg-muted text-muted-foreground border"
+                            : "bg-accent text-foreground border-accent hover:bg-slate-200 dark:hover:bg-muted-foreground"
                     } px-4 py-2 rounded-lg ${
-                        link.active ? "bg-slate-800" : "bg-slate-700"
+                        link.active ? "bg-muted-foreground text-muted  dark:bg-muted-foreground" : ""
                     }  ${
                         link.label === "&laquo; Previous" ||
                         link.label === "Next &raquo;"

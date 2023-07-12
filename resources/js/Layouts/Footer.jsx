@@ -1,16 +1,15 @@
+import Logo from "@/Components/Logo";
 import React, { Fragment } from "react";
 
 function Footer() {
     return (
         <Fragment>
-            <section className="relative py-12 border-t dark:bg-slate-950 border-slate-900">
+            <section className="py-12 container   border-slate-900">
                 <div className="flex flex-col justify-between gap-4 lg:flex-row wrapper">
                     <div className="lg:w-1/4">
-                        <img
-                            className="mb-4 -ml-6"
-                            src="/images/logo.png"
-                            alt=""
-                        />
+                        <div className="py-2 -ml-2">
+                            <Logo />
+                        </div>
                         <p>
                             Lorem ipsum dolor sit amet consectetur, adipisicing
                             elit. Aliquid, pariatur alias asperiores ad dolorem
@@ -43,11 +42,11 @@ function Footer() {
                     </div>
                 </div>
             </section>
-            <div className="flex flex-col items-center justify-center gap-2 p-8 border-t bg-slate-950 border-slate-700">
-                <p className="text-xs font-slate-500">
+            <div className="flex flex-col items-center justify-center gap-2 p-8 border-t bg-primary">
+                <p className="text-xs text-muted-foreground">
                     Coding asik adalah merek dagang dari Ilman Sunanuddin
                 </p>
-                <p className="text-sm text-center">
+                <p className=" font-poppins text-xs text-center">
                     <span className="font-semibold">
                         @Copyright 2023 CodingAsik.
                     </span>{" "}

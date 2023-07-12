@@ -12,20 +12,20 @@ export default function Home({ series }) {
                 <title>CodingAsik</title>
             </Head>
             <Jumbotron />
-            <section className="relative bg-slate-100/50 dark:bg-slate-950">
+            <section className="relative container   ">
                 <div className="absolute inset-0 bgkeren"></div>
-                <div className="absolute inset-0    bg-gradient-to-tr from-transparent to-50% to-white dark:to-slate-950"></div>
+                <div className="absolute inset-0    bg-gradient-to-tr from-transparent to-50% to-primary"></div>
 
-                <div className="relative py-4 pt-8 mb-8 dark:text-white font-poppins">
+                <div className="relative py-4 pt-8 mb-8   font-poppins bg-primary">
                     <h2 className="text-lg font-bold">
                         Baru baru ini di tambahkan.
                     </h2>
-                    <p className="text-xs text-slate-600">
+                    <p className="text-xs text-muted-foreground">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Nisi
                     </p>
                 </div>
-                <div className="relative grid gap-12 lg:grid-cols-3 ">
+                <div className="relative grid gap-24 pb-12 lg:grid-cols-3 ">
                     {series.data.map((serie, i) => (
                         <Serie serie={serie} />
                     ))}

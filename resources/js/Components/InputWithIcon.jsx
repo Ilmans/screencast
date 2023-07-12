@@ -16,10 +16,10 @@ function InputWithIcon({
                 name={name}
                 placeholder={placeholder}
                 {...props}
-                className="relative w-full h-10 pl-8 pr-4 text-sm font-thin transition-all duration-200 ease-in-out rounded-md outline-none text-slate-400 peer dark:bg-slate-950 drop-shadow-sm focus:ring-2 focus:ring-slate-400 focus:drop-shadow-sm"
+                className="relative w-full h-9 pl-8 pr-4 text-sm font-thin transition-all duration-200 ease-in-out rounded-md outline-none text-muted-foreground bg-accent border dark:border-none   drop-shadow-sm focus:ring-1 focus:ring-slate-600 focus:drop-shadow-sm"
             />
 
-            <span className="absolute w-4 h-4 transition-all duration-200 ease-in-out text-slate-500 left-2 group-focus-within:text-slate-400">
+            <span className="absolute w-4 h-4 transition-all duration-200 ease-in-out text-accent-foreground left-2 group-focus-within:text-slate-400">
                 {icon}
             </span>
         </div>
