@@ -1,10 +1,9 @@
 import React from "react";
 import { BookIcon, ClockIcon } from "../../../lib/Icon";
 import { Link } from "@inertiajs/react";
-import {
-    convertSecondsToHours,
-    convertSecondsToMinutes,
-} from "../../../lib/Helper";
+import { convertSecondsToHours } from "../../../lib/Helper";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/opacity.css";
 
 function Serie({ serie }) {
     return (
@@ -13,11 +12,21 @@ function Serie({ serie }) {
             className="space-y-2 rounded-lg font-poppins"
             key={serie.id}
         >
-            {" "}
-            <img className="mb-4 rounded-lg" src={serie.image} alt="" />
+            <div className="h-48">
+                <LazyLoadImage
+                    className="object-cover w-full h-full rounded-lg"
+                    src={serie.image}
+                    alt=""
+                    effect="opacity"
+                    delayTime={1000}
+                />
+            </div>
             <div className="flex gap-2 ">
                 {serie.topics.map((topic, i) => (
-                    <div className="text-sm font-semibold text-blue-400 rounded-lg font-poppins ">
+                    <div
+                        className="text-sm font-semibold text-blue-400 rounded-lg font-poppins"
+                        key={i}
+                    >
                         {topic.name}
                     </div>
                 ))}

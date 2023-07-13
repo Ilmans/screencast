@@ -1,10 +1,19 @@
-import Logo from "@/Components/Logo";
 import React, { Fragment } from "react";
+import Logo from "@/Components/Logo";
 
 function Footer() {
+    const footerMenuItems = [
+        "asdfsafdsadfa",
+        "asdfsafdsadfa",
+        "asdfsafdsadfa",
+        "asdfsafdsadfa",
+        "asdfsafdsadfa",
+        "asdfsafdsadfa",
+    ];
+
     return (
         <Fragment>
-            <section className="py-12 container   border-slate-900">
+            <section className="py-12 container border-slate-900">
                 <div className="flex flex-col justify-between gap-4 lg:flex-row wrapper">
                     <div className="lg:w-1/4">
                         <div className="py-2 -ml-2">
@@ -21,23 +30,17 @@ function Footer() {
                     <div>
                         <h1 className="mb-4 font-semibold">Ready To Binge</h1>
                         <ul className="space-y-4">
-                            <li>asdfsafdsadfa</li>
-                            <li>asdfsafdsadfa</li>
-                            <li>asdfsafdsadfa</li>
-                            <li>asdfsafdsadfa</li>
-                            <li>asdfsafdsadfa</li>
-                            <li>asdfsafdsadfa</li>
+                            {footerMenuItems.map((item, index) => (
+                                <li key={index}>{item}</li>
+                            ))}
                         </ul>
                     </div>
                     <div>
                         <h1 className="mb-4 font-semibold">Ready To Binge</h1>
                         <ul className="space-y-4">
-                            <li>asdfsafdsadfa</li>
-                            <li>asdfsafdsadfa</li>
-                            <li>asdfsafdsadfa</li>
-                            <li>asdfsafdsadfa</li>
-                            <li>asdfsafdsadfa</li>
-                            <li>asdfsafdsadfa</li>
+                            {footerMenuItems.map((item, index) => (
+                                <li key={index}>{item}</li>
+                            ))}
                         </ul>
                     </div>
                 </div>
@@ -46,11 +49,11 @@ function Footer() {
                 <p className="text-xs text-muted-foreground">
                     Coding asik adalah merek dagang dari Ilman Sunanuddin
                 </p>
-                <p className=" font-poppins text-xs text-center">
+                <p className="font-poppins text-xs text-center">
                     <span className="font-semibold">
                         @Copyright 2023 CodingAsik.
                     </span>{" "}
-                    All rights reserver, yes,all of them
+                    All rights reserved, yes, all of them
                 </p>
             </div>
         </Fragment>
