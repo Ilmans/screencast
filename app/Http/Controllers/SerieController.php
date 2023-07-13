@@ -3,17 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\SerieService;
+use App\Http\Services\VideoService;
 use App\Models\Serie;
 use App\Models\Video;
-use Illuminate\Http\Request;
 
 class SerieController extends Controller
 {
     private $serieService;
-    public function __construct(SerieService $serieService)
+    private $videoService;
+    
+    public function __construct(SerieService $serieService, VideoService $videoService)
     {
         $this->serieService = $serieService;
+        $this->videoService = $videoService;
     }
+
 
     public function show(Serie $serie)
     {
@@ -27,7 +31,8 @@ class SerieController extends Controller
     {
         $serie = $this->serieService->setSeries($serie->query());
         $serie = $this->serieService->getSingle();
-        $video = $video;
-        return inertia('Serie/Watch', compact('serie', 'video'));
+        $canWatch = $this->videoService->canWatch($video);
+
+        return inertia('Serie/Watch', compact('serie', 'video', 'canWatch'));
     }
 }

@@ -17,12 +17,12 @@ class VideoFactory extends Factory
     public function definition(): array
     {
         return [
-        'title' => $this->faker->sentence,
-        'video_url' => "https://www.youtube.com/watch?v=83ntBBDC8Xs",
-        'order_num' => $this->faker->unique()->numberBetween(1, 100000),
-        'seconds_time' => $this->faker->numberBetween(60, 600),
-        'description' => $this->faker->paragraph,   
-        'is_free' => $this->faker->boolean,
-    ];
+            'title' => $this->faker->sentence,
+            'unique_video_id' => "7UfM7Lkw4U4",
+            'order_num' => $this->faker->unique()->numberBetween(1, 100000),
+            'seconds_time' => $this->faker->numberBetween(60, 600),
+            'description' => $this->faker->paragraph,
+            'is_free' => $this->faker->boolean,
+        ];
     }
 }

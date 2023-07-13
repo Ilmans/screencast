@@ -5,8 +5,9 @@ import { DoubleArrowRight } from "../../../lib/Icon";
 import BadgeButton from "@/Components/BadgeButton";
 import Player from "./Player";
 import ListVideoSidebar from "@/Components/Layout/ListVideoSidebar";
+import { usePage } from "@inertiajs/react";
 
-function Watch({ serie, video }) {
+function Watch({ serie, video, canWatch }) {
     const [showInMobile, setShowInMobile] = useState(false);
 
     return (
@@ -33,13 +34,15 @@ function Watch({ serie, video }) {
                 </BadgeButton>
             </button>
 
-            {/* Video Player */}
             <div className="lg:w-3/4    lg:p-4">
-                <div className="relative p-2">
+                {/* Video Player */}
+
+                <div className="p-2.5 relative ">
                     <div className="absolute inset-0 bgkeren"></div>
-                    <Player video={video} />
+                    <Player video={video} canWatch={canWatch} />
                 </div>
 
+                {/* Video Title & description */}
                 <h2 className="px-4 py-8 text-3xl font-semibold font-poppins">
                     {video.title}
                 </h2>

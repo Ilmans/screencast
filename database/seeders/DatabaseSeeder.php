@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Serie;
 use App\Models\Topic;
+use App\Models\User;
 use App\Models\Video;
 use Illuminate\Database\Seeder;
 
@@ -23,6 +24,15 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        User::create([
+            'name' => 'Test User',
+            'username' => 'test',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('12345678'),
+
+
+        ]);
+
         \App\Models\Topic::factory(5)
             ->create()
             ->each(function ($topic) {
@@ -35,7 +45,6 @@ class DatabaseSeeder extends Seeder
                         ->count(20)->create(
                             ['serie_id' => $serie->id]
                         );
-                        
                 });
             });
     }
