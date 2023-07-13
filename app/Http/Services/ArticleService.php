@@ -11,7 +11,18 @@ class ArticleService
 
     public function getAllArticles(): \Illuminate\Pagination\LengthAwarePaginator
     {
-        return Article::with('topics')->with('user')->orderBy('created_at', 'desc')->paginate(6);
+        $request = request();
+        $articles = Article::with('topics')->with('user');
+        if ($request->search) {
+            $articles = $articles->where('title', 'like', '%' . $request->search . '%')->orWhere('body', 'like', '%' . $request->search . '%');
+        }
+        if ($request->topic) {
+            $articles = $articles->whereHas('topics', function ($query) use ($request) {
+               return $query->where('slug', $request->topic);
+            });
+        }
+
+        return $articles->orderBy('created_at', 'desc')->paginate(10);
     }
 
 

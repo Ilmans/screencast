@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Services\ArticleService;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ArticleController extends Controller
 {
@@ -18,8 +19,9 @@ class ArticleController extends Controller
     {
         $articleTopics = (new \App\Http\Services\TopicService())->getAllArticlesTopics();
         $popularArticles = $this->articleService->getPopularArticle();
-        $articles = $this->articleService->getAllArticles();
-
+        $articles = Inertia::lazy(function () {
+            return $this->articleService->getAllArticles();
+        });
 
         return inertia("Articles/Index", compact('articleTopics', 'popularArticles', 'articles'));
     }
