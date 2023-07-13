@@ -1,5 +1,6 @@
 import Jumbotron from "@/Components/Jumbotron";
-import Serie from "@/Components/Page/Serie";
+import Serie from "@/Components/Item/Serie";
+import TitleSection from "@/Components/Page/TitleSection";
 import PublicLayout from "@/Layouts/PublicLayout";
 import { Head } from "@inertiajs/react";
 import { Fragment } from "react";
@@ -15,15 +16,10 @@ export default function Home({ series }) {
                 <div className="absolute inset-0 bgkeren"></div>
                 <div className="absolute inset-0    bg-gradient-to-tr from-transparent to-50% to-primary"></div>
 
-                <div className="relative py-4 pt-8 mb-8   font-poppins bg-primary">
-                    <h2 className="text-lg font-bold">
-                        Baru baru ini di tambahkan.
-                    </h2>
-                    <p className="text-xs text-muted-foreground">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Nisi
-                    </p>
-                </div>
+                <TitleSection
+                    title="Baru baru ini di tambahkan."
+                    desc=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi"
+                />
                 <div className="relative grid gap-24 pb-12 lg:grid-cols-3 ">
                     {series.data.map((serie, i) => (
                         <Serie serie={serie} />

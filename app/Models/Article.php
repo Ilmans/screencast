@@ -12,14 +12,20 @@ class Article extends Model
     use HasFactory;
 
 
-    public function user() : BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
 
-    public function topics () : MorphToMany
+    public function topics(): MorphToMany
     {
         return $this->morphToMany(Topic::class, "topicable");
+    }
+
+
+    public function getCreatedAtAttribute()
+    {
+        return  $this->attributes['created_at'] = \Carbon\Carbon::parse($this->attributes['created_at'])->diffForHumans();
     }
 }

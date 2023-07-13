@@ -1,10 +1,10 @@
 import InputWithIcon from "@/Components/InputWithIcon";
-import Serie from "@/Components/Page/Serie";
+import Serie from "@/Components/Item/Serie";
 import React, { Fragment } from "react";
 import { SearchIcon } from "../../../lib/Icon";
 import PublicLayout from "@/Layouts/PublicLayout";
 import { Link } from "@inertiajs/react";
-import ListTopics from "@/Components/Page/ListTopics";
+import ListTopics from "@/Components/Item/ListTopics";
 import FilterSeries from "@/Components/Page/FilterSeries";
 import Pagination from "@/Components/Page/Pagination";
 import GreetingPage from "@/Components/Page/GreetingPage";

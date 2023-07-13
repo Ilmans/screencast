@@ -8,11 +8,20 @@ use Illuminate\Support\Facades\Cache;
 
 class TopicService
 {
-    public function getAllTopics(): Collection
+    public function getAllSeriesTopics(): Collection
     {
-
+        // only get topic who has related series
         return Cache::rememberForever('topics', function () {
-            return Topic::all();
+            return Topic::has('series')->get();
+        });
+    }
+
+
+    public function getAllArticlesTopics(): Collection
+    {
+        // only get topic who has related series
+        return Cache::rememberForever('topics', function () {
+            return Topic::has('articles')->get();
         });
     }
 }

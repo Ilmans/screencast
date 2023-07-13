@@ -22,7 +22,7 @@ class TopicController extends Controller
     }
     public function index(Request $request)
     {
-        $topics = $this->topicService->getAllTopics();
+        $topics = $this->topicService->getAllSeriesTopics();
         $series = $this->serieService
             ->search($request->search ?? null)
             ->getSeries();
@@ -32,7 +32,7 @@ class TopicController extends Controller
 
     public function show(Topic $topic, Request $request)
     {
-        $topics = $this->topicService->getAllTopics();
+        $topics = $this->topicService->getAllSeriesTopics();
         $currentTopic = $topic;
         $series = $this->serieService
             ->search($request->search ?? null)

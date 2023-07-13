@@ -47,5 +47,16 @@ class DatabaseSeeder extends Seeder
                         );
                 });
             });
+
+
+            // cretae 3 topic and each topic have 10 articles and article user id is 1
+            Topic::factory(3)
+            ->create()->each(function ($topic) {
+                $topic->articles()->createMany(
+                    \App\Models\Article::factory(10)->make(['user_id' => 1])->toArray()
+                );
+
+                
+            });
     }
 }

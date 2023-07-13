@@ -2,14 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\ArticleService;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
 
 
+    private $articleService;
+    public function __construct(ArticleService $articleService)
+    {
+        $this->articleService = $articleService;
+    }
     public function index()
     {
-        return inertia("Articles/Index");
+        $articleTopics = (new \App\Http\Services\TopicService())->getAllArticlesTopics();
+        $popularArticles = $this->articleService->getPopularArticle();
+        $articles = $this->articleService->getAllArticles();
+
+
+        return inertia("Articles/Index", compact('articleTopics', 'popularArticles', 'articles'));
     }
 }

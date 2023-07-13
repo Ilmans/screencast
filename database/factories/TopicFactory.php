@@ -22,6 +22,20 @@ class TopicFactory extends Factory
         'JavaScript',
         'Laravel',
         'Node.js',
+        'PHP',
+        'Vue.js',
+        'React.js',
+        'Angular',
+        'Python',
+        'Django',
+        'Ruby',
+        'Rails',
+        'MySQL',
+        'MongoDB',
+        'PostgreSQL',
+        'GraphQL',
+        'Docker',
+        'Kubernetes',
     ];
 
     return [

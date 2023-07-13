@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string("synopsis");
             $table->text("body");
             $table->string("image")->nullable();
+            $table->boolean("published")->default(false);
+            $table->integer("views")->default(0);
             $table->timestamps();
         });
     }
