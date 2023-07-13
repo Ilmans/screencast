@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('topic_series', function (Blueprint $table) {
-            $table->foreignId("topic_id")->references("id")->on("topics");
-            $table->foreignId("serie_id")->references("id")->on("series")->onDelete("cascade");
+        Schema::create('topicables', function (Blueprint $table) {
+            $table->foreignId("topic_id")->references("id")->on("topics")->onDelete("cascade");
+            $table->morphs("topicable");
+
         });
     }
 

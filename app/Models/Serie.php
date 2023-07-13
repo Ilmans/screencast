@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Serie extends Model
 {
@@ -15,9 +16,9 @@ class Serie extends Model
         return $this->hasMany(Video::class);
     }
 
-    public function topics()
+    public function topics() : MorphToMany
     {
-        return $this->belongsToMany(Topic::class, TopicSerie::class);
+        return $this->morphToMany(Topic::class, "topicable");
     }
 
     public function getUpdatedAtAttribute($value)

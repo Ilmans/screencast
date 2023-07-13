@@ -31,6 +31,9 @@ Route::get("/topic/{topic:slug}", [TopicController::class, 'show'])->name("topic
 Route::get("/serie/{serie:slug}", [SerieController::class, "show"])->name("serie.show");
 Route::get("/serie/{serie:slug}/{video:order_num}", [SerieController::class, "watch"])->name("serie.watch");
 
+//Route::get("/articles")
+/// default laravel :
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
