@@ -12,21 +12,26 @@ import BadgeButton from "../BadgeButton";
 function MobileNavButton() {
     const { user } = usePage().props.auth;
     const [showNav, setShowNav] = useState(false);
+    // set shownav to false if clicked outside
+
     return (
         <Fragment>
             {user ? (
-                <button
-                    onClick={() => {
-                        setShowNav(!showNav);
-                    }}
-                    className="relative text-center px-2 py-1.5 hover:bg-slate-700 duration-200 ease-in-out transition-all  dark:bg-slate-800 rounded-lg text-xs border-slate-400 text-slate-400 hover:border-slate-300"
-                >
-                    {user.name.slice(1, 7)} ...
-                    <span>
-                        <ChevronDownIcon className="inline w-4 h-4" />
-                    </span>
-                    <MobileNav show={showNav} setShow={setShowNav} />
-                </button>
+                <BadgeButton>
+                    <button
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setShowNav(!showNav);
+                        }}
+                        className="relative"
+                    >
+                        {user.name.slice(1, 7)} ...
+                        <span>
+                            <ChevronDownIcon className="inline w-4 h-4" />
+                        </span>
+                        <MobileNav show={showNav} setShow={setShowNav} />
+                    </button>
+                </BadgeButton>
             ) : (
                 <>
                     <BadgeButton className="hidden lg:block">

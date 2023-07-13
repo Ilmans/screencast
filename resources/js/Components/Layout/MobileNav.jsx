@@ -1,5 +1,5 @@
 import { Link, router, usePage } from "@inertiajs/react";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
     BookIcon,
     HomeIcon,
@@ -11,11 +11,33 @@ import {
 
 function MobileNav({ show, setShow }) {
     const { user } = usePage().props.auth;
+    const mobileNavRef = useRef(null);
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (
+                mobileNavRef.current &&
+                !mobileNavRef.current.contains(event.target)
+            ) {
+                setShow(false);
+            }
+        }
+
+        if (show) {
+            window.addEventListener("click", handleClickOutside);
+        }
+
+        return () => {
+            window.removeEventListener("click", handleClickOutside);
+        };
+    }, [show, setShow]);
+
     return (
         <div
+            ref={mobileNavRef}
             className={`absolute right-0 z-50 w-64 ${
                 show ? "scale-100" : "scale-0"
-            } duration-100  transition-all ease-in-out lg:w-72  border rounded-lg shadow-lg text-slate-300 lg:top-12 top-10 bg-slate-800 border-slate-700`}
+            } duration-100  transition-all ease-in-out lg:w-72  border rounded-lg shadow-sm text-foreground/80 lg:top-12 top-10 bg-primary/80 shadow-foreground/40 `}
         >
             <ul className="items-start px-4 py-4 space-y-2 text-sm text-start font-poppins">
                 <List>
@@ -28,7 +50,7 @@ function MobileNav({ show, setShow }) {
                     <BookIcon className="inline-block w-4 h-4" /> Artikel
                 </List>
             </ul>
-            <hr className="border border-slate-700" />
+            <hr className="border border-border/90" />
             <ul className="items-start px-4 py-4 space-y-2 text-sm text-start font-poppins">
                 {user ? (
                     <button
