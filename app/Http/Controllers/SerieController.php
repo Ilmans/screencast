@@ -11,7 +11,7 @@ class SerieController extends Controller
 {
     private $serieService;
     private $videoService;
-    
+
     public function __construct(SerieService $serieService, VideoService $videoService)
     {
         $this->serieService = $serieService;

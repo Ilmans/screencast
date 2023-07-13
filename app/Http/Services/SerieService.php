@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Services;
 
 use App\Models\Serie;
@@ -20,10 +21,10 @@ class SerieService
     public function getSingle()
     {
         return $this->series
-            ->with(['topics' =>function ($q) {
-               return $q->select('name');
+            ->with(['topics' => function ($q) {
+                return $q->select('name');
             }])->with('videos')->withCount('videos')
-            ->withSum('videos','seconds_time')->first();
+            ->withSum('videos', 'seconds_time')->first();
     }
 
     public function byTopic(Topic $topic)
@@ -44,7 +45,8 @@ class SerieService
 
     public function getSeries()
     {
-        return $this->series->with('topics')->paginate(9);
+        // get series with count the videos and sum the seconds_time in videos
+        return $this->series->with('topics')->withCount('videos')
+            ->withSum('videos', 'seconds_time')->paginate(9);
     }
 }
-?>

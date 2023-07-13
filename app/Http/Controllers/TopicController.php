@@ -26,6 +26,7 @@ class TopicController extends Controller
         $series = $this->serieService
             ->search($request->search ?? null)
             ->getSeries();
+
         return inertia('Topic/Index', compact('topics', 'series'));
     }
 
@@ -37,6 +38,6 @@ class TopicController extends Controller
             ->search($request->search ?? null)
             ->byTopic($topic)
             ->getSeries();
-        return inertia('Topic/Show', compact('currentTopic','topics', 'series'));
+        return inertia('Topic/Show', compact('currentTopic', 'topics', 'series'));
     }
 }
