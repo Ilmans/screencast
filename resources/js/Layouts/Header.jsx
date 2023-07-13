@@ -27,12 +27,23 @@ function Header() {
                     Home{" "}
                 </NavLink>
                 <NavLink
-                    active={route().current("topics")}
+                    active={
+                        route().current("topics") ||
+                        route().current("topic.show")
+                    }
                     key={"topik"}
                     href={"/topics"}
                 >
                     {" "}
                     Topik{" "}
+                </NavLink>
+                <NavLink
+                    active={route().current("articles")}
+                    key={"articles"}
+                    href={"/articles"}
+                >
+                    {" "}
+                    Articles{" "}
                 </NavLink>
             </div>
             <div className="flex items-center gap-2">

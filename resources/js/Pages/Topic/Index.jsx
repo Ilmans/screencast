@@ -8,30 +8,29 @@ import ListTopics from "@/Components/Page/ListTopics";
 import FilterSeries from "@/Components/Page/FilterSeries";
 import { Link } from "@inertiajs/react";
 import Pagination from "@/Components/Page/Pagination";
+import GreetingPage from "@/Components/Page/GreetingPage";
 
 function Index({ topics, series }) {
     return (
         <Fragment>
-            <section className="container relative bg-primary font-poppins   lg:py-16">
-                <div className="absolute top-0 bottom-0 left-0 w-full bgkeren"></div>
-                <div className="absolute inset-0   bg-gradient-to-br from-transparent to-70% to-primary"></div>
-                <div className="absolute inset-0   bg-gradient-to-tr from-transparent to-90% to-primary"></div>
-
-                <div className="relative py-12 space-y-6">
-                    <h1 className="text-xl font-semibold lg:text-2xl z-2 ">
-                        Pilihan <span className="text-slate-400">Vidoe</span>{" "}
+            <GreetingPage
+                variant="default"
+                title={
+                    <>
+                        {" "}
+                        Pilihan <span className="text-slate-400">
+                            Vidoe
+                        </span>{" "}
                         pemrograman
-                    </h1>
-                    <p className="text-xs lg:text-sm lg:w-1/3">
-                        Cari video yang ingin anda pelajari , jadikan ngodik
-                        asik dengan mempelajari apa yang ingin anda pelajari
-                    </p>
-                    <div className="flex flex-wrap items-center text-xs border-gray-600 rounded-md lg:text-sm lg:w-3/5 gap-x-4 font-poppins ">
-                        <ListTopics topics={topics} />
-                    </div>
+                    </>
+                }
+                desc=" Cari video yang ingin anda pelajari , jadikan ngodik asik
+                    dengan mempelajari apa yang ingin anda pelajari"
+            >
+                <div className="flex flex-wrap items-center text-xs border-gray-600 rounded-md lg:text-sm lg:w-3/5 gap-x-4 font-poppins ">
+                    <ListTopics topics={topics} />
                 </div>
-            </section>
-
+            </GreetingPage>
             <section className="py-4 container">
                 <FilterSeries />
                 <div className="grid gap-24 lg:grid-cols-3">

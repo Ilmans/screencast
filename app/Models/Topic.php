@@ -15,4 +15,9 @@ class Topic extends Model
     {
         return $this->morphedByMany(Serie::class, "topicable");
     }
+
+    public function articles(): MorphToMany
+    {
+        return $this->morphedByMany(Article::class, "topicable");
+    }
 }
