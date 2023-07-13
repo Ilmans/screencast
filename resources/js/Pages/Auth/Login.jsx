@@ -4,7 +4,7 @@ import { Link, useForm } from "@inertiajs/react";
 import { useEffect } from "react";
 import { KeyIcon, UserIcon } from "../../../lib/Icon";
 import InputWithIcon from "@/Components/InputWithIcon";
-import Button from "@/Components/Button";
+import { Button } from "@/Components/ui/button";
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -45,7 +45,7 @@ export default function Login({ status, canResetPassword }) {
                 </p>
             </div>
             <div className="flex items-center w-full p-12 lg:w-1/2">
-                <div className="w-full p-8 shadow-lg lg:w-2/3  dark:bg-muted dark:shadow-slate-700">
+                <div className="w-full p-8 shadow-lg lg:w-2/3  bg-primary dark:shadow-slate-700">
                     <div className="mb-8">
                         <h2 className="text-lg font-semibold font-poppins">
                             Masuk ke akun anda
@@ -117,7 +117,7 @@ export default function Login({ status, canResetPassword }) {
                             </Link>
                         </div>
                         <div className="mt-10 group">
-                            <Button type="submit" bg={"secondary"}>
+                            <Button variant="secondary" size="lg" type="submit">
                                 Login
                             </Button>
                         </div>

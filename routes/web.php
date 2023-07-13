@@ -21,15 +21,15 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     $series = Serie::with('topics')->paginate(12);
-    
-    return Inertia::render('Home',compact('series'));
-});
 
-Route::get("/topics",[TopicController::class,"index"])->name("topics");
-Route::get("/topic/{topic:slug}",[TopicController::class,'show'])->name("topic.show");
+    return Inertia::render('Home', compact('series'));
+})->name('home');
 
-Route::get("/serie/{serie:slug}",[SerieController::class,"show"])->name("serie.show");
-Route::get("/serie/{serie:slug}/{video:order_num}",[SerieController::class,"watch"])->name("serie.watch");
+Route::get("/topics", [TopicController::class, "index"])->name("topics");
+Route::get("/topic/{topic:slug}", [TopicController::class, 'show'])->name("topic.show");
+
+Route::get("/serie/{serie:slug}", [SerieController::class, "show"])->name("serie.show");
+Route::get("/serie/{serie:slug}/{video:order_num}", [SerieController::class, "watch"])->name("serie.watch");
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -41,4 +41,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

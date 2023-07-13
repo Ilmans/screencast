@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PlayIcon } from "../../../lib/Icon";
 import { convertSecondsToMinutes } from "../../../lib/Helper";
 import ReactPlayer from "react-player";
 
 function Player({ video }) {
     const [play, setPlay] = useState(false);
+    useEffect(() => {
+        setPlay(false);
+    }, [video]);
     return (
         <div className="relative w-full overflow-hidden rounded-lg aspect-video">
             {play ? (

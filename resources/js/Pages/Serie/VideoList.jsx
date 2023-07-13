@@ -1,5 +1,5 @@
 import { Link } from "@inertiajs/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { convertSecondsToMinutes } from "../../../lib/Helper";
 import { LockIcon } from "../../../lib/Icon";
 
@@ -15,6 +15,8 @@ function VideoList({ serie, activeVideo = null }) {
                     } hover:bg-slate-200 dark:hover:bg-slate-800`}
                 >
                     <Link
+                        preserveScroll={true}
+                        preserveState={true}
                         className="flex items-center text-slate-800 dark:text-slate-50 dark:hover:text-primary-400 justify-between hover:text-primary-500 py-3.5 font-medium fade group"
                         href={`/serie/${serie.slug}/${video.order_num}`}
                     >

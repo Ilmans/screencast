@@ -6,6 +6,7 @@ import { Link, usePage } from "@inertiajs/react";
 import InputWithIcon from "@/Components/InputWithIcon";
 import MobileNav from "../Components/Layout/MobileNav";
 import MobileNavButton from "@/Components/Layout/MobileNavButton";
+import NavLink from "@/Components/NavLink";
 
 const menu = [
     { name: "Dashboard", url: "/" },
@@ -14,20 +15,26 @@ const menu = [
 ];
 function Header() {
     return (
-        <section className="flex container items-center  justify-between pt-4 pb-2 border-b ">
+        <nav className="flex container items-center  justify-between pt-4 pb-2 border-b border-border/60 ">
             <Logo />
-            <ul className="items-center hidden lg:flex">
-                {menu.map((title, i) => (
-                    <li key={i} className="inline-block p-4 ">
-                        <Link
-                            href={title.url}
-                            className="text-sm font-bold text-muted-foreground hover:text-foreground duration-100 ease-in-out transition-all"
-                        >
-                            {title.name}
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+            <div className="items-center hidden lg:flex">
+                <NavLink
+                    active={route().current("home")}
+                    key={"home"}
+                    href={"/"}
+                >
+                    {" "}
+                    Home{" "}
+                </NavLink>
+                <NavLink
+                    active={route().current("topics")}
+                    key={"topik"}
+                    href={"/topics"}
+                >
+                    {" "}
+                    Topik{" "}
+                </NavLink>
+            </div>
             <div className="flex items-center gap-2">
                 <div className="hidden lg:block">
                     <InputWithIcon
@@ -38,7 +45,7 @@ function Header() {
                 <ThemeProvider />
                 <MobileNavButton />
             </div>
-        </section>
+        </nav>
     );
 }
 

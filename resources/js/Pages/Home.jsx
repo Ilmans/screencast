@@ -1,4 +1,3 @@
-import Button from "@/Components/Button";
 import Jumbotron from "@/Components/Jumbotron";
 import Serie from "@/Components/Page/Serie";
 import PublicLayout from "@/Layouts/PublicLayout";
