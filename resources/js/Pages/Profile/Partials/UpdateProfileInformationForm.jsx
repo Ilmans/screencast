@@ -87,14 +87,10 @@ export default function UpdateProfileInformation({}) {
                 />
             </div>
             <div>
-                <Button size="lg" type="submit">
-                    Simpan
+                <Button size="lg">
+                    {processing ? "Updating..." : "Update"}
                 </Button>
-                {success && (
-                    <span className="ml-2 text-muted-foreground">
-                        {success}
-                    </span>
-                )}
+                {recentlySuccessful && <span className="text-sm text-muted-foreground ml-1">Berhasil diupdate</span>}
             </div>
             {/* {mustVerifyEmail && user.email_verified_at === null && (
                 <div>

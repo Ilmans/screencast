@@ -57,6 +57,13 @@ function UserMenu({ dashboard = true }) {
                     >
                         Informasi Profile
                     </VerticalNavLink>
+                    <VerticalNavLink
+                        href="/profile/password"
+                        icon="IconCloudLockOpen"
+                        active={route().current("profile.password")}
+                    >
+                        Ubah Password
+                    </VerticalNavLink>
                 </Fragment>
             )}
         </ul>

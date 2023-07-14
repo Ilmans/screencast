@@ -37,9 +37,9 @@ function MobileNav({ show, setShow }) {
     return (
         <div
             ref={mobileNavRef}
-            className={`absolute right-0 z-50 w-64 ${
+            className={`absolute  -right-6  z-50 w-64 ${
                 show ? "scale-100" : "scale-0"
-            } duration-100  transition-all ease-in-out lg:w-72  border rounded-lg shadow-sm text-foreground/80 lg:top-12 top-10 bg-primary/80 shadow-foreground/40 p-4`}
+            } duration-100  transition-all ease-in-out lg:w-72  border rounded-lg bg-background shadow-sm text-foreground/80 lg:top-12 top-10  shadow-foreground/40 p-4`}
         >
             <UserMenu dashboard={false} />
             <hr className="border border-border/90" />

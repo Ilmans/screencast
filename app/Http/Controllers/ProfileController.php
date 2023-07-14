@@ -21,6 +21,11 @@ class ProfileController extends Controller
         return Inertia::render('Profile/Edit');
     }
 
+    public function password()
+    {
+        return Inertia::render('Profile/Password');
+    }
+
     /**
      * Update the user's profile information.
      */
@@ -30,6 +35,7 @@ class ProfileController extends Controller
             'name' => ['required', 'max:255'],
             'email' => ['required', 'email', 'max:255', 'unique:users,email,' . $request->user()->id],
             'username' => ['required', 'alpha_dash', 'max:255', 'unique:users,username,' . $request->user()->id],
+
         ]);
 
         if ($request->user()->isDirty('email')) {
@@ -39,6 +45,20 @@ class ProfileController extends Controller
         $request->user()->save();
 
         return Redirect::route('profile.edit')->with('success', 'Berhasil diperbarui.');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'password' => ['required', 'confirmed', 'min:8', 'max:255', 'different:current_password'],
+        ]);
+
+        $request->user()->update([
+            'password' => bcrypt($request->password),
+        ]);
+
+        return Redirect::route('profile.password');
     }
 
     /**
