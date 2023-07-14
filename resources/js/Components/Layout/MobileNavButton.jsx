@@ -20,7 +20,7 @@ function MobileNavButton() {
                 <BadgeButton>
                     <button
                         onClick={(e) => {
-                            e.stopPropagation();
+                            
                             setShowNav(!showNav);
                         }}
                         className="relative"

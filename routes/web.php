@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SerieController;
 use App\Http\Controllers\TopicController;
+use App\Http\Controllers\DashboardController;
 use App\Models\Serie;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -34,15 +35,16 @@ Route::get("/serie/{serie:slug}/{video:order_num}", [SerieController::class, "wa
 
 Route::get("/articles", [ArticleController::class, "index"])->name("articles");
 
+
 //Route::get("/articles")
 /// default laravel :
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+});
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });

@@ -13,24 +13,24 @@ function MobileNav({ show, setShow }) {
     const { user } = usePage().props.auth;
     const mobileNavRef = useRef(null);
 
-    useEffect(() => {
-        function handleClickOutside(event) {
-            if (
-                mobileNavRef.current &&
-                !mobileNavRef.current.contains(event.target)
-            ) {
-                setShow(false);
-            }
-        }
+    // useEffect(() => {
+    //     function handleClickOutside(event) {
+    //         if (
+    //             mobileNavRef.current &&
+    //             !mobileNavRef.current.contains(event.target)
+    //         ) {
+    //             setShow(false);
+    //         }
+    //     }
 
-        if (show) {
-            window.addEventListener("click", handleClickOutside);
-        }
+    //     if (show) {
+    //         window.addEventListener("click", handleClickOutside);
+    //     }
 
-        return () => {
-            window.removeEventListener("click", handleClickOutside);
-        };
-    }, [show, setShow]);
+    //     return () => {
+    //         window.removeEventListener("click", handleClickOutside);
+    //     };
+    // }, [show, setShow]);
 
     return (
         <div
@@ -40,8 +40,8 @@ function MobileNav({ show, setShow }) {
             } duration-100  transition-all ease-in-out lg:w-72  border rounded-lg shadow-sm text-foreground/80 lg:top-12 top-10 bg-primary/80 shadow-foreground/40 `}
         >
             <ul className="items-start px-4 py-4 space-y-2 text-sm text-start font-poppins">
-                <List>
-                    <HomeIcon className="inline-block w-4 h-4" /> Beranda
+                <List url={"/dashboard"} active={route().current("/dashboard")}>
+                    <HomeIcon className="inline-block w-4 h-4" /> Dashboard
                 </List>
                 <List>
                     <TopicIcon className="inline-block w-4 h-4" /> Topik
@@ -81,7 +81,9 @@ function List({ url, active = false, children }) {
         <li>
             <Link
                 href={url}
-                className="transition-all duration-200 ease-in-out hover:text-slate-100"
+                className={`transition-all duration-200 ease-in-out ${
+                    active && "text-slate-200"
+                } hover:text-slate-100`}
             >
                 <span className="flex items-center gap-2">{children}</span>
             </Link>
