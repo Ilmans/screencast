@@ -8,6 +8,8 @@ import {
     TopicIcon,
     UserPlusIcon,
 } from "../../../lib/Icon";
+import VerticalNavLink from "../VerticalNavLink";
+import UserMenu from "./UserMenu";
 
 function MobileNav({ show, setShow }) {
     const { user } = usePage().props.auth;
@@ -37,38 +39,30 @@ function MobileNav({ show, setShow }) {
             ref={mobileNavRef}
             className={`absolute right-0 z-50 w-64 ${
                 show ? "scale-100" : "scale-0"
-            } duration-100  transition-all ease-in-out lg:w-72  border rounded-lg shadow-sm text-foreground/80 lg:top-12 top-10 bg-primary/80 shadow-foreground/40 `}
+            } duration-100  transition-all ease-in-out lg:w-72  border rounded-lg shadow-sm text-foreground/80 lg:top-12 top-10 bg-primary/80 shadow-foreground/40 p-4`}
         >
-            <ul className="items-start px-4 py-4 space-y-2 text-sm text-start font-poppins">
-                <List url={"/dashboard"} active={route().current("/dashboard")}>
-                    <HomeIcon className="inline-block w-4 h-4" /> Dashboard
-                </List>
-                <List>
-                    <TopicIcon className="inline-block w-4 h-4" /> Topik
-                </List>
-                <List>
-                    <BookIcon className="inline-block w-4 h-4" /> Artikel
-                </List>
-            </ul>
+            <UserMenu dashboard={false} />
             <hr className="border border-border/90" />
-            <ul className="items-start px-4 py-4 space-y-2 text-sm text-start font-poppins">
+            <ul className="flex flex-col g">
                 {user ? (
                     <button
+                        className="py-2"
                         onClick={() => {
                             router.post("logout");
                         }}
                     >
-                        <OutIcon className="inline-block w-4 h-4" /> Keluar
+                        <VerticalNavLink icon={"IconLogout"}>
+                            Keluar
+                        </VerticalNavLink>
                     </button>
                 ) : (
                     <>
-                        <List url={"/login"}>
-                            <SignIcon className="inline-block w-4 h-4" /> Masuk
-                        </List>
-                        <List url={"/register"}>
-                            <UserPlusIcon className="inline-block w-4 h-4" />{" "}
-                            Register
-                        </List>
+                        <VerticalNavLink href="/login" icon={"IconLogout"}>
+                            Masuk
+                        </VerticalNavLink>
+                        <VerticalNavLink href="/register" icon={"IconUserPlus"}>
+                            Daftar
+                        </VerticalNavLink>
                     </>
                 )}
             </ul>
