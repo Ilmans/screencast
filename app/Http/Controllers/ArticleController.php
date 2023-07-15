@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CretateArticleRequest;
 use App\Http\Services\ArticleService;
 use App\Http\Services\TopicService;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class ArticleController extends Controller
@@ -43,6 +42,7 @@ class ArticleController extends Controller
 
     public function myArticles()
     {
+        return inertia("Articles/MyArticles");
     }
 
     public function create()

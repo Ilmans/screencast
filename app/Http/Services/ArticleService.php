@@ -42,7 +42,8 @@ class ArticleService
     public function createArticle($request): void
     {
         // add slug to request
-        $request->merge(['slug' => \Str::slug($request->title)]);
+        $published = $request->user->is_admin ? true : false;
+        $request->merge(['slug' => \Str::slug($request->title), 'published' => $published]);
         $topicId = Topic::where('slug', $request->topic)->first()->id;
         $article = $request->user()->articles()->create($request->all());
         $article->topics()->attach($topicId);
