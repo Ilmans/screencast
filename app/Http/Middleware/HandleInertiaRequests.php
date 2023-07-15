@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Services\TopicService;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
@@ -30,6 +31,12 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+
+        $topicService = new TopicService();
+        $topic = [
+            'series' => $topicService->getAllSeriesTopics(),
+            'articles' => $topicService->getAllArticlesTopics(),
+        ];
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $request->user(),
@@ -40,6 +47,8 @@ class HandleInertiaRequests extends Middleware
                 ]);
             },
             'success' => fn () => $request->session()->get('success'),
+            'topic' => fn () => $topic,
+
         ]);
     }
 }

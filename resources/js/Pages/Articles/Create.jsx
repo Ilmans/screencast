@@ -6,27 +6,29 @@ import {
     CardTitle,
 } from "@/Components/ui/card";
 import UserLayout from "@/Layouts/UserLayout";
-import UpdateProfileInformation from "./Partials/UpdateProfileInformationForm";
-import { Head } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
+import React from "react";
+import FormArticle from "./partials/FormArticle";
 
-export default function Edit() {
+function Create() {
+
     return (
         <div className="max-w-4xl  sm:px-6 lg:px-8 space-y-6 border-border/90 bg-primary">
-            <Head title="Edit Profile" />
+            <Head title="Create Article" />
             <Card>
                 <CardHeader>
-                    <CardTitle> Informasi Profile </CardTitle>
+                    <CardTitle>Buat Artikel</CardTitle>
                     <CardDescription>
-                        {" "}
-                        Perbarui informasi profil dan alamat email akun Anda.{" "}
+                        Buat artikel baru untuk dibagikan kepada pengguna lain.
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <UpdateProfileInformation />
+                    <FormArticle />
                 </CardContent>
             </Card>
         </div>
     );
 }
 
-Edit.layout = (page) => <UserLayout children={page} />;
+export default Create;
+Create.layout = (page) => <UserLayout children={page} />;

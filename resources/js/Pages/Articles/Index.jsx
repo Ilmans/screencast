@@ -12,7 +12,7 @@ import TitleSection from "@/Components/Page/TitleSection";
 import PublicLayout from "@/Layouts/PublicLayout";
 import React, { Fragment, useEffect, useRef } from "react";
 import { SearchIcon } from "../../../lib/Icon";
-import Popular from "./Popular";
+import Popular from "./partials/Popular";
 import ArticleSkeleton from "@/Components/Item/ArticleSkeleton";
 import { router } from "@inertiajs/react";
 import { Button } from "@/Components/ui/button";

@@ -26,6 +26,7 @@
         "@radix-ui/react-select": "^1.2.2",
         "@radix-ui/react-slot": "^1.0.2",
         "@tabler/icons-react": "^2.24.0",
+        "@uiw/react-md-editor": "^3.23.3",
         "class-variance-authority": "^0.6.1",
         "clsx": "^1.2.1",
         "react-lazy-load-image-component": "^1.6.0",

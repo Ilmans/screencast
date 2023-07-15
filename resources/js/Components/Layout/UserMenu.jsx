@@ -64,6 +64,13 @@ function UserMenu({ dashboard = true }) {
                     >
                         Ubah Password
                     </VerticalNavLink>
+                    <VerticalNavLink
+                        href="/article/create"
+                        icon="IconBookUpload"
+                        active={route().current("article.create")}
+                    >
+                        Buat Artikel
+                    </VerticalNavLink>
                 </Fragment>
             )}
         </ul>

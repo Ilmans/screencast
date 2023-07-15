@@ -9,6 +9,12 @@ class ArticleService
 
 
 
+    public function getPopularArticle()
+    {
+        return Article::with('topics')->with('user')->orderBy('views', 'desc')->take(3)->get();
+    }
+
+    
     public function getAllArticles(): \Illuminate\Pagination\LengthAwarePaginator
     {
         $request = request();
@@ -26,8 +32,4 @@ class ArticleService
     }
 
 
-    public function getPopularArticle()
-    {
-        return Article::with('topics')->with('user')->orderBy('views', 'desc')->take(3)->get();
-    }
 }
