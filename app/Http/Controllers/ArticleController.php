@@ -27,13 +27,13 @@ class ArticleController extends Controller
      */
     public function index(Request $request)
     {
-        $articleTopics = $this->topicService->getAllArticlesTopics();
+
         $popularArticles = $this->articleService->getPopularArticle();
         $articles = Inertia::lazy(function () use ($request) {
             return $this->articleService->onlyPublished()->useFilter($request)->getAllArticles();
         });
 
-        return inertia("Articles/Index", compact('articleTopics', 'popularArticles', 'articles'));
+        return inertia("Articles/Index", compact('popularArticles', 'articles'));
     }
 
     /**
