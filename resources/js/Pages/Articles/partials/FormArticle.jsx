@@ -40,7 +40,7 @@ function FormArticle() {
     };
 
     return (
-        <form onSubmit={onSubmit} action="" className="px-6 pb-4 space-y-6">
+        <form onSubmit={onSubmit} action="" className="space-y-6">
             <div className="space-y-1">
                 <Label htmlFor="title" value="">
                     Judul

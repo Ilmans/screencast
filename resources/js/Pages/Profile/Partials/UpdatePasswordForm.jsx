@@ -52,7 +52,7 @@ export default function UpdatePasswordForm({ className = "" }) {
         });
 
     return (
-        <form onSubmit={updatePassword} className="mt-6 space-y-6">
+        <form onSubmit={updatePassword} className="space-y-6">
             <div className="">
                 <Label forInput="current_password" value="">
                     Password
