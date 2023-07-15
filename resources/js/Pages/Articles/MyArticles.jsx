@@ -1,4 +1,5 @@
 import { Button } from "@/Components/ui/button";
+
 import {
     Card,
     CardContent,
@@ -7,10 +8,12 @@ import {
     CardTitle,
 } from "@/Components/ui/card";
 import UserLayout from "@/Layouts/UserLayout";
-import { Head, Link } from "@inertiajs/react";
-import { IconBookUpload } from "@tabler/icons-react";
+import { Head, Link, usePage } from "@inertiajs/react";
+import { IconBookUpload, IconSearch } from "@tabler/icons-react";
 import React from "react";
 import ArticleList from "./partials/ArticleList";
+import Pagination from "@/Components/Page/Pagination";
+import FormFilter from "./partials/FormFilter";
 
 function MyArticles({ articles }) {
     return (
@@ -36,7 +39,11 @@ function MyArticles({ articles }) {
                     </div>
                 </CardHeader>
                 <CardContent>
+                    <FormFilter />
                     <ArticleList articles={articles} />
+                    <div className="mt-4">
+                        <Pagination links={articles.links} />
+                    </div>
                 </CardContent>
             </Card>
         </div>

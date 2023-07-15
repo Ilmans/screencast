@@ -6,7 +6,9 @@ import {
     TableHeader,
     TableRow,
 } from "@/Components/ui/table";
-import React from "react";
+import { usePage } from "@inertiajs/react";
+import { IconSearch } from "@tabler/icons-react";
+import React, { Fragment } from "react";
 
 function ArticleList({ articles }) {
     return (
@@ -28,7 +30,10 @@ function ArticleList({ articles }) {
                         <TableCell>{article.title}</TableCell>
                         <TableCell>
                             {article.topics.map((topic, index) => (
-                                <span key={index} className="mr-1 px-2 py-1 bg-accent rounded-full">
+                                <span
+                                    key={index}
+                                    className="mr-1 px-2 py-1 bg-accent rounded-full"
+                                >
                                     {topic.name}
                                 </span>
                             ))}

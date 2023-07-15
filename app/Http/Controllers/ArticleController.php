@@ -44,7 +44,7 @@ class ArticleController extends Controller
     public function myArticles(Request $request)
     {
         $this->articleService->setArticleBuilder($request->user()->articles()->getQuery());
-        $articles = $this->articleService->getAllArticles();
+        $articles = $this->articleService->useFilter($request)->getAllArticles();
         return inertia("Articles/MyArticles", compact('articles'));
     }
 
