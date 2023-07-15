@@ -11,7 +11,7 @@ import PublicLayout from "@/Layouts/PublicLayout";
 import React, { Fragment, useEffect, useRef } from "react";
 import Popular from "./partials/Popular";
 import ArticleSkeleton from "@/Components/Item/ArticleSkeleton";
-import { router } from "@inertiajs/react";
+import { Link, router } from "@inertiajs/react";
 import FormFilterLazy from "./partials/FormFilterLazy";
 
 function Index({ popularArticles }) {
@@ -94,20 +94,27 @@ function Index({ popularArticles }) {
                 <div ref={listArticleRef} className="flex py-12 mt-8 gap-x-8">
                     <div className="w-2/3 space-y-4">
                         {listArticles?.data.map((article) => (
-                            <ArticleCard key={article.id} popular={false}>
-                                <ArticleImage image={article.image} />
-                                <div className="w-2/3">
-                                    <ArticleTopics topics={article.topics} />
-                                    <TitleDescSection
-                                        title={article.title}
-                                        desc={article.body}
-                                    />
-                                    <AuthorSection
-                                        author={article.user}
-                                        date={article.created_at}
-                                    />
-                                </div>
-                            </ArticleCard>
+                            <Link
+                                key={article.id}
+                                href={`/article/${article.slug}`}
+                            >
+                                <ArticleCard key={article.id} popular={false}>
+                                    <ArticleImage image={article.image} />
+                                    <div className="w-2/3">
+                                        <ArticleTopics
+                                            topics={article.topics}
+                                        />
+                                        <TitleDescSection
+                                            title={article.title}
+                                            desc={article.body}
+                                        />
+                                        <AuthorSection
+                                            author={article.user}
+                                            date={article.created_at}
+                                        />
+                                    </div>
+                                </ArticleCard>
+                            </Link>
                         ))}
 
                         {listArticles === undefined ||
@@ -117,6 +124,7 @@ function Index({ popularArticles }) {
                         ) : (
                             ""
                         )}
+
                         {listArticles?.last_page >
                             listArticles?.current_page && (
                             <div className="flex justify-center">

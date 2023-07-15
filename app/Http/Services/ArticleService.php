@@ -46,10 +46,9 @@ class ArticleService
     }
 
 
-    /**
-     * @return $this
-     * for filter articles
-     */
+   
+
+
 
     public function useFilter($request)
     {

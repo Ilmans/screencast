@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CretateArticleRequest;
 use App\Http\Services\ArticleService;
-use App\Http\Services\TopicService;
+use App\Models\Article;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -13,11 +13,9 @@ class ArticleController extends Controller
 
 
     private $articleService;
-    private $topicService;
-    public function __construct(ArticleService $articleService, TopicService $topicService)
+    public function __construct(ArticleService $articleService)
     {
         $this->articleService = $articleService;
-        $this->topicService = $topicService;
     }
 
 
@@ -37,6 +35,18 @@ class ArticleController extends Controller
     }
 
     /**
+     * @param $article
+     * @return \Inertia\Response
+     * this method is used to show article
+     */
+    public function show(Article $article)
+    {
+        $article->load('user', 'topics');
+        $article->increment('views');
+        return inertia("Articles/Show", compact('article'));
+    }
+
+    /**
      * @return \Inertia\Response
      * this method is used to show all articles of the user
      */
@@ -47,6 +57,7 @@ class ArticleController extends Controller
         $articles = $this->articleService->useFilter($request)->getAllArticles();
         return inertia("Articles/MyArticles", compact('articles'));
     }
+
 
     public function create()
     {

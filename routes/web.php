@@ -34,6 +34,7 @@ Route::get("/serie/{serie:slug}", [SerieController::class, "show"])->name("serie
 Route::get("/serie/{serie:slug}/{video:order_num}", [SerieController::class, "watch"])->name("serie.watch");
 
 Route::get("/articles", [ArticleController::class, "index"])->name("articles");
+Route::get("/article/{article:slug}", [ArticleController::class, "show"])->name("article.show");
 
 
 //Route::get("/articles")
