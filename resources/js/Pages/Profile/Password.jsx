@@ -12,7 +12,7 @@ import UpdatePasswordForm from "./Partials/UpdatePasswordForm";
 
 function Password() {
     return (
-        <div className="max-w-4xl  sm:px-6 lg:px-8 space-y-6 border-border/90 bg-primary">
+        <div className="max-w-4xl  ">
             <Head title="Ubah Password" />
             <Card className="p-6 space-y-6">
                 <CardHeader>

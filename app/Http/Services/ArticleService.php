@@ -4,11 +4,30 @@ namespace  App\Http\Services;
 
 use App\Models\Article;
 use App\Models\Topic;
+use Illuminate\Database\Eloquent\Builder;
 
 class ArticleService
 {
 
 
+    private Builder $article;
+
+    public function __construct()
+    {
+        $this->article = Article::query();
+    }
+
+    public function setArticleBuilder(Builder $article)
+    {
+        $this->article = $article;
+    }
+
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection
+     * get all articles
+     */
 
     public function getPopularArticle()
     {
@@ -16,19 +35,46 @@ class ArticleService
     }
 
 
-    public function getAllArticles(): \Illuminate\Pagination\LengthAwarePaginator
+    /**
+     * @return $this
+     * get all articles
+     */
+    public function onlyPublished()
     {
-        $request = request();
-        $articles = Article::with('topics')->with('user');
+        $this->article->where('published', true);
+        return $this;
+    }
+
+
+    /**
+     * @return $this
+     * for filter articles
+     */
+
+    public function useFilter($request)
+    {
+
         if ($request->search) {
-            $articles = $articles->where('title', 'like', '%' . $request->search . '%')->orWhere('body', 'like', '%' . $request->search . '%');
+            $this->article->where('title', 'like', '%' . $request->search . '%')->orWhere('body', 'like', '%' . $request->search . '%');
         }
         if ($request->topic) {
-            $articles = $articles->whereHas('topics', function ($query) use ($request) {
+            $this->article->whereHas('topics', function ($query) use ($request) {
                 return $query->where('slug', $request->topic);
             });
         }
+        return $this;
+    }
 
+
+
+    /**
+     * @return \Illuminate\Pagination\LengthAwarePaginator
+     * get all articles with pagination
+     */
+    public function getAllArticles(): \Illuminate\Pagination\LengthAwarePaginator
+    {
+
+        $articles = $this->article->with('topics')->with('user');
         return $articles->orderBy('created_at', 'desc')->paginate(10);
     }
 

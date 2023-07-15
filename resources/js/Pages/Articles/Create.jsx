@@ -11,9 +11,8 @@ import React from "react";
 import FormArticle from "./partials/FormArticle";
 
 function Create() {
-
     return (
-        <div className="max-w-4xl  sm:px-6 lg:px-8 space-y-6 border-border/90 ">
+        <div className="max-w-4xl   ">
             <Head title="Create Article" />
             <Card className="p-6 space-y-6">
                 <CardHeader>

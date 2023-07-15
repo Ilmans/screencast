@@ -11,7 +11,7 @@ import { Head } from "@inertiajs/react";
 
 export default function Edit() {
     return (
-        <div className="max-w-4xl  sm:px-6 lg:px-8 space-y-6 border-border/90 bg-primary">
+        <div className="max-w-4xl">
             <Head title="Edit Profile" />
             <Card className="p-6 space-y-6">
                 <CardHeader>

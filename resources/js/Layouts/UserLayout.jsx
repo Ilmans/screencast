@@ -5,8 +5,9 @@ import Footer from "./Footer";
 import VerticalNavLink from "@/Components/VerticalNavLink";
 import { Card, CardContent } from "@/Components/ui/card";
 import UserMenu from "@/Components/Layout/UserMenu";
+import { cn } from "@/lib/utils";
 
-function UserLayout({ children, header = true, footer = true }) {
+function UserLayout({ children, header = true, needFull = false }) {
     return (
         <div className={` `}>
             {header && <Header />}
@@ -14,10 +15,17 @@ function UserLayout({ children, header = true, footer = true }) {
                 <div className=" col-span-1  h-fit  rounded-lg">
                     <UserMenu />
                 </div>
-                <div className="col-span-3">{children}</div>
+                <div
+                    className={cn(
+                        needFull ? "col-span-4" : "col-span-3",
+                        "h-fit rounded-lg"
+                    )}
+                >
+                    {children}
+                </div>
             </div>
 
-            {footer && <Footer />}
+            <Footer />
         </div>
     );
 }

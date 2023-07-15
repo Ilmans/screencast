@@ -1,9 +1,47 @@
+import { Button } from "@/Components/ui/button";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from "@/Components/ui/card";
 import UserLayout from "@/Layouts/UserLayout";
+import { Head, Link } from "@inertiajs/react";
+import { IconBookUpload } from "@tabler/icons-react";
 import React from "react";
+import ArticleList from "./partials/ArticleList";
 
-function MyArticles() {
-    return <div>MyArticles</div>;
+function MyArticles({ articles }) {
+    return (
+        <div className="">
+            <Head title="Artikel Saya" />
+            <Card className="p-6 space-y-6">
+                <CardHeader>
+                    <div className="grid grid-cols-3">
+                        <div className="col-span-2 space-y-1">
+                            <CardTitle>Artikel Saya</CardTitle>
+                            <CardDescription>
+                                Daftar artikel yang telah anda buat
+                            </CardDescription>
+                        </div>
+                        <div className="col-span 1 flex justify-end">
+                            <Link href="/article/create" className="">
+                                <Button className="flex gap-x-1" size="sm">
+                                    <IconBookUpload className="w-4 h-4" />
+                                    <span>Buat Artikel</span>
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
+                </CardHeader>
+                <CardContent>
+                    <ArticleList articles={articles} />
+                </CardContent>
+            </Card>
+        </div>
+    );
 }
 
 export default MyArticles;
-MyArticles.layout = (page) => <UserLayout children={page} />;
+MyArticles.layout = (page) => <UserLayout children={page} needFull={true} />;

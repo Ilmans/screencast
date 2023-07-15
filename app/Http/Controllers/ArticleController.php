@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CretateArticleRequest;
 use App\Http\Services\ArticleService;
 use App\Http\Services\TopicService;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class ArticleController extends Controller
@@ -24,12 +25,12 @@ class ArticleController extends Controller
      * @return \Inertia\Response
      * this method is used to show all articles public
      */
-    public function index()
+    public function index(Request $request)
     {
         $articleTopics = $this->topicService->getAllArticlesTopics();
         $popularArticles = $this->articleService->getPopularArticle();
-        $articles = Inertia::lazy(function () {
-            return $this->articleService->getAllArticles();
+        $articles = Inertia::lazy(function () use ($request) {
+            return $this->articleService->onlyPublished()->useFilter($request)->getAllArticles();
         });
 
         return inertia("Articles/Index", compact('articleTopics', 'popularArticles', 'articles'));
@@ -40,9 +41,11 @@ class ArticleController extends Controller
      * this method is used to show all articles of the user
      */
 
-    public function myArticles()
+    public function myArticles(Request $request)
     {
-        return inertia("Articles/MyArticles");
+        $this->articleService->setArticleBuilder($request->user()->articles()->getQuery());
+        $articles = $this->articleService->getAllArticles();
+        return inertia("Articles/MyArticles", compact('articles'));
     }
 
     public function create()
