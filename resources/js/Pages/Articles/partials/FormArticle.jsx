@@ -11,27 +11,36 @@ import {
     SelectValue,
 } from "@/Components/ui/select";
 import { Textarea } from "@/Components/ui/textarea";
-import { useForm, usePage } from "@inertiajs/react";
+import { router, useForm, usePage } from "@inertiajs/react";
 import React, { useState } from "react";
 import { Button } from "@/Components/ui/button";
+import InputError from "@/Components/InputError";
 
 function FormArticle() {
     const topic = usePage().props.topic;
 
-    const { data, setData, processing, errors, recentlySuccessful } = useForm({
-        topic: null,
-        title: "",
-        synopsis: "",
-        body: "",
-        image: null,
-    });
+    const { data, setData, processing, errors, post, recentlySuccessful } =
+        useForm({
+            topic: null,
+            title: "",
+            synopsis: "",
+            body: "",
+            image: null,
+        });
 
     const onChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
     };
 
+    const onSubmit = (e) => {
+        e.preventDefault();
+        post("/article", {
+            preserveScroll: true,
+        });
+    };
+
     return (
-        <form action="" className="px-6 pb-4 space-y-6">
+        <form onSubmit={onSubmit} action="" className="px-6 pb-4 space-y-6">
             <div className="space-y-1">
                 <Label htmlFor="title" value="">
                     Judul
@@ -42,6 +51,7 @@ function FormArticle() {
                     onChange={onChange}
                     value={data.title}
                 />
+                <InputError errors={errors} fieldName={"title"} />
             </div>
             <div className="space-y-1">
                 <Label htmlFor="synopsis" value="">
@@ -53,6 +63,7 @@ function FormArticle() {
                     onChange={onChange}
                     value={data.synopsis}
                 />
+                <InputError errors={errors} fieldName={"synopsis"} />
             </div>
             <div className="space-y-1 ">
                 <Label htmlFor="topic" value="">
@@ -75,6 +86,7 @@ function FormArticle() {
                         ))}
                     </SelectContent>
                 </Select>
+                <InputError errors={errors} fieldName={"topic"} />
             </div>
             <div className="space-y-1">
                 <Label htmlFor="body" value="">
@@ -86,9 +98,10 @@ function FormArticle() {
                     value={data.body}
                     onChange={(value) => setData({ ...data, body: value })}
                 />
+                <InputError errors={errors} fieldName={"body"} />
             </div>
             <div className="space-y-1">
-                <Button size="lg">
+                <Button type="submit" size="lg">
                     {processing ? "Loading..." : "Buat Artikel"}
                 </Button>
             </div>

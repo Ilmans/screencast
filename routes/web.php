@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get("/my_articles", [ArticleController::class, "myArticles"])->name("my_articles");
     Route::get("/article/create", [ArticleController::class, "create"])->name("article.create");
+    Route::post("/article", [ArticleController::class, "store"])->name("article.store");
 });
 
 

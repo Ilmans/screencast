@@ -53,4 +53,12 @@ class User extends Authenticatable
     {
         return $this->hasOne(Subscription::class);
     }
+
+    /**
+     * Get the user's articles.
+     */
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
 }

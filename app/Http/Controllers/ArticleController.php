@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CretateArticleRequest;
 use App\Http\Services\ArticleService;
 use App\Http\Services\TopicService;
 use Illuminate\Http\Request;
@@ -46,6 +47,17 @@ class ArticleController extends Controller
 
     public function create()
     {
-       return inertia("Articles/Create");
+        return inertia("Articles/Create");
+    }
+
+    public function store(CretateArticleRequest $request)
+    {
+
+        try {
+            $this->articleService->createArticle($request);
+            return back();
+        } catch (\Throwable $th) {
+            return back()->with('error', 'Something went wrong');
+        }
     }
 }
