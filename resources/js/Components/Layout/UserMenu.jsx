@@ -71,6 +71,13 @@ function UserMenu({ dashboard = true }) {
                     >
                         Artikel Saya
                     </VerticalNavLink>
+                    <VerticalNavLink
+                        href="/subscription"
+                        icon="IconRocket"
+                        active={route().current("subscription")}
+                    >
+                        Langganan
+                    </VerticalNavLink>
                 </Fragment>
             )}
         </ul>
