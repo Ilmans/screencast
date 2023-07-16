@@ -42,15 +42,18 @@ class InvoiceService
      * Create a new invoice.
      */
 
-    public function createInvoice(PackagePrice $packagePrice): void
+    public function createInvoice(PackagePrice $packagePrice)
     {
-        $this->user->invoices()->create([
+        $invoice = $this->user->invoices()->create([
             'user_id' => $this->user->id,
             'invoice_number' => $this->generateInvoiceNumber(),
             'package_price_id' => $packagePrice->id,
             'total' => $packagePrice->price + rand(100, 999),
+            'status' => 'unpaid',
             'expired_at' => now()->addDays(1),
 
         ]);
+
+        return $invoice;
     }
 }

@@ -50,8 +50,8 @@ class InvoiceController extends Controller
                 return back()->with('error', 'Anda masih memiliki tagihan yang belum dibayar');
             }
             $selectedPlan = PackagePrice::find($request->plan);
-            $this->invoiceService->createInvoice($selectedPlan);
-            return redirect('/dashboard');
+            $invoice = $this->invoiceService->createInvoice($selectedPlan);
+            return redirect("/invoice/" . $invoice->id)->with('success', 'Invoice created successfully');
         } catch (\Throwable $th) {
             throw $th;
             return back()->with('error', 'Something went wrong');
