@@ -7,10 +7,20 @@ import {
     CardHeader,
     CardTitle,
 } from "@/Components/ui/card";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/Components/ui/dialog";
 import PublicLayout from "@/Layouts/PublicLayout";
 import React from "react";
 
 function Pricing({ prices }) {
+    const [open, setOpen] = React.useState(false);
+    const [selected, setSelected] = React.useState(null);
     return (
         <div className="relative space-y-4 py-24 container">
             <div className="absolute inset-0 bgkeren"></div>
@@ -25,6 +35,17 @@ function Pricing({ prices }) {
                     </p>
                 </div>
             </div>
+            <Dialog open={open}>
+                <DialogContent setOpen={setOpen}>
+                    <DialogHeader>
+                        <DialogTitle>Tes</DialogTitle>
+                        <DialogDescription>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing
+                            elit. Quod, quasi.
+                        </DialogDescription>
+                    </DialogHeader>
+                </DialogContent>
+            </Dialog>
             <div className="relative grid grid-cols-3 gap-4 py-12">
                 {prices.map((price) => (
                     <Card
@@ -47,11 +68,15 @@ function Pricing({ prices }) {
                                 Masa Aktif {price.duration_months} bulan
                             </p>
                             <Button
+                                onClick={() => {
+                                    setSelected(price);
+                                    setOpen(true);
+                                }}
                                 variant="secondary"
                                 className="mt-4"
                                 size="lg"
                             >
-                                Beli Sekarang
+                                Berlangganan
                             </Button>
                         </CardContent>
                     </Card>
