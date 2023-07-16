@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SerieController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PricingController;
 use App\Models\Serie;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,13 +26,16 @@ Route::get('/', function () {
 
     return Inertia::render('Home', compact('series'));
 })->name('home');
-
+//topic
 Route::get("/topics", [TopicController::class, "index"])->name("topics");
 Route::get("/topic/{topic:slug}", [TopicController::class, 'show'])->name("topic.show");
 
+// serie
 Route::get("/serie/{serie:slug}", [SerieController::class, "show"])->name("serie.show");
 Route::get("/serie/{serie:slug}/{video:order_num}", [SerieController::class, "watch"])->name("serie.watch");
 
+
+// article
 Route::get("/articles", [ArticleController::class, "index"])->name("articles");
 Route::get("/article/create", [ArticleController::class, "create"])->name("article.create")->middleware('auth');
 Route::get("/article/{article:slug}", [ArticleController::class, "show"])->name("article.show");
@@ -39,7 +43,10 @@ Route::get("/article/{article:slug}/edit", [ArticleController::class, "edit"])->
 Route::put("/article/{article:slug}", [ArticleController::class, "update"])->name("article.update")->middleware('auth');
 Route::delete("/article/{article:slug}", [ArticleController::class, "destroy"])->name("article.destroy")->middleware('auth');
 
-//Route::get("/articles")
+// pricing
+Route::get('/pricing', PricingController::class)->name('pricing');
+
+
 /// default laravel :
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -49,13 +56,12 @@ Route::middleware('auth')->group(function () {
     Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('password.update');
 
     Route::get("/my_articles", [ArticleController::class, "myArticles"])->name("my_articles");
-
     Route::post("/article", [ArticleController::class, "store"])->name("article.store");
 });
 
 
-Route::middleware('auth')->group(function () {
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 require __DIR__ . '/auth.php';
