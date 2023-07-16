@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\InvoiceService;
+use App\Models\Invoice;
 use App\Models\PackagePrice;
+use App\Models\PaymentMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class InvoiceController extends Controller
 {
@@ -16,14 +19,30 @@ class InvoiceController extends Controller
         $this->invoiceService = $invoiceService;
     }
 
-    public function index(Request $request)
+    public function index(Request $request): \Inertia\Response
     {
         $this->invoiceService->setUser(Auth::user());
         $invoices = $this->invoiceService->getInvoices();
         return inertia('Invoice/Index', compact('invoices'));
     }
 
-    public function store(Request $request)
+    /**
+     * Show the Invoice Detail.
+     */
+
+    public function show(Invoice $invoice): \Inertia\Response
+    {
+        $this->authorize('view', $invoice);
+        $invoice->load('packagePrice');
+        $paymentMethods = Cache::rememberForever('paymentMethods', fn () => PaymentMethod::all());
+        return inertia('Invoice/Show', compact('invoice', 'paymentMethods'));
+    }
+
+
+    /**
+     * Store a new invoice.
+     */
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         try {
             $this->invoiceService->setUser(Auth::user());

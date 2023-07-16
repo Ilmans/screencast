@@ -29,6 +29,7 @@
         "@uiw/react-md-editor": "^3.23.3",
         "class-variance-authority": "^0.6.1",
         "clsx": "^1.2.1",
+        "moment": "^2.29.4",
         "react-copy-to-clipboard": "^5.1.0",
         "react-lazy-load-image-component": "^1.6.0",
         "react-markdown": "^8.0.7",

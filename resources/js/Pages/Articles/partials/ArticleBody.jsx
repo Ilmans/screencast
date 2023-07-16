@@ -30,7 +30,6 @@ function ArticleBody({ markdown }) {
     const handleCopy = (children) => {
         setCopied(true);
         setWhichCopied(children);
-        console.log(children);
     };
     return (
         <ReactMarkdown

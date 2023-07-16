@@ -69,7 +69,7 @@ function Index({ invoices }) {
                                     <TableCell>{invoice.created_at}</TableCell>
                                     <TableCell>
                                         <Link
-                                            href=""
+                                            href={`/invoice/${invoice.id}`}
                                             className="text-accent bg-blue-600 px-2 py-1 rounded-full text-xs font-muted-foreground font-mono hover:text-muted hover:bg-blue-900"
                                         >
                                             Lihat
