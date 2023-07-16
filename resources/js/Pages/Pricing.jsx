@@ -36,14 +36,33 @@ function Pricing({ prices }) {
                 </div>
             </div>
             <Dialog open={open}>
-                <DialogContent setOpen={setOpen}>
+                <DialogContent
+                    setOpen={setOpen}
+                    className="font-poppins bg-transparent"
+                >
                     <DialogHeader>
-                        <DialogTitle>Tes</DialogTitle>
+                        <DialogTitle>Konfirmasi Langganan</DialogTitle>
                         <DialogDescription>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit. Quod, quasi.
+                            Anda akan berlangganan paket {selected?.name}
                         </DialogDescription>
                     </DialogHeader>
+                    <ul>
+                        <li class="flex items-center justify-between py-4 border-b border-border">
+                            <small class="text-sm">Durasi</small>
+                            <span class="font-mono">1 Bulan</span>
+                        </li>
+                        <li class="flex items-center justify-between py-4 border-b border-border">
+                            <small class="text-sm">Harga</small>
+                            <span class="font-mono">
+                                Rp {selected?.price.toLocaleString()}
+                            </span>
+                        </li>
+                    </ul>
+                    <div className="my-4 flex justify-end">
+                        <Button className="rounded-full" size="lg">
+                            Lanjutkan
+                        </Button>
+                    </div>
                 </DialogContent>
             </Dialog>
             <div className="relative grid grid-cols-3 gap-4 py-12">
