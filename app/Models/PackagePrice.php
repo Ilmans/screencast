@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class PackagePrice extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'price',
+        'duration_months',
+        'description',
+    ];
+
+    public $timestamps = false;
 }
