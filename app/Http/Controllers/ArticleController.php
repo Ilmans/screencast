@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CretateArticleRequest;
+use App\Http\Requests\EditArticleRequest;
 use App\Http\Services\ArticleService;
 use App\Models\Article;
 use Illuminate\Http\Request;
@@ -69,6 +70,26 @@ class ArticleController extends Controller
 
         try {
             $this->articleService->createArticle($request);
+            return back();
+        } catch (\Throwable $th) {
+            return back()->with('error', 'Something went wrong');
+        }
+    }
+
+
+    public function edit(Article $article)
+    {
+        $this->authorize('update', $article);
+        $article->load('topics');
+        return inertia("Articles/Edit", compact('article'));
+    }
+
+    public function update(EditArticleRequest $request, Article $article)
+    {
+
+        $this->authorize('update', $article);
+        try {
+            $this->articleService->updateArticle($request, $article);
             return back();
         } catch (\Throwable $th) {
             return back()->with('error', 'Something went wrong');

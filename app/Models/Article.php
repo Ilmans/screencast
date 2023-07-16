@@ -20,6 +20,8 @@ class Article extends Model
         'views',
     ];
 
+    
+
 
     public function user(): BelongsTo
     {

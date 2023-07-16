@@ -6,8 +6,8 @@ import {
     TableHeader,
     TableRow,
 } from "@/Components/ui/table";
-import { usePage } from "@inertiajs/react";
-import { IconSearch } from "@tabler/icons-react";
+import { Link, usePage } from "@inertiajs/react";
+import { IconEdit, IconSearch } from "@tabler/icons-react";
 import React, { Fragment } from "react";
 
 function ArticleList({ articles }) {
@@ -40,6 +40,13 @@ function ArticleList({ articles }) {
                         </TableCell>
                         <TableCell>{article.published}</TableCell>
                         <TableCell>{article.views}</TableCell>
+                        <TableCell>
+                            <div className="flex gap-x-1 justify-center">
+                                <Link href={`/article/${article.slug}/edit`}>
+                                    <IconEdit className="w-4 text-blue-400 h-4" />
+                                </Link>
+                            </div>
+                        </TableCell>
                     </TableRow>
                 ))}
             </TableBody>

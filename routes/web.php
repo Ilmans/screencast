@@ -6,7 +6,6 @@ use App\Http\Controllers\SerieController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\DashboardController;
 use App\Models\Serie;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -34,8 +33,10 @@ Route::get("/serie/{serie:slug}", [SerieController::class, "show"])->name("serie
 Route::get("/serie/{serie:slug}/{video:order_num}", [SerieController::class, "watch"])->name("serie.watch");
 
 Route::get("/articles", [ArticleController::class, "index"])->name("articles");
+Route::get("/article/create", [ArticleController::class, "create"])->name("article.create")->middleware('auth');
 Route::get("/article/{article:slug}", [ArticleController::class, "show"])->name("article.show");
-
+Route::get("/article/{article:slug}/edit", [ArticleController::class, "edit"])->name("article.edit")->middleware('auth');
+Route::put("/article/{article:slug}", [ArticleController::class, "update"])->name("article.update")->middleware('auth');
 
 //Route::get("/articles")
 /// default laravel :
@@ -47,7 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('password.update');
 
     Route::get("/my_articles", [ArticleController::class, "myArticles"])->name("my_articles");
-    Route::get("/article/create", [ArticleController::class, "create"])->name("article.create");
+
     Route::post("/article", [ArticleController::class, "store"])->name("article.store");
 });
 

@@ -4,8 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
-class CretateArticleRequest extends FormRequest
+class EditArticleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +23,16 @@ class CretateArticleRequest extends FormRequest
      */
     public function rules(): array
     {
+
+        $currentArticle = $this->route('article');
         return [
-            'title' => ['required', 'string', 'max:255'],
-            'synopsis' => ['required', 'string', 'min:15', 'max:255'],
-            'body' => ['required', 'string'],
+            'title' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('articles')->ignore($currentArticle, 'slug')
+            ],
+            'synopsis' => 'required|string|max:255',
             'topic' => [
                 'required',
                 'array',
@@ -33,14 +40,15 @@ class CretateArticleRequest extends FormRequest
                     if (count($value) > 3) {
                         $fail('You can only select 3 topics');
                     }
-                    $existingTopics = DB::table('topics')->pluck('slug')->toArray();
-                    foreach ($value as $topic) {
-                        if (!in_array($topic['value'], $existingTopics)) {
-                            $fail('Topic ' . $topic['label'] . ' does not exist');
+                    $existingTopics = DB::table('topics')->pluck('id')->toArray();
+                    foreach ($value as $selectedTopicId) {
+                        if (!in_array($selectedTopicId, $existingTopics)) {
+                            $fail('One of the selected topics is not valid');
                         }
                     }
                 }
             ],
+            'body' => 'required|string',
 
         ];
     }

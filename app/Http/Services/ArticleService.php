@@ -46,7 +46,7 @@ class ArticleService
     }
 
 
-   
+
 
 
 
@@ -92,5 +92,20 @@ class ArticleService
         $topicId = Topic::where('slug', $request->topic)->first()->id;
         $article = $request->user()->articles()->create($request->all());
         $article->topics()->attach($topicId);
+    }
+
+
+    /**
+     * @return void
+     * put update article
+     */
+
+    public function updateArticle($request, $article): void
+    {
+
+        $request->merge(['slug' => \Str::slug($request->title), 'published' => $article->published]);
+        $selectedTopicIds = Topic::whereIn('id', $request->topic)->pluck('id');
+        $article->update($request->all());
+        $article->topics()->sync($selectedTopicIds);
     }
 }
