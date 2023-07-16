@@ -1,15 +1,10 @@
 import React, { Fragment } from "react";
 import Logo from "@/Components/Logo";
+import { Link, usePage } from "@inertiajs/react";
 
 function Footer() {
-    const footerMenuItems = [
-        "asdfsafdsadfa",
-        "asdfsafdsadfa",
-        "asdfsafdsadfa",
-        "asdfsafdsadfa",
-        "asdfsafdsadfa",
-        "asdfsafdsadfa",
-    ];
+    const website = usePage().props.website;
+    const { topic } = usePage().props;
 
     return (
         <Fragment>
@@ -19,30 +14,47 @@ function Footer() {
                         <div className="py-2 -ml-2">
                             <Logo />
                         </div>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing
-                            elit. Aliquid, pariatur alias asperiores ad dolorem
-                            ratione possimus laboriosam tempore consequatur
-                            doloremque, sint dolores totam neque reiciendis
-                            quas, reprehenderit rem quis veritatis.
+                        <p className="text-muted-foreground font-poppins text-sm font-medium">
+                            {website.about}
                         </p>
                     </div>
-                    <div>
-                        <h1 className="mb-4 font-semibold">Ready To Binge</h1>
-                        <ul className="space-y-4">
-                            {footerMenuItems.map((item, index) => (
-                                <li key={index}>{item}</li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div>
-                        <h1 className="mb-4 font-semibold">Ready To Binge</h1>
-                        <ul className="space-y-4">
-                            {footerMenuItems.map((item, index) => (
-                                <li key={index}>{item}</li>
-                            ))}
-                        </ul>
-                    </div>
+                    <LinkSection
+                        title="Explore"
+                        links={[
+                            { name: "Home", href: "/" },
+                            { name: "Series", href: "/series" },
+                            { name: "Articles", href: "/articles" },
+                            { name: "Pricing", href: "/pricing" },
+                            {
+                                name: "Kontak Kami",
+                                href: "https://wa.me/62895354534986",
+                            },
+                        ]}
+                    />
+
+                    <LinkSection
+                        title="Topics"
+                        links={topic.series.map((topicc) => ({
+                            name: topicc.name,
+                            href: `/topics/${topicc.slug}`,
+                        }))}
+                    />
+
+                    <LinkSection
+                        title={"Socials"}
+                        links={JSON.parse(website.socials).map((social) => ({
+                            name: social.name,
+                            href: social.link,
+                        }))}
+                    />
+                    {/* legal */}
+                    <LinkSection
+                        title="Legal"
+                        links={[
+                            { name: "Terms", href: "/terms" },
+                            { name: "Privacy", href: "/privacy" },
+                        ]}
+                    />
                 </div>
             </section>
             <div className="flex flex-col items-center justify-center gap-2 p-8 border-t bg-primary">
@@ -57,6 +69,26 @@ function Footer() {
                 </p>
             </div>
         </Fragment>
+    );
+}
+
+function LinkSection({ title, links }) {
+    return (
+        <div key={title}>
+            <h1 className="mb-4 font-medium font-poppins text-lg">{title}</h1>
+            <ul className="space-y-4 font-poppins text-sm">
+                {links.map((link) => (
+                    <li key={link.name}>
+                        <Link
+                            className="text-muted-foreground hover:text-accent-foreground"
+                            href={link.href}
+                        >
+                            {link.name}
+                        </Link>
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
 }
 

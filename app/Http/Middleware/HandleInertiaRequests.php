@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Http\Services\TopicService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
 
@@ -33,14 +34,14 @@ class HandleInertiaRequests extends Middleware
     {
 
         $topicService = new TopicService();
+        $website = Cache::rememberForever('website', fn () => \App\Models\Website::first());
         $topic = [
             'series' => $topicService->getAllSeriesTopics(),
             'articles' => $topicService->getAllArticlesTopics(),
         ];
         return array_merge(parent::share($request), [
-            'auth' => [
-                'user' => $request->user(),
-            ],
+            'auth' => ['user' => $request->user(),],
+            'website' => $website,
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [
                     'location' => $request->url(),
