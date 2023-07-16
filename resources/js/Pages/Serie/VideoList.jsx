@@ -1,9 +1,10 @@
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import React, { useEffect } from "react";
 import { convertSecondsToMinutes } from "../../../lib/Helper";
 import { LockIcon } from "../../../lib/Icon";
 
 function VideoList({ serie, activeVideo = null }) {
+    const isUserSubscribed = usePage().props.isUserSubscribed;
     return (
         <ul className="relative divide-y dark:divide-slate-800">
             {serie.videos.map((video, i) => (
@@ -33,7 +34,7 @@ function VideoList({ serie, activeVideo = null }) {
                             </span>
                         </span>
                         <div className="flex items-center gap-x-2">
-                            {!video.is_free && (
+                            {!video.is_free && !isUserSubscribed && (
                                 <div className="flex items-center justify-center w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-300">
                                     <LockIcon />
                                 </div>

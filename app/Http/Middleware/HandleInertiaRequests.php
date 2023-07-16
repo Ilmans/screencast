@@ -34,12 +34,14 @@ class HandleInertiaRequests extends Middleware
     {
 
         $topicService = new TopicService();
+        $isUserSubscribed = Cache::remember('isUserPremiem', 60 * 60 * 24, fn () => $request->user()?->isHaveActiveSubscription());
         $website = Cache::rememberForever('website', fn () => \App\Models\Website::first());
         $topic = [
             'series' => $topicService->getAllSeriesTopics(),
             'articles' => $topicService->getAllArticlesTopics(),
         ];
         return array_merge(parent::share($request), [
+            'isUserSubscribed' => $isUserSubscribed,
             'auth' => ['user' => $request->user(),],
             'website' => $website,
             'ziggy' => function () use ($request) {

@@ -61,7 +61,7 @@ function Index({ invoices }) {
                                                     : "bg-red-500 text-white"
                                             } px-2 py-1 rounded-full text-xs font-mono`}
                                         >
-                                            {invoice.paid === 1
+                                            {invoice.paid_at !== null
                                                 ? "Paid"
                                                 : "Unpaid"}
                                         </span>
