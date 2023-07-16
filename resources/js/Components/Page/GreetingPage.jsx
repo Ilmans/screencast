@@ -3,8 +3,8 @@ import React, { Fragment } from "react";
 function GreetingPage({ title, desc, children, variant = "default" }) {
     return (
         <section className="container relative bg-primary font-poppins   lg:py-16">
-            {variant === "default" && variantLineDisplayInLeft()}
-            {variant === "right" && variantLineDisplayInRight()}
+            <div className="absolute inset-0 bgkeren"></div>
+            <div className="absolute -top-4 inset-0    bg-gradient-to-b from-transparent to-60% to-primary"></div>
 
             <div className="relative py-12 space-y-6">
                 <h1 className="text-xl font-semibold lg:text-2xl z-2 ">
