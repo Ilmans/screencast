@@ -11,7 +11,7 @@ function UserLayout({ children, header = true, needFull = false }) {
     return (
         <div className={` `}>
             {header && <Header />}
-            <div className="container   py-8 grid grid-cols-5 min-h-screen mt-8 gap-x-4">
+            <div className="container   py-8 grid grid-cols-5  mt-8 gap-x-4">
                 <div className=" col-span-1  h-fit  rounded-lg">
                     <UserMenu />
                 </div>
@@ -24,8 +24,6 @@ function UserLayout({ children, header = true, needFull = false }) {
                     {children}
                 </div>
             </div>
-
-            <Footer />
         </div>
     );
 }
