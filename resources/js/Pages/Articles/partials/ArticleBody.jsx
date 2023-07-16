@@ -52,7 +52,10 @@ function ArticleBody({ markdown }) {
                                 >
                                     <div className="flex items-center gap-x-1 cursor-pointer">
                                         {whichCopied == children.toString() ? (
-                                            <IconCheck size={18} />
+                                            <div className="flex items-center gap-x-1 text-green-500 duration-200 ease-in-out transition-all">
+                                                <IconCheck size={18} />
+                                                Copied
+                                            </div>
                                         ) : (
                                             <IconClipboard size={18} />
                                         )}
