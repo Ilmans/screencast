@@ -95,4 +95,16 @@ class ArticleController extends Controller
             return back()->with('error', 'Something went wrong');
         }
     }
+
+
+    public function destroy(Article $article)
+    {
+        $this->authorize('delete', $article);
+        try {
+            $this->articleService->deleteArticle($article);
+            return back()->with('success', 'Article deleted successfully');
+        } catch (\Throwable $th) {
+            return back()->with('error', 'Something went wrong');
+        }
+    }
 }

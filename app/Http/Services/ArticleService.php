@@ -107,4 +107,15 @@ class ArticleService
         $article->update($request->all());
         $article->topics()->sync($selectedTopicIds);
     }
+
+
+    /**
+     * @return void
+     * delete article
+     */
+
+    public function deleteArticle($article): void
+    {
+        $article->delete();
+    }
 }

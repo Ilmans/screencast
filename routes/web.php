@@ -37,6 +37,7 @@ Route::get("/article/create", [ArticleController::class, "create"])->name("artic
 Route::get("/article/{article:slug}", [ArticleController::class, "show"])->name("article.show");
 Route::get("/article/{article:slug}/edit", [ArticleController::class, "edit"])->name("article.edit")->middleware('auth');
 Route::put("/article/{article:slug}", [ArticleController::class, "update"])->name("article.update")->middleware('auth');
+Route::delete("/article/{article:slug}", [ArticleController::class, "destroy"])->name("article.destroy")->middleware('auth');
 
 //Route::get("/articles")
 /// default laravel :

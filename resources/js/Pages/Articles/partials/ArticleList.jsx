@@ -7,7 +7,7 @@ import {
     TableRow,
 } from "@/Components/ui/table";
 import { Link, usePage } from "@inertiajs/react";
-import { IconEdit, IconSearch } from "@tabler/icons-react";
+import { IconEdit, IconEye, IconSearch, IconTrash } from "@tabler/icons-react";
 import React, { Fragment } from "react";
 
 function ArticleList({ articles }) {
@@ -41,9 +41,18 @@ function ArticleList({ articles }) {
                         <TableCell>{article.published}</TableCell>
                         <TableCell>{article.views}</TableCell>
                         <TableCell>
-                            <div className="flex gap-x-1 justify-center">
+                            <div className="flex gap-x-1 justify-center ">
+                                <Link href={`/article/${article.slug}`}>
+                                    <IconEye className="w-4 text-blue-400 h-4" />
+                                </Link>
                                 <Link href={`/article/${article.slug}/edit`}>
-                                    <IconEdit className="w-4 text-blue-400 h-4" />
+                                    <IconEdit className="w-4 text-yellow-400 h-4" />
+                                </Link>
+                                <Link
+                                    method="delete"
+                                    href={`/article/${article.slug}`}
+                                >
+                                    <IconTrash className="w-4 text-red-400 h-4" />
                                 </Link>
                             </div>
                         </TableCell>
