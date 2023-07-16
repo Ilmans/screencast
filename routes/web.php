@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\VideoController;
 use App\Models\Serie;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -65,6 +66,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/invoice', [InvoiceController::class, 'store'])->name('invoice.store');
     Route::get('/invoice/{invoice:id}', [InvoiceController::class, 'show'])->name('invoice.show');
     Route::delete('/invoice/{invoice:id}', [InvoiceController::class, 'destroy'])->name('invoice.destroy');
+
+    Route::post('/save-watch-progress', [VideoController::class, 'saveWatchProgress'])->name('save-watch-progress');
 });
 
 

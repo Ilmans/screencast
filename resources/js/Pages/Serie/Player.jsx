@@ -1,14 +1,41 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { PlayIcon } from "../../../lib/Icon";
-import { convertSecondsToMinutes } from "../../../lib/Helper";
+import React, { Fragment, useEffect, useRef, useState } from "react";
+
 import ReactPlayer from "react-player/youtube";
 import { needLogin, FakeVideoPlayer } from "@/Components/Page/FakeVideoPlayer";
 import { usePage } from "@inertiajs/react";
+import axios from "axios";
 
 function Player({ video, canWatch }) {
     const { user } = usePage().props.auth;
-
     const [play, setPlay] = useState(false);
+    const [prevWatchTime, setPrevWatchTime] = useState(0); // [seconds, setSeconds
+    const [currentTime, setCurrentTime] = useState(0);
+
+    const intervalRef = useRef(null);
+
+    useEffect(() => {
+        // save each 10 seconds
+        if (currentTime - prevWatchTime > 10 && play) {
+            saveWatchTime(currentTime);
+        }
+    }, [currentTime]);
+
+    const saveWatchTime = (time) => {
+        setPrevWatchTime(time);
+
+        axios
+            .post("/save-watch-progress", {
+                video_id: video.id,
+                secondsTime: time,
+            })
+            .then((res) => {
+                console.log(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
     useEffect(() => {
         setPlay(false);
     }, [video]);
@@ -17,6 +44,11 @@ function Player({ video, canWatch }) {
         <div className="relative w-full overflow-hidden rounded-lg aspect-video">
             {play ? (
                 <ReactPlayer
+                    onProgress={(e) => {
+                        setCurrentTime(e.playedSeconds);
+                    }}
+                    //show controls
+                    controls={true}
                     height="100%"
                     width="100%"
                     url={
