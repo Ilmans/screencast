@@ -57,4 +57,11 @@ class InvoiceController extends Controller
             return back()->with('error', 'Something went wrong');
         }
     }
+
+    public function destroy(Invoice $invoice)
+    {
+        $this->authorize('delete', $invoice);
+        $invoice->delete();
+        return redirect()->route('invoices')->with('success', 'Invoice deleted successfully');
+    }
 }

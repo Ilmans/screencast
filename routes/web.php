@@ -64,6 +64,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices');
     Route::post('/invoice', [InvoiceController::class, 'store'])->name('invoice.store');
     Route::get('/invoice/{invoice:id}', [InvoiceController::class, 'show'])->name('invoice.show');
+    Route::delete('/invoice/{invoice:id}', [InvoiceController::class, 'destroy'])->name('invoice.destroy');
 });
 
 

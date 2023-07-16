@@ -10,18 +10,30 @@ import { Head } from "@inertiajs/react";
 import { IconClock, IconTrash } from "@tabler/icons-react";
 import React from "react";
 import UnpaidSection from "./Partials/UnpaidSection";
+import ConfirmDelete from "./Partials/ConfirmDelete";
 
 function Show({ invoice, paymentMethods }) {
+    const [openConfirmDelete, setOpenConfirmDelete] = React.useState(false);
     return (
         <div className="max-w-4xl">
             <Head title={invoice.invoice_number} />
+            <ConfirmDelete
+                invoice={invoice}
+                openConfirmDelete={openConfirmDelete}
+                setOpenConfirmDelete={setOpenConfirmDelete}
+            />
             <Card className="p-6 space-y-6">
                 <CardHeader>
                     <CardTitle className="flex items-center">
                         Invoice {invoice.invoice_number}
-                        <span className="ml-1 text-red-400">
-                            <IconTrash size={20} />
-                        </span>
+                        {invoice.paid_at === null && (
+                            <button
+                                onClick={() => setOpenConfirmDelete(true)}
+                                className="ml-1 text-red-400"
+                            >
+                                <IconTrash size={20} />
+                            </button>
+                        )}
                     </CardTitle>
                     <CardDescription>
                         {invoice.paid_at === null
