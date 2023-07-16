@@ -61,4 +61,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Article::class);
     }
+
+    /**
+     * Get the user's invoices.
+     */
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
+    //scope
+
+    public function isHaveActiveSubscription()
+    {
+        return $this->subscription()->where('ends_at', '>', now())->exists();
+    }
 }

@@ -16,6 +16,7 @@ import {
     DialogTrigger,
 } from "@/Components/ui/dialog";
 import PublicLayout from "@/Layouts/PublicLayout";
+import { router } from "@inertiajs/react";
 import React from "react";
 
 function Pricing({ prices }) {
@@ -59,7 +60,15 @@ function Pricing({ prices }) {
                         </li>
                     </ul>
                     <div className="my-4 flex justify-end">
-                        <Button className="rounded-full" size="lg">
+                        <Button
+                            onClick={() => {
+                                router.post("/invoice", {
+                                    plan: selected.id,
+                                });
+                            }}
+                            className="rounded-full"
+                            size="lg"
+                        >
                             Lanjutkan
                         </Button>
                     </div>

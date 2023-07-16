@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SerieController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\SubscriptionController;
 use App\Models\Serie;
@@ -60,6 +61,7 @@ Route::middleware('auth')->group(function () {
     Route::post("/article", [ArticleController::class, "store"])->name("article.store");
 
     Route::get('/subscription', [SubscriptionController::class, 'show'])->name('subscription');
+    Route::post('/invoice', [InvoiceController::class, 'store'])->name('invoice.store');
 });
 
 
