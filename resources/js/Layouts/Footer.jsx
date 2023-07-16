@@ -36,7 +36,7 @@ function Footer() {
                         title="Topics"
                         links={topic.series.map((topicc) => ({
                             name: topicc.name,
-                            href: `/topics/${topicc.slug}`,
+                            href: `/topic/${topicc.slug}`,
                         }))}
                     />
 
