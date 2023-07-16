@@ -33,10 +33,10 @@ class CretateArticleRequest extends FormRequest
                     if (count($value) > 3) {
                         $fail('You can only select 3 topics');
                     }
-                    $existingTopics = DB::table('topics')->pluck('slug')->toArray();
-                    foreach ($value as $topic) {
-                        if (!in_array($topic['value'], $existingTopics)) {
-                            $fail('Topic ' . $topic['label'] . ' does not exist');
+                    $existingTopics = DB::table('topics')->pluck('id')->toArray();
+                    foreach ($value as $id) {
+                        if (!in_array($id, $existingTopics)) {
+                            $fail('One of the selected topics is not valid');
                         }
                     }
                 }

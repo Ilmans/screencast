@@ -3,13 +3,7 @@ import { Label } from "@/Components/ui/label";
 import MDeditor from "@uiw/react-md-editor";
 import "@uiw/react-md-editor/dist/mdeditor.css";
 import "./../../../../css/md-custom.css";
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/Components/ui/select";
+import Select from "react-select";
 import { Textarea } from "@/Components/ui/textarea";
 import { router, useForm, usePage } from "@inertiajs/react";
 import React, { useState } from "react";
@@ -18,10 +12,14 @@ import InputError from "@/Components/InputError";
 
 function FormArticle() {
     const topic = usePage().props.topic;
+    const options = topic.articles.map((topic) => ({
+        value: topic.id,
+        label: topic.name,
+    }));
 
     const { data, setData, processing, errors, post, recentlySuccessful } =
         useForm({
-            topic: null,
+            topic: [],
             title: "",
             synopsis: "",
             body: "",
@@ -70,22 +68,22 @@ function FormArticle() {
                     Topik Artikel
                 </Label>
                 <Select
-                    defaultValue={data.topic || undefined}
-                    onValueChange={(value) => {
-                        setData({ ...data, topic: value });
+                    value={data.topic.map((id) => ({
+                        value: id,
+                        label: topic.articles.find((topic) => topic.id === id)
+                            .name,
+                    }))}
+                    onChange={(value) => {
+                        const newValue = value.map((value) => value.value);
+                        setData({ ...data, topic: newValue });
                     }}
-                >
-                    <SelectTrigger className="w-[180px]">
-                        <SelectValue placeholder="Pilih topik" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {topic.articles.map((t, i) => (
-                            <SelectItem key={i} value={t.slug}>
-                                {t.name}
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
+                    placeholder="Pilih topik"
+                    name="topic"
+                    isClearable={true}
+                    className=" h-10 w-full items-center justify-between rounded-md border border-input bg-transparent  text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    isMulti={true}
+                    options={options}
+                />
                 <InputError errors={errors} fieldName={"topic"} />
             </div>
             <div className="space-y-1">

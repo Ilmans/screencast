@@ -70,7 +70,7 @@ class ArticleController extends Controller
 
         try {
             $this->articleService->createArticle($request);
-            return back();
+            return redirect()->route('my-articles')->with('success', 'Article created successfully');
         } catch (\Throwable $th) {
             return back()->with('error', 'Something went wrong');
         }
