@@ -13,6 +13,19 @@ class Invoice extends Model
         'invoice_number',
         'package_price_id',
         'total',
-        'status'
+        'status',
+        'expired_at',
     ];
+
+
+    public function packagePrice()
+    {
+        return $this->belongsTo(PackagePrice::class);
+    }
+
+
+    public function getCreatedAtAttribute()
+    {
+        return  \Carbon\Carbon::parse($this->attributes['created_at'])->format('d M Y h:i');
+    }
 }

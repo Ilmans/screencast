@@ -61,6 +61,7 @@ Route::middleware('auth')->group(function () {
     Route::post("/article", [ArticleController::class, "store"])->name("article.store");
 
     Route::get('/subscription', [SubscriptionController::class, 'show'])->name('subscription');
+    Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices');
     Route::post('/invoice', [InvoiceController::class, 'store'])->name('invoice.store');
 });
 

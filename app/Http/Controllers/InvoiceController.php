@@ -16,6 +16,13 @@ class InvoiceController extends Controller
         $this->invoiceService = $invoiceService;
     }
 
+    public function index(Request $request)
+    {
+        $this->invoiceService->setUser(Auth::user());
+        $invoices = $this->invoiceService->getInvoices();
+        return inertia('Invoice/Index', compact('invoices'));
+    }
+
     public function store(Request $request)
     {
         try {

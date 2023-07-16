@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\Models\PackagePrice;
 use App\Models\User;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class InvoiceService
 {
@@ -30,6 +31,14 @@ class InvoiceService
     }
 
     /**
+     * all invoice
+     */
+    public function getInvoices(): LengthAwarePaginator
+    {
+        return $this->user->invoices()->with('packagePrice')->paginate(10);
+    }
+
+    /**
      * Create a new invoice.
      */
 
@@ -40,6 +49,7 @@ class InvoiceService
             'invoice_number' => $this->generateInvoiceNumber(),
             'package_price_id' => $packagePrice->id,
             'total' => $packagePrice->price + rand(100, 999),
+            'expired_at' => now()->addDays(1),
 
         ]);
     }

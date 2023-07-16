@@ -78,6 +78,13 @@ function UserMenu({ dashboard = true }) {
                     >
                         Langganan
                     </VerticalNavLink>
+                    <VerticalNavLink
+                        href="/invoices"
+                        icon="IconFileInvoice"
+                        active={route().current("invoices")}
+                    >
+                        Invoices
+                    </VerticalNavLink>
                 </Fragment>
             )}
         </ul>
