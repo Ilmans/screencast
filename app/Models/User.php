@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -89,5 +91,41 @@ class User extends Authenticatable
     public function isHaveActiveSubscription()
     {
         return $this->subscription()->where('ends_at', '>', now())->exists();
+    }
+
+    public function scopeRemainsSubscriber()
+    {
+        $subscription = $this->subscription()->where('ends_at', '>', now())->first();
+
+        if ($subscription) {
+            $endsat = $subscription->getRawOriginal('ends_at');
+            $diff = Carbon::parse($endsat)->diff(now());
+            $result = '';
+
+            if ($diff->y > 0) {
+                $result .= "{$diff->y}y ";
+            }
+
+            if ($diff->m > 0) {
+                $result .= "{$diff->m}m ";
+            }
+
+            if ($diff->d > 0 && ($diff->y < 1 || $diff->m < 1)) {
+                $result .= "{$diff->d}d";
+            }
+
+            if (empty($result)) {
+                $result = "0h";
+            }
+
+            return $result;
+        }
+
+        return "0h";
+    }
+
+    public function scopeExperience()
+    {
+        return floor($this->watchHistories()->sum('watch_duration')  / 60);
     }
 }
