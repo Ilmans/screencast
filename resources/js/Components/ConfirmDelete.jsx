@@ -24,7 +24,7 @@ function ConfirmDelete({
                         {text}
                     </DialogDescription>
                 </DialogHeader>
-                <div className="flex items-center gap-x-4 justify-start">
+                <div className="flex items-center gap-x-4 md:justify-start w-full justify-center">
                     <Button
                         onClick={() => {
                             router.delete("/" + urlDelete, {

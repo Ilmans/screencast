@@ -19,7 +19,7 @@ function Index({ series }) {
         <div className="max-w-4xl">
             <Head title="Watch Later" />
 
-            <Card className="p-6 space-y-6 border-none">
+            <Card className="md:p-6 space-y-6 border-none">
                 <CardHeader>
                     <CardTitle>Tonton Nanti</CardTitle>
                     <CardDescription>
@@ -35,7 +35,7 @@ function Index({ series }) {
                 setOpenConfirmDelete={setOpenConfirmDelete}
             />
 
-            <div className="mt-6 grid grid-cols-3 gap-4">
+            <div className="mt-6 grid md:grid-cols-3 gap-4">
                 {series.data.map((serie) => (
                     <Card key={serie.id} className="p-4 ">
                         <CardHeader>

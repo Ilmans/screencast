@@ -8,7 +8,7 @@ import {
 } from "@/Components/ui/card";
 import UserLayout from "@/Layouts/UserLayout";
 import { Head, Link } from "@inertiajs/react";
-import { IconEye, IconEyeCog } from "@tabler/icons-react";
+import { IconEye } from "@tabler/icons-react";
 import React from "react";
 
 function Index({ watchHistories }) {
@@ -16,7 +16,7 @@ function Index({ watchHistories }) {
         <div className="max-w-4xl">
             <Head title="Watch History" />
 
-            <Card className="p-6 space-y-6 border-none">
+            <Card className="md:p-6 space-y-6 border-none">
                 <CardHeader>
                     <CardTitle>Riwayat Tontonan</CardTitle>
                     <CardDescription>
@@ -26,7 +26,7 @@ function Index({ watchHistories }) {
                 </CardHeader>
             </Card>
 
-            <div className="mt-6 grid grid-cols-3 gap-4">
+            <div className="mt-6 grid md:grid-cols-3 gap-4">
                 {watchHistories.data.map((watchHistory) => (
                     <Card key={watchHistory.id} className="p-4 ">
                         <CardHeader>

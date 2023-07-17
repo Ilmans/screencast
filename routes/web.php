@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SerieController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\SubscriptionController;
@@ -26,11 +27,7 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    $series = Serie::with('topics')->paginate(12);
-
-    return Inertia::render('Home', compact('series'));
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name("home");
 //topic
 Route::get("/topics", [TopicController::class, "index"])->name("topics");
 Route::get("/topic/{topic:slug}", [TopicController::class, 'show'])->name("topic.show");

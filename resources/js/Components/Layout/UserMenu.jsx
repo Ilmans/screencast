@@ -13,33 +13,33 @@ function UserMenu({ dashboard = true }) {
             )}
         >
             {/* only guest can access this menu, this menu show in nav mobile */}
-            {!user && (
-                <Fragment>
-                    {/* home */}
-                    <VerticalNavLink
-                        href="/"
-                        icon="IconHomeEco"
-                        active={route().current("home")}
-                    >
-                        Halaman Utama
-                    </VerticalNavLink>
-                    <VerticalNavLink
-                        href="/topics"
-                        icon="IconBrandTidal"
-                        active={route().current("topics")}
-                    >
-                        Topik
-                    </VerticalNavLink>
-                    {/* Articles */}
-                    <VerticalNavLink
-                        href="/articles"
-                        icon="IconBook"
-                        active={route().current("articles")}
-                    >
-                        Artikel
-                    </VerticalNavLink>
-                </Fragment>
-            )}
+
+            {/* home */}
+            <div className="md:hidden">
+                <VerticalNavLink
+                    href="/"
+                    icon="IconHomeEco"
+                    active={route().current("home")}
+                >
+                    Halaman Utama
+                </VerticalNavLink>
+                <VerticalNavLink
+                    href="/topics"
+                    icon="IconBrandTidal"
+                    active={route().current("topics")}
+                >
+                    Topik
+                </VerticalNavLink>
+                {/* Articles */}
+                <VerticalNavLink
+                    href="/articles"
+                    icon="IconBook"
+                    active={route().current("articles")}
+                >
+                    Artikel
+                </VerticalNavLink>
+            </div>
+
             {/* only user login can access this menu, this menu show in dashboard & nav mobile */}
             {user && (
                 <Fragment>

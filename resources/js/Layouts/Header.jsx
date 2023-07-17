@@ -8,14 +8,9 @@ import MobileNav from "../Components/Layout/MobileNav";
 import MobileNavButton from "@/Components/Layout/MobileNavButton";
 import NavLink from "@/Components/NavLink";
 
-const menu = [
-    { name: "Dashboard", url: "/" },
-    { name: "Topik", url: "/topics" },
-    { name: "Artikel", url: "/articles" },
-];
 function Header() {
     return (
-        <nav className="flex container items-center  justify-between pt-4 pb-2 border-b border-border/60 ">
+        <nav className="flex md:container items-center  justify-between pt-4 pb-2 border-b border-border/60 ">
             <Logo />
             <div className="items-center hidden lg:flex">
                 <NavLink

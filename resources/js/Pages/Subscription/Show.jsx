@@ -12,7 +12,7 @@ import React from "react";
 function Show({ subscription }) {
     console.log("subcription", subscription);
     return (
-        <div className="max-w-4xl space-y-6 p-6">
+        <div className="max-w-4xl space-y-6 md:p-6">
             <div className="space-y-1">
                 <CardTitle>Langganan </CardTitle>
                 <CardDescription>Informasi langganan anda</CardDescription>

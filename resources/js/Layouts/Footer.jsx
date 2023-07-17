@@ -8,7 +8,7 @@ function Footer() {
 
     return (
         <Fragment>
-            <section className="py-12 container border-slate-900">
+            <section className="py-12 md:container border-slate-900">
                 <div className="flex flex-col justify-between gap-4 lg:flex-row wrapper">
                     <div className="lg:w-1/4">
                         <div className="py-2 -ml-2">
@@ -76,7 +76,7 @@ function LinkSection({ title, links }) {
     return (
         <div key={title}>
             <h1 className="mb-4 font-medium font-poppins text-lg">{title}</h1>
-            <ul className="space-y-4 font-poppins text-sm">
+            <ul className="space-y-2 md:space-y-4 font-poppins text-sm">
                 {links.map((link) => (
                     <li key={link.name}>
                         <Link

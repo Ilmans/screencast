@@ -30,9 +30,9 @@ function Show({ currentTopic, topics, series }) {
                 </div>
             </GreetingPage>
 
-            <section className="py-4 border-t container">
+            <section className="py-4 border-t md:container">
                 <FilterSeries />
-                <div className="grid gap-16 lg:grid-cols-3">
+                <div className="grid gap-16 md:grid-cols-3">
                     {series.data.map((serie) => (
                         <Serie serie={serie} />
                     ))}

@@ -22,7 +22,7 @@ function Dashboard({ data }) {
     return (
         <div className="max-w-4xl space-y-4">
             <Head title="My Dashboard" />
-            <Card className="shadow-none border-none p-6">
+            <Card className="shadow-none border-none md:p-6 ">
                 <CardHeader>
                     <CardTitle>Dashboard</CardTitle>
                     <CardDescription>
@@ -31,7 +31,7 @@ function Dashboard({ data }) {
                 </CardHeader>
             </Card>
 
-            <div className="p-6 pt-0 grid grid-cols-3 gap-4">
+            <div className="md:p-6 pt-0 grid md:grid-cols-3 gap-4">
                 <CardDashboard
                     title={"Langganan saya"}
                     value={data.subscription}

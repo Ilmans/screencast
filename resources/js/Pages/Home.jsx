@@ -12,7 +12,7 @@ export default function Home({ series }) {
                 <title>CodingAsik</title>
             </Head>
             <Jumbotron />
-            <section className="relative container   ">
+            <section className="relative md:container   ">
                 <div className="absolute inset-0 bgkeren"></div>
                 <div className="absolute inset-0    bg-gradient-to-tr from-transparent to-50% to-primary"></div>
 
@@ -20,8 +20,8 @@ export default function Home({ series }) {
                     title="Baru baru ini di tambahkan."
                     desc=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi"
                 />
-                <div className="relative grid gap-24 pb-12 lg:grid-cols-3 ">
-                    {series.data.map((serie, i) => (
+                <div className="relative grid gap-24 pb-12 md:grid-cols-3 ">
+                    {series.map((serie, i) => (
                         <Serie serie={serie} />
                     ))}
                 </div>

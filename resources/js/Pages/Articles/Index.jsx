@@ -83,7 +83,7 @@ function Index({ popularArticles }) {
                 }
             ></GreetingPage>
 
-            <div className="relative container bg-secondary/50">
+            <div className="relative md:container bg-secondary/50">
                 <TitleSection
                     title={"Artikel Pilihan"}
                     desc={"Beberapa artikel pilihan yang bisa anda baca"}

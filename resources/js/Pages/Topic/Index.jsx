@@ -31,9 +31,9 @@ function Index({ topics, series }) {
                     <ListTopics topics={topics} />
                 </div>
             </GreetingPage>
-            <section className="py-4 container">
+            <section className="py-4 md:container">
                 <FilterSeries />
-                <div className="grid gap-24 lg:grid-cols-3">
+                <div className="grid gap-24 md:grid-cols-3">
                     {series.data.map((serie) => (
                         <Serie serie={serie} />
                     ))}

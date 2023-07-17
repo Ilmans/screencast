@@ -12,7 +12,7 @@ function Serie({ serie }) {
             className="space-y-2 rounded-lg font-poppins"
             key={serie.id}
         >
-            <div className="h-48">
+            <div className="">
                 <LazyLoadImage
                     className="object-cover w-full h-full rounded-lg"
                     src={serie.image}

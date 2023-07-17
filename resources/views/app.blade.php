@@ -52,7 +52,7 @@
     }
 </script>
 
-<body  class="antialiased font-sans scrollbar-thin scrollbar-track-gray-300 scrollbar-thumb-gray-500 bg-primary text-foreground ">
+<body  class="antialiased px-4 font-sans scrollbar-thin scrollbar-track-gray-300 scrollbar-thumb-gray-500 bg-primary text-foreground ">
     @inertia
 </body>
 
