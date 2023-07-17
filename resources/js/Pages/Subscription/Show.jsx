@@ -6,13 +6,13 @@ import {
     CardTitle,
 } from "@/Components/ui/card";
 import UserLayout from "@/Layouts/UserLayout";
-import { Link } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 import React from "react";
 
 function Show({ subscription }) {
-    console.log("subcription", subscription);
     return (
         <div className="max-w-4xl space-y-6 md:p-6">
+            <Head title="My Subscription" />
             <div className="space-y-1">
                 <CardTitle>Langganan </CardTitle>
                 <CardDescription>Informasi langganan anda</CardDescription>

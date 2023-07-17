@@ -15,12 +15,13 @@ import {
     TableRow,
 } from "@/Components/ui/table";
 import UserLayout from "@/Layouts/UserLayout";
-import { Link } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 import React from "react";
 
 function Index({ invoices }) {
     return (
         <div className="max-w-4xl">
+            <Head title="My Invoices" />
             <Card className="p-6 space-y-6">
                 <CardHeader>
                     <CardTitle>Invoices</CardTitle>

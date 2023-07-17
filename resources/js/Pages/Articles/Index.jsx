@@ -11,7 +11,7 @@ import PublicLayout from "@/Layouts/PublicLayout";
 import React, { Fragment, useEffect, useRef } from "react";
 import Popular from "./partials/Popular";
 import ArticleSkeleton from "@/Components/Item/ArticleSkeleton";
-import { Link, router } from "@inertiajs/react";
+import { Head, Link, router } from "@inertiajs/react";
 import FormFilterLazy from "./partials/FormFilterLazy";
 
 function Index({ popularArticles }) {
@@ -75,6 +75,7 @@ function Index({ popularArticles }) {
 
     return (
         <Fragment>
+            <Head title="Tutorial dan Artikel"></Head>
             <GreetingPage
                 variant="default"
                 title={"Tutorial dan Artikel"}

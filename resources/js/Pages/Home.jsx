@@ -8,9 +8,7 @@ import { Fragment } from "react";
 export default function Home({ series }) {
     return (
         <Fragment>
-            <Head>
-                <title>CodingAsik</title>
-            </Head>
+            <Head title="Home"></Head>
             <Jumbotron />
             <section className="relative md:container   ">
                 <div className="absolute inset-0 bgkeren"></div>
