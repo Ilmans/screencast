@@ -1,3 +1,5 @@
+import ConfirmDelete from "@/Components/ConfirmDelete";
+import { Button } from "@/Components/ui/button";
 import {
     Card,
     CardContent,
@@ -8,10 +10,11 @@ import {
 import UserLayout from "@/Layouts/UserLayout";
 import { Head, Link } from "@inertiajs/react";
 import { IconEye, IconTrash } from "@tabler/icons-react";
-import React from "react";
+import React, { useState } from "react";
 
 function Index({ series }) {
-    console.log(series);
+    const [openConfirmDelete, setOpenConfirmDelete] = useState(false);
+    const [selectedId, setSelectedId] = useState(null);
     return (
         <div className="max-w-4xl">
             <Head title="Watch Later" />
@@ -24,6 +27,13 @@ function Index({ series }) {
                     </CardDescription>
                 </CardHeader>
             </Card>
+
+            <ConfirmDelete
+                text={`Apakah kamu yakin ingin menghapus serie ini dari daftar tontonan kamu?`}
+                urlDelete={`watch_later/${selectedId}`}
+                openConfirmDelete={openConfirmDelete}
+                setOpenConfirmDelete={setOpenConfirmDelete}
+            />
 
             <div className="mt-6 grid grid-cols-3 gap-4">
                 {series.data.map((serie) => (
@@ -45,14 +55,17 @@ function Index({ series }) {
                                 <IconEye size={18} />
                                 Tonton Sekarang
                             </Link>
-                            <Link
-                                href={`/serie/${serie.serie.slug}/${serie.serie.videos[0].order_num}`}
+                            <button
+                                onClick={() => {
+                                    setSelectedId(serie.id);
+                                    setOpenConfirmDelete(true);
+                                }}
                                 size="lg"
                                 className="rounded-full py-0.5 text-xs flex w-fit items-center text-red-500 px-4 hover:bg-accent justify-between gap-x-2"
                             >
                                 <IconTrash size={18} />
                                 Hapus
-                            </Link>
+                            </button>
                         </CardContent>
                     </Card>
                 ))}

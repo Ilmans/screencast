@@ -9,21 +9,29 @@ import {
 import { router } from "@inertiajs/react";
 import React from "react";
 
-function ConfirmDelete({ invoice, openConfirmDelete, setOpenConfirmDelete }) {
+function ConfirmDelete({
+    text,
+    urlDelete,
+    openConfirmDelete,
+    setOpenConfirmDelete,
+}) {
     return (
         <Dialog open={openConfirmDelete}>
             <DialogContent setOpen={setOpenConfirmDelete}>
                 <DialogHeader>
                     <DialogTitle>Konfirmasi Hapus</DialogTitle>
                     <DialogDescription className="text-lg">
-                        Apakah anda akan menghapus invoice{" "}
-                        {invoice.invoice_number} ?
+                        {text}
                     </DialogDescription>
                 </DialogHeader>
                 <div className="flex items-center gap-x-4 justify-start">
                     <Button
                         onClick={() => {
-                            router.delete("/invoice/" + invoice.id, {}, {});
+                            router.delete("/" + urlDelete, {
+                                onSuccess: () => {
+                                    setOpenConfirmDelete(false);
+                                },
+                            });
                         }}
                         size="lg"
                         className="rounded-full"

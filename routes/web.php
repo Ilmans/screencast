@@ -74,6 +74,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/watch_later', [WatchLaterController::class, 'index'])->name('watch_later');
     Route::post('/watch_later', [WatchLaterController::class, 'store'])->name('watch_later.store');
+    Route::delete('/watch_later/{watchLater:id}', [WatchLaterController::class, 'destroy'])->name('watch_later.destroy');
 });
 
 

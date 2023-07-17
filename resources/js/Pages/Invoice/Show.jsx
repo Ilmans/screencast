@@ -10,7 +10,7 @@ import { Head } from "@inertiajs/react";
 import { IconClock, IconTrash } from "@tabler/icons-react";
 import React from "react";
 import UnpaidSection from "./Partials/UnpaidSection";
-import ConfirmDelete from "./Partials/ConfirmDelete";
+import ConfirmDelete from "../../Components/ConfirmDelete";
 
 function Show({ invoice, paymentMethods }) {
     const [openConfirmDelete, setOpenConfirmDelete] = React.useState(false);
