@@ -72,6 +72,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/save-watch-progress', [VideoController::class, 'saveWatchProgress'])->name('save-watch-progress');
     Route::get('/watch_histories', WatchHistoryController::class)->name('watch_histories');
 
+    Route::get('/watch_later', [WatchLaterController::class, 'index'])->name('watch_later');
     Route::post('/watch_later', [WatchLaterController::class, 'store'])->name('watch_later.store');
 });
 

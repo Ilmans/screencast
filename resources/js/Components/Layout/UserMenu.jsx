@@ -72,6 +72,13 @@ function UserMenu({ dashboard = true }) {
                         Artikel Saya
                     </VerticalNavLink>
                     <VerticalNavLink
+                        href="/watch_later"
+                        icon="IconClock"
+                        active={route().current("watch_later")}
+                    >
+                        Tonton Nanti
+                    </VerticalNavLink>
+                    <VerticalNavLink
                         href="/watch_histories"
                         icon="IconHistoryToggle"
                         active={route().current("watch_histories")}
