@@ -10,6 +10,7 @@ use App\Http\Controllers\PricingController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\WatchHistoryController;
+use App\Http\Controllers\WatchLaterController;
 use App\Models\Serie;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -70,6 +71,8 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/save-watch-progress', [VideoController::class, 'saveWatchProgress'])->name('save-watch-progress');
     Route::get('/watch_histories', WatchHistoryController::class)->name('watch_histories');
+
+    Route::post('/watch_later', [WatchLaterController::class, 'store'])->name('watch_later.store');
 });
 
 

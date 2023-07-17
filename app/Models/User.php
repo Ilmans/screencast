@@ -63,6 +63,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the user's watch laters.
+     */
+    public function watchLaters()
+    {
+        return $this->hasMany(WatchLater::class);
+    }
+
+    /**
      * Get the user's invoices.
      */
 

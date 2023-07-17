@@ -18,9 +18,9 @@ class SerieService
         $this->series = $series;
     }
 
-    public function getSingle()
+    public function getSingle($serieId)
     {
-        return $this->series
+        return $this->series->where('id', $serieId)
             ->with(['topics' => function ($q) {
                 return $q->select('name');
             }])->with('videos')->withCount('videos')
@@ -48,5 +48,21 @@ class SerieService
         // get series with count the videos and sum the seconds_time in videos
         return $this->series->with('topics')->withCount('videos')
             ->withSum('videos', 'seconds_time')->paginate(9);
+    }
+
+
+    /**
+     * Is saved watch later
+     */
+
+    public function isSavedWatchLater($serie): bool
+    {
+        if (!auth()->check()) {
+            return false;
+        }
+        $user = request()->user();
+
+
+        return $user->watchLaters()->where('serie_id', $serie->id)->exists();
     }
 }

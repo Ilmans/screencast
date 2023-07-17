@@ -14,7 +14,7 @@ class WatchHistoryController extends Controller
             $q->select('id', 'title', 'order_num', 'serie_id')->with('serie', function ($q) {
                 $q->select('id', 'title', 'slug');
             });
-        })->latest()->paginate(12);
+        })->orderBy('last_watched_at', 'desc')->paginate(10);
         return inertia('WatchHistory/Index', compact('watchHistories'));
     }
 }

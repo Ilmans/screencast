@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class WatchLater extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'serie_id',
+    ];
 }

@@ -6,6 +6,7 @@ use App\Http\Services\SerieService;
 use App\Http\Services\VideoService;
 use App\Models\Serie;
 use App\Models\Video;
+use Illuminate\Http\Request;
 
 class SerieController extends Controller
 {
@@ -19,18 +20,18 @@ class SerieController extends Controller
     }
 
 
-    public function show(Serie $serie)
+    public function show(Serie $serie,)
     {
-        $serie = $this->serieService->setSeries($serie->query());
-        $serie = $this->serieService->getSingle();
 
-        return inertia('Serie/Show', compact('serie'));
+        $serie = $this->serieService->getSingle($serie->id);
+        $isSavedWatchLater = $this->serieService->isSavedWatchLater($serie);
+
+        return inertia('Serie/Show', compact('serie', 'isSavedWatchLater'));
     }
 
     public function watch(Serie $serie, Video $video)
     {
-        $serie = $this->serieService->setSeries($serie->query());
-        $serie = $this->serieService->getSingle();
+        $serie = $this->serieService->getSingle($serie->id);
         $canWatch = $this->videoService->canWatch($video);
 
         return inertia('Serie/Watch', compact('serie', 'video', 'canWatch'));
