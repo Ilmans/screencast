@@ -11,9 +11,9 @@ class Video extends Model
 
 
     public function serie() {
-     return $this->belongsTo(Serie::class,"id");
+     return $this->belongsTo(Serie::class,"serie_id");
     }
 
 
-  
+
 }

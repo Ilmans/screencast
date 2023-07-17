@@ -71,6 +71,11 @@ class User extends Authenticatable
         return $this->hasMany(Invoice::class);
     }
 
+    public function watchHistories()
+    {
+        return $this->hasMany(WatchHistory::class);
+    }
+
     //scope
 
     public function isHaveActiveSubscription()

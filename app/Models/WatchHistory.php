@@ -15,4 +15,10 @@ class WatchHistory extends Model
         'watch_duration',
         'last_watched_at',
     ];
+
+
+    public function video()
+    {
+        return $this->belongsTo(Video::class);
+    }
 }

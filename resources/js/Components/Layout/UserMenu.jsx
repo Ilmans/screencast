@@ -72,6 +72,13 @@ function UserMenu({ dashboard = true }) {
                         Artikel Saya
                     </VerticalNavLink>
                     <VerticalNavLink
+                        href="/watch_histories"
+                        icon="IconHistoryToggle"
+                        active={route().current("watch_histories")}
+                    >
+                        Riwayat Menonton
+                    </VerticalNavLink>
+                    <VerticalNavLink
                         href="/subscription"
                         icon="IconRocket"
                         active={route().current("subscription")}
