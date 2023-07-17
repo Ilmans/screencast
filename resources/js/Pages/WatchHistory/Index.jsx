@@ -26,7 +26,7 @@ function Index({ watchHistories }) {
                 </CardHeader>
             </Card>
 
-            <div className="mt-6 grid grid-cols-3 gap-x-4">
+            <div className="mt-6 grid grid-cols-3 gap-4">
                 {watchHistories.data.map((watchHistory) => (
                     <Card key={watchHistory.id} className="p-4 ">
                         <CardHeader>

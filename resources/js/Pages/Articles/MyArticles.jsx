@@ -18,7 +18,7 @@ import FormFilter from "./partials/FormFilter";
 function MyArticles({ articles }) {
     return (
         <div className="">
-            <Head title="Artikel Saya" />
+            <Head title="My Articles" />
             <Card className="p-6 space-y-6">
                 <CardHeader>
                     <div className="grid grid-cols-3">

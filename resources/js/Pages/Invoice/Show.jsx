@@ -18,7 +18,8 @@ function Show({ invoice, paymentMethods }) {
         <div className="max-w-4xl">
             <Head title={invoice.invoice_number} />
             <ConfirmDelete
-                invoice={invoice}
+                text={`Apakah kamu yakin ingin menghapus invoice ini?`}
+                urlDelete={`invoice/${invoice.id}`}
                 openConfirmDelete={openConfirmDelete}
                 setOpenConfirmDelete={setOpenConfirmDelete}
             />
