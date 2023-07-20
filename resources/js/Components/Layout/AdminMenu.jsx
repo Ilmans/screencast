@@ -21,6 +21,13 @@ function AdminMenu({dashboard = true}) {
         >
             Dashboard
         </VerticalNavLink>
+        <VerticalNavLink
+            href="/admin/topics"
+            icon="IconCategory2"
+            active={route().current("admin.topics.index")}
+        >
+            Topik
+        </VerticalNavLink>
 
        
         </ul>
