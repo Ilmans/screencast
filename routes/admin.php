@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SeriesController;
 use App\Http\Controllers\Admin\TopicController;
+use App\Http\Controllers\Admin\VideoController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/admin')->middleware('auth','admin')->group(function (){
@@ -25,6 +26,7 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
 
     
     Route::get('/series/{serie}/manage/videos',[SeriesController::class,'manageSerieVideos'])->name('admin.series.videos');
+    Route::put('/video/{video}',[VideoController::class,'update'])->name('admin.video.update');
     //end series routes
 });
 ?>
