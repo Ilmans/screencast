@@ -16,7 +16,8 @@ function ManageVideos({ serie, videos }) {
                 <CardHeader>
                     <CardTitle>Kelola Video</CardTitle>
                     <CardDescription>
-                        Kelola video untuk seri <strong>{serie.title}</strong>
+                        Kelola video untuk seri <strong>{serie.title}</strong><br></br>
+                        Drag and drop untuk mengurutkan video
                     </CardDescription>
                 </CardHeader>
                 <CardContent>

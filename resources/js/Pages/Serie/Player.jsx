@@ -44,6 +44,7 @@ function Player({ video, canWatch }) {
         <div className="relative w-full overflow-hidden rounded-lg aspect-video">
             {play ? (
                 <ReactPlayer
+                
                     onProgress={(e) => {
                         setCurrentTime(e.playedSeconds);
                     }}

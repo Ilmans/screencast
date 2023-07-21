@@ -1,6 +1,5 @@
 import plugin from "tailwindcss/plugin";
 import defaultTheme from "tailwindcss/defaultTheme";
-import { config } from "tailwindcss-animate";
 
 export const shadcnPlugin = plugin(
     function ({ addBase }) {

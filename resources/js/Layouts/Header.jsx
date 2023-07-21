@@ -2,9 +2,7 @@ import Logo from "@/Components/Logo";
 import React, { useState } from "react";
 import ThemeProvider from "../Components/ThemeProvider";
 import { SearchIcon } from "../../lib/Icon";
-import { Link, usePage } from "@inertiajs/react";
 import InputWithIcon from "@/Components/InputWithIcon";
-import MobileNav from "../Components/Layout/MobileNav";
 import MobileNavButton from "@/Components/Layout/MobileNavButton";
 import NavLink from "@/Components/NavLink";
 import { Toaster } from "@/Components/ui/toaster";
@@ -12,10 +10,11 @@ import { Toaster } from "@/Components/ui/toaster";
 function Header() {
     
     return (
-        <nav className="flex items-center justify-between pt-4 pb-2 border-b md:container border-border/60 ">
-            <Toaster />
+        <nav className="flex items-center justify-between pt-4 pb-2 border-b lg:container border-border/60 ">
+           
             <Logo />
             <div className="items-center hidden lg:flex">
+                <Toaster />
                 <NavLink
                     active={route().current("home")}
                     key={"home"}
