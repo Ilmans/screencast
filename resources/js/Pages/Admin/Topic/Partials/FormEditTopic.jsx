@@ -58,7 +58,7 @@ function FormEditTopic({topic}) {
                 </Select>
                 <InputError errors={errors} fieldName="type" />
             </div>
-           <InputImage defaultImage={topic.image} data={data} setData={setData} errors={errors} />
+           <InputImage defaultimage={topic.image} data={data} setData={setData} errors={errors} />
             <div className="space-y-1">
                 <Label htmlFor="description">Deskripsi</Label>
                 <Textarea
