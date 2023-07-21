@@ -7,10 +7,13 @@ import InputWithIcon from "@/Components/InputWithIcon";
 import MobileNav from "../Components/Layout/MobileNav";
 import MobileNavButton from "@/Components/Layout/MobileNavButton";
 import NavLink from "@/Components/NavLink";
+import { Toaster } from "@/Components/ui/toaster";
 
 function Header() {
+    
     return (
-        <nav className="flex md:container items-center  justify-between pt-4 pb-2 border-b border-border/60 ">
+        <nav className="flex items-center justify-between pt-4 pb-2 border-b md:container border-border/60 ">
+            <Toaster />
             <Logo />
             <div className="items-center hidden lg:flex">
                 <NavLink

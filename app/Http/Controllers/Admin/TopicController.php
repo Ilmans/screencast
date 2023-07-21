@@ -35,7 +35,7 @@ class TopicController extends Controller
        
         try {
             $this->topicService->createTopic($request);
-            return redirect()->route('admin.topics.index');
+            return redirect()->route('admin.topics.index')->with('success', 'Topic created successfully');
         } catch (\Throwable $th) {
           //  throw $th;
             return back()->with('error', 'Something went wrong');
@@ -52,7 +52,7 @@ class TopicController extends Controller
        
         try {
             $this->topicService->updateTopic($request,$topic);
-            return redirect()->route('admin.topics.index');
+            return redirect()->route('admin.topics.index')->with('success', 'Topic updated successfully');
         } catch (\Throwable $th) {
             return back()->with('error', 'Something went wrong');
         }
