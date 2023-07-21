@@ -28,6 +28,13 @@ function AdminMenu({dashboard = true}) {
         >
             Topik
         </VerticalNavLink>
+        <VerticalNavLink
+            href="/admin/series"
+            icon="IconBrandMeta"
+            active={route().current("admin.series.index")}
+        >
+            Series
+        </VerticalNavLink>
 
        
         </ul>

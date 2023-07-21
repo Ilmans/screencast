@@ -13,10 +13,13 @@ class SerieService
     {
         $this->series = Serie::query();
     }
+
+    
     public function setSeries(Builder $series)
     {
         $this->series = $series;
     }
+
 
     public function getSingle($serieId)
     {
@@ -35,6 +38,7 @@ class SerieService
         return $this;
     }
 
+
     public function search($keyword)
     {
         if ($keyword) {
@@ -42,6 +46,7 @@ class SerieService
         }
         return $this;
     }
+
 
     public function getSeries()
     {

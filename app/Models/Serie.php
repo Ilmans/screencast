@@ -25,4 +25,9 @@ class Serie extends Model
     {
         return Carbon::parse($value)->format("d M Y");
     }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->format("d M Y");
+    }
 }
