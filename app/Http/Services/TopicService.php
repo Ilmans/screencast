@@ -43,6 +43,19 @@ class TopicService extends UploadImageService
         ]); 
     }
 
+    public function deleteTopic ($topic) : void
+    {
+        $hasChildren = $topic->series->count() > 0 || $topic->articles->count() > 0;
+        if ($hasChildren) {
+            throw new \Exception("Topic has children, can't delete");
+        }
+        if($topic->image){
+            $this->deleteImage($topic->image, $this->pathImage);
+        }
+
+        $topic->delete();
+    }
+
 
 
     public function getAllSeriesTopics(): Collection

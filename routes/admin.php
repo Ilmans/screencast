@@ -13,5 +13,6 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
     Route::post('/topics',[TopicController::class,'store'])->name('admin.topics.store');
     Route::get('/topics/{topic}/edit',[TopicController::class,'edit'])->name('admin.topics.edit');
     Route::post('/topics/{topic}',[TopicController::class,'update'])->name('admin.topics.update');
+    Route::delete('/topics/{topic}',[TopicController::class,'destroy'])->name('admin.topics.destroy');
 });
 ?>

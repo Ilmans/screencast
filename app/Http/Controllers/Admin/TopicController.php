@@ -57,4 +57,14 @@ class TopicController extends Controller
             return back()->with('error', 'Something went wrong');
         }
     }
+
+    public function destroy(Topic $topic) : \Illuminate\Http\RedirectResponse
+    {
+        try {
+            $this->topicService->deleteTopic($topic);
+            return redirect()->route('admin.topics.index')->with('success', 'Topic deleted successfully');
+        } catch (\Throwable $th) {
+            return back()->with('error', $th->getMessage());
+        }
+    }
 }

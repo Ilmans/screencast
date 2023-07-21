@@ -1,3 +1,4 @@
+import ConfirmDelete from "@/Components/ConfirmDelete";
 import Pagination from "@/Components/Page/Pagination";
 import { Button } from "@/Components/ui/button";
 import {
@@ -17,13 +18,21 @@ import {
 } from "@/Components/ui/table";
 import AdminLayout from "@/Layouts/AdminLayout";
 import { Head, Link } from "@inertiajs/react";
-import { IconEdit, IconPlus } from "@tabler/icons-react";
-import React from "react";
+import { IconEdit, IconPlus, IconTrash } from "@tabler/icons-react";
+import React, { useState } from "react";
 
 function Index({ topics }) {
+    const [selectedTopic,setSelectedTopic] = useState(null)
+    const [openConfirmDelete,setOpenConfirmDelete] = useState(false)
     return (
         <div className="max-w-4xl">
             <Head title="Topics" />
+            <ConfirmDelete
+                text={`Apakah anda yakin ingin menghapus topik "${selectedTopic?.name}" ?`}
+                urlDelete={"admin/topics/" + selectedTopic?.id}
+                openConfirmDelete={openConfirmDelete}
+                setOpenConfirmDelete={setOpenConfirmDelete}
+            />
             <Card className="p-6 space-y-6">
                 <CardHeader>
                     <div className="flex justify-between">
@@ -87,7 +96,16 @@ function Index({ topics }) {
                                         <div className="flex items-center justify-center gap-x-2">
                                             <Link href={route('admin.topics.edit',topic.id)} className="text-yellow-500">
                                                 <IconEdit className="w-5 h-5" />
+                                                
                                             </Link>
+                                            <button
+                                                onClick={() => {
+                                                    setSelectedTopic(topic)
+                                                    setOpenConfirmDelete(true)
+                                                }}
+                                            >
+                                                <IconTrash className="w-5 h-5 text-red-400" />
+                                            </button>
                                         </div>
                                     </TableCell>
                                 </TableRow>
