@@ -40,7 +40,7 @@ function ManageVideos({ serie, videos }) {
                     </div>
                 </CardHeader>
                 <CardContent>
-                    <FormManageVideos videos={videos} />
+                    <FormManageVideos serie={serie} videos={videos} />
                 </CardContent>
             </Card>
         </div>

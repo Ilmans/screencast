@@ -4,12 +4,31 @@ import { Card } from "@/Components/ui/card";
 import { convertSecondsToMinutes } from "../../../../../lib/Helper";
 import { IconPencil } from "@tabler/icons-react";
 import ModalEditVideo from "./ModalEditVideo";
+import { router } from "@inertiajs/react";
+import axios from "axios";
 
-function FormManageVideos({ videos }) {
+function FormManageVideos({serie, videos }) {
     const [selectedVideo, setSelectedVideo] = React.useState(null);
+    const [orderedVideos, setOrderedVideos] = React.useState(videos);
     const [formModal, setFormModal] = React.useState(false);
     const handleDragEnd = (result) => {
-       // console.log(result);
+        if(!result.destination) return;
+        const items = Array.from(orderedVideos);
+        const [reorderedItem] = items.splice(result.source.index,1);
+        items.splice(result.destination.index, 0, reorderedItem);
+        setOrderedVideos(items);
+
+        let destinationOrderNum = orderedVideos[result.destination.index].order_num;
+        let sourceOrderNum = orderedVideos[result.source.index].order_num;
+
+         axios.post(route("admin.videos.swap"),{
+            destination_order_num: destinationOrderNum,
+            source_order_num: sourceOrderNum,
+            serie_id: serie.id
+         }).catch((error) => {
+                console.log(error);
+            }
+        );
     };
 
     useEffect(() => {
@@ -17,6 +36,10 @@ function FormManageVideos({ videos }) {
             setFormModal(true);
         }
     }, [selectedVideo]);
+
+
+   
+        
 
     return (
         <div>
@@ -36,7 +59,7 @@ function FormManageVideos({ videos }) {
                                 {...provided.droppableProps}
                                 ref={provided.innerRef}
                             >
-                                {videos.map((video, index) => (
+                                {orderedVideos.map((video, index) => (
                                     <Draggable
                                         key={video.order_num}
                                         draggableId={video.order_num.toString()}
