@@ -44,24 +44,29 @@ class SerieService extends SerieManagementService
     public function sort () {
         $request = request();
 
-        if ($request->sort == 'newest') {
-            $this->series->orderBy('created_at', 'desc');
-        } elseif ($request->sort == 'oldest') {
-            $this->series->orderBy('created_at', 'asc');
-        } elseif ($request->sort == 'most-popular') {
-            $this->series->orderBy('views', 'desc');
-        } elseif ($request->sort == 'least-popular') {
-            $this->series->orderBy('views', 'asc');
-        } elseif ($request->sort == 'most-videos') {
-            $this->series->orderBy('videos_count', 'desc');
-        } elseif ($request->sort == 'least-videos') {
-            $this->series->orderBy('videos_count', 'asc');
-        } elseif ($request->sort == 'longest') {
-            $this->series->orderBy('videos_seconds_time_sum', 'desc');
-        } elseif ($request->sort == 'shortest') {
-            $this->series->orderBy('videos_seconds_time_sum', 'asc');
-        } else {
-            $this->series->orderBy('created_at', 'desc');
+        switch ($request->sort) {
+            case 'latest':
+                $this->series->latest();
+                break;
+            case 'oldest':
+                $this->series->oldest();
+                break;
+            case 'most_videos':
+                $this->series->withCount('videos')->orderByDesc('videos_count');
+                break;
+            case 'least_videos':
+                $this->series->withCount('videos')->orderBy('videos_count');
+                break;
+            case 'most_time':
+                $this->series->withSum('videos', 'seconds_time')->orderByDesc('videos_seconds_time_sum');
+                break;
+            case 'least_time':
+                $this->series->withSum('videos', 'seconds_time')->orderBy('videos_seconds_time_sum');
+                break;
+            default:
+                $this->series->latest();
+                break;
+                
         }
 
         return $this;
