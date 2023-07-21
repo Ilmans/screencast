@@ -6,9 +6,10 @@ use App\Models\Serie;
 use App\Models\Topic;
 use Illuminate\Database\Eloquent\Builder;
 
-class SerieService
+class SerieService extends SerieManagementService
 {
     private Builder $series;
+
     public function __construct()
     {
         $this->series = Serie::query();
@@ -39,6 +40,32 @@ class SerieService
     }
 
 
+
+    public function sort () {
+        $request = request();
+
+        if ($request->sort == 'newest') {
+            $this->series->orderBy('created_at', 'desc');
+        } elseif ($request->sort == 'oldest') {
+            $this->series->orderBy('created_at', 'asc');
+        } elseif ($request->sort == 'most-popular') {
+            $this->series->orderBy('views', 'desc');
+        } elseif ($request->sort == 'least-popular') {
+            $this->series->orderBy('views', 'asc');
+        } elseif ($request->sort == 'most-videos') {
+            $this->series->orderBy('videos_count', 'desc');
+        } elseif ($request->sort == 'least-videos') {
+            $this->series->orderBy('videos_count', 'asc');
+        } elseif ($request->sort == 'longest') {
+            $this->series->orderBy('videos_seconds_time_sum', 'desc');
+        } elseif ($request->sort == 'shortest') {
+            $this->series->orderBy('videos_seconds_time_sum', 'asc');
+        } else {
+            $this->series->orderBy('created_at', 'desc');
+        }
+
+        return $this;
+    }
     public function search($keyword)
     {
         if ($keyword) {
@@ -50,7 +77,6 @@ class SerieService
 
     public function getSeries()
     {
-        // get series with count the videos and sum the seconds_time in videos
         return $this->series->with('topics')->withCount('videos')
             ->withSum('videos', 'seconds_time')->paginate(9);
     }

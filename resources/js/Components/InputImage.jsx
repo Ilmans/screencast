@@ -52,7 +52,7 @@ function InputImage({
             type="file"
             accept="image/*"
         />
-        <InputError errors={errors} fieldName="image" />
+        <InputError errors={errors} fieldName={name} />
         {imagePreview && (
             <div className="flex py-4 mt-4">
                 <img

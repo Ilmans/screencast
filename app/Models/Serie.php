@@ -11,6 +11,13 @@ class Serie extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'description',
+        'image',
+        'slug'
+    ];
+
     public function videos()
     {
         return $this->hasMany(Video::class);

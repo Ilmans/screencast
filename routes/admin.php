@@ -21,6 +21,7 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
     //series routes
     Route::get('/series',[SeriesController::class,'index'])->name('admin.series.index');
     Route::get('/series/create',[SeriesController::class,'create'])->name('admin.series.create');
+    Route::post('/series',[SeriesController::class,'store'])->name('admin.series.store');
 
     //end series routes
 });

@@ -11,7 +11,7 @@ class CreateSerieRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,13 +24,14 @@ class CreateSerieRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
-            'image' => ['required', 'image'],
-            'topics' => ['required', 'array', function ($attribute, $value, $fail) {
+            'thumbnail' => ['required', 'image'],
+            'topic' => ['required', 'array', function ($attribute, $value, $fail) {
+              
                 if (count($value) > 4) {
                     $fail('You can only select up to 4 topics');
                 }
             }],
-            'topics.*' => ['required', 'integer', 'exists:topics,id'],
+            'topic.*' => ['required', 'integer', 'exists:topics,id'],
         ];
     }
 }

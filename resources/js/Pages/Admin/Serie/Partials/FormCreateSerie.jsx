@@ -24,23 +24,36 @@ function FormCreateSerie() {
         description: "",
     });
 
+    const onChange = (e) => {
+        const { name, value } = e.target;
+        setData({...data, [name]: value});
+    };
+
+    const submit = (e) => {
+        e.preventDefault();
+        post(route("admin.series.store"));
+    };
+
     return (
-        <form className="space-y-6">
+        <form onSubmit={submit} className="space-y-6">
             <div className="space-y-1">
                 <Label forInput="title">Judul</Label>
                 <Input
+                    onChange={onChange}
                     name="title"
                     id="title"
                     type="text"
                     placeholder="Judul Serie"
                     className="w-full"
                 />
+                <InputError errors={errors} fieldName={"title"} />
             </div>
             <div className="space-y-1 ">
                 <Label htmlFor="topic" value="">
                     Topik Artikel
                 </Label>
                 <Select
+                    
                     value={data.topic.map((id) => ({
                         value: id,
                         label: topic.series.find((topic) => topic.id === id)
@@ -70,9 +83,12 @@ function FormCreateSerie() {
 
             <div className="space-y-1">
                 <Label forInput="description">Deskripsi</Label>
-                <Textarea placeholder="Deskripsi serie" name="description" id="description" rows="3" >
+                <Textarea 
+                    onChange={onChange}
+                placeholder="Deskripsi serie" name="description" id="description" rows="3" >
                     
                 </Textarea>
+                <InputError errors={errors} fieldName={"description"} />
             </div>
 
             <div className="mt-6">
