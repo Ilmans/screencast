@@ -16,9 +16,12 @@ class SeriesController extends Controller
     
     public function index (Request $request) {
 
-
         $series = $this->seriesService->getSeries();
         return inertia('Admin/Serie/Index',compact('series'));
 
+    }
+
+    public function create () {
+        return inertia('Admin/Serie/Create');
     }
 }

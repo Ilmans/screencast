@@ -62,7 +62,7 @@ class TopicService extends UploadImageService
     {
         // only get topic who has related series
         return Cache::rememberForever('topics_series', function () {
-            return Topic::whereType('series')->has('series')->get();
+            return Topic::whereType('serie')->get();
         });
         
     }
