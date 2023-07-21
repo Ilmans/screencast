@@ -6,7 +6,9 @@ import {
     TableHeader,
     TableRow,
 } from "@/Components/ui/table";
+import { IconDotsVertical } from "@tabler/icons-react";
 import React, { Fragment } from "react";
+import SerieListMenu from "./SerieListMenu";
 
 function ListSeries({ series }) {
     return (
@@ -20,6 +22,7 @@ function ListSeries({ series }) {
                         <TableHead>Topik</TableHead>
                         <TableHead>Published</TableHead>
                         <TableHead>Created At</TableHead>
+                        <TableHead></TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -43,6 +46,9 @@ function ListSeries({ series }) {
                                 {serie.published ? "Yes" : "No"}
                             </TableCell>
                             <TableCell>{serie.created_at}</TableCell>
+                            <TableCell>
+                               <SerieListMenu serie={serie} />
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

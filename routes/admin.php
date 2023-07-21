@@ -23,6 +23,8 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
     Route::get('/series/create',[SeriesController::class,'create'])->name('admin.series.create');
     Route::post('/series',[SeriesController::class,'store'])->name('admin.series.store');
 
+    
+    Route::get('/series/{serie}/manage/videos',[SeriesController::class,'manageSerieVideos'])->name('admin.series.videos');
     //end series routes
 });
 ?>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateSerieRequest;
 use App\Http\Services\SerieService;
+use App\Http\Services\VideoService;
+use App\Models\Serie;
 use Illuminate\Http\Request;
 
 class SeriesController extends Controller
@@ -26,6 +28,7 @@ class SeriesController extends Controller
         return inertia('Admin/Serie/Create');
     }
 
+
     public function store (CreateSerieRequest $request) {
         try {
             $this->seriesService->createSerie($request);
@@ -35,4 +38,17 @@ class SeriesController extends Controller
             return redirect()->back()->with('error','Something went wrong.');
         }
     }
+
+
+    public function manageSerieVideos (Serie $serie) {
+        $videoService = new VideoService();
+        $videos = $videoService->getVideosBySerie($serie);
+        return inertia('Admin/Serie/ManageVideos',compact('serie','videos'));
+    }
+
+
+  
+
+
+   
 }
