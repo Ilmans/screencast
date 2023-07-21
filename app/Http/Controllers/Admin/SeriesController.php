@@ -46,6 +46,19 @@ class SeriesController extends Controller
         return inertia('Admin/Serie/ManageVideos',compact('serie','videos'));
     }
 
+    public function toggleStatus (Serie $serie)
+    {
+        try {
+            $serie->update([
+                'status' => $serie->status === 'published' ? 'draft' : 'published'
+            ]);
+            return redirect()->back()->with('success','Serie status updated successfully.');
+        } catch (\Throwable $th) {
+            throw $th;
+            return redirect()->back()->with('error','Something went wrong.');
+        }
+    }
+
 
   
 

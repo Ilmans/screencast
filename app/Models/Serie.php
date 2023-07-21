@@ -15,6 +15,7 @@ class Serie extends Model
         'title',
         'description',
         'image',
+        'status',
         'slug'
     ];
 

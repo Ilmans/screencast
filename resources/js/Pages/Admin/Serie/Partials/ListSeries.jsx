@@ -9,8 +9,12 @@ import {
 import { IconDotsVertical } from "@tabler/icons-react";
 import React, { Fragment } from "react";
 import SerieListMenu from "./SerieListMenu";
+import { Label } from "@/Components/ui/label";
+import { Switch } from "@/Components/ui/switch";
+import { router } from "@inertiajs/react";
 
 function ListSeries({ series }) {
+    
     return (
         <Fragment>
             <Table>
@@ -20,7 +24,7 @@ function ListSeries({ series }) {
                         <TableHead>Judul</TableHead>
                         <TableHead>Total Video</TableHead>
                         <TableHead>Topik</TableHead>
-                        <TableHead>Published</TableHead>
+                        <TableHead>Status</TableHead>
                         <TableHead>Created At</TableHead>
                         <TableHead></TableHead>
                     </TableRow>
@@ -43,11 +47,19 @@ function ListSeries({ series }) {
                                     .join(", ")}
                             </TableCell>
                             <TableCell>
-                                {serie.published ? "Yes" : "No"}
+                                <div className="flex items-center space-x-2">
+                                    <Switch onClick={()=> {
+
+                                        router.post(route('admin.series.toggle-status', serie.id))
+                                    }}  checked={serie.status === 'published'} id={`status-${serie.id}`} />
+                                    <Label htmlFor={`status-${serie.id}`}>
+                                        {serie.status === 'published' ? 'Published' : 'Drafted'}
+                                    </Label>
+                                </div>
                             </TableCell>
                             <TableCell>{serie.created_at}</TableCell>
                             <TableCell>
-                               <SerieListMenu serie={serie} />
+                                <SerieListMenu serie={serie} />
                             </TableCell>
                         </TableRow>
                     ))}
