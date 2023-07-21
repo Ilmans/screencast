@@ -21,8 +21,17 @@ class CreateTopicRequest extends FormRequest
      */
     public function rules(): array
     {
+
+        if ($this->method() === 'PUT') {
+            return [
+                'name' => 'required|string|max:255|unique:topics,name,' . $this->topic->id,
+                'image' => 'nullable|image',
+                'type' => 'required|in:serie,article',
+                'description' => 'nullable|string|max:255',
+            ];
+        }
         return [
-            'name' => 'required|string|max:255',
+            'name' => 'required|unique:topics|string|max:255',
             'image' => 'required|image',
             'type' => 'required|in:serie,article',
             'description' => 'nullable|string|max:255',

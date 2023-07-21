@@ -10,11 +10,12 @@ class TopicService extends UploadImageService
 {
 
   
+    private $pathImage = 'images/topics/';
 
     public function createTopic ($request) : void
     {
         $slug = \Str::slug($request->name);
-        $imageName = $this->uploadImage($slug, $request->file('image'), 'images/topics/');
+        $imageName = $this->uploadImage($slug, $request->file('image'), $this->pathImage);
         Topic::create([
             'name' => $request->name,
             'slug' => $slug,
@@ -22,6 +23,24 @@ class TopicService extends UploadImageService
             'type' => $request->type,
             'description' => $request->description ?? ' ',
         ]);
+    }
+
+
+    public function updateTopic($request,$topic) : void
+    {
+       
+        $slug = \Str::slug($request->name);
+        $imageName = $request->file('image') ? $this->uploadImage($slug, $request->file('image'), $this->pathImage) : $topic->image;
+        if ($request->file('image') && $topic->image) {
+            $this->deleteImage($topic->image, $this->pathImage);
+        }
+        $topic->update([
+            'name' => $request->name,
+            'slug' => $slug,
+            'image' => $imageName,
+            'type' => $request->type,
+            'description' => $request->description ?? ' ',
+        ]); 
     }
 
 

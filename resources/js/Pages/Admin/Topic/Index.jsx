@@ -17,7 +17,7 @@ import {
 } from "@/Components/ui/table";
 import AdminLayout from "@/Layouts/AdminLayout";
 import { Head, Link } from "@inertiajs/react";
-import { IconPlus } from "@tabler/icons-react";
+import { IconEdit, IconPlus } from "@tabler/icons-react";
 import React from "react";
 
 function Index({ topics }) {
@@ -82,6 +82,13 @@ function Index({ topics }) {
                                         }`}
                                     >
                                         {topic.type}
+                                    </TableCell>
+                                    <TableCell>
+                                        <div className="flex items-center justify-center gap-x-2">
+                                            <Link href={route('admin.topics.edit',topic.id)} className="text-yellow-500">
+                                                <IconEdit className="w-5 h-5" />
+                                            </Link>
+                                        </div>
                                     </TableCell>
                                 </TableRow>
                             ))}

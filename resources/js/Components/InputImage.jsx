@@ -13,6 +13,7 @@ function InputImage({
     name = "image",
     label = "Image",
     
+    
 }) {
     const [imagePreview, setImagePreview] = useState(null); // [1
     const resizeImage = (file) => {
@@ -27,7 +28,10 @@ function InputImage({
             100,
             0,
             (file) => {
-                setData({ ...data, image: file });
+               
+               setData({
+                    ...data, [name]: file,
+               } )
                 setImagePreview(URL.createObjectURL(file));
             },
             "file"

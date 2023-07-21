@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateTopicRequest;
 use App\Http\Services\TopicService;
+use App\Models\Topic;
 use Illuminate\Http\Request;
 
 class TopicController extends Controller
@@ -16,7 +17,7 @@ class TopicController extends Controller
         $this->topicService = $topicService;
     }
     
-    public function index()
+    public function index() : \Inertia\Response
     {
 
         $topics = $this->topicService->getAllTopics();
@@ -29,13 +30,30 @@ class TopicController extends Controller
         return inertia('Admin/Topic/Create');
     }
 
-    public function store(CreateTopicRequest $request)
+    public function store(CreateTopicRequest $request) : \Illuminate\Http\RedirectResponse
     {
+       
         try {
             $this->topicService->createTopic($request);
             return redirect()->route('admin.topics.index');
         } catch (\Throwable $th) {
-            throw $th;
+          //  throw $th;
+            return back()->with('error', 'Something went wrong');
+        }
+    }
+
+    public function edit(Topic $topic) : \Inertia\Response
+    {
+        return inertia('Admin/Topic/Edit',compact('topic'));
+    }
+
+    public function update(Request $request, Topic $topic) : \Illuminate\Http\RedirectResponse
+    {
+       
+        try {
+            $this->topicService->updateTopic($request,$topic);
+            return redirect()->route('admin.topics.index');
+        } catch (\Throwable $th) {
             return back()->with('error', 'Something went wrong');
         }
     }
