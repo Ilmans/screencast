@@ -6,8 +6,26 @@ use App\Models\Topic;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Cache;
 
-class TopicService
+class TopicService extends UploadImageService
 {
+
+  
+
+    public function createTopic ($request) : void
+    {
+        $slug = \Str::slug($request->name);
+        $imageName = $this->uploadImage($slug, $request->file('image'), 'images/topics/');
+        Topic::create([
+            'name' => $request->name,
+            'slug' => $slug,
+            'image' => $imageName,
+            'type' => $request->type,
+            'description' => $request->description ?? ' ',
+        ]);
+    }
+
+
+
     public function getAllSeriesTopics(): Collection
     {
         // only get topic who has related series

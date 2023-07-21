@@ -16,12 +16,14 @@ import {
     TableRow,
 } from "@/Components/ui/table";
 import AdminLayout from "@/Layouts/AdminLayout";
+import { Head, Link } from "@inertiajs/react";
 import { IconPlus } from "@tabler/icons-react";
 import React from "react";
 
 function Index({ topics }) {
     return (
         <div className="max-w-4xl">
+            <Head title="Topics" />
             <Card className="p-6 space-y-6">
                 <CardHeader>
                     <div className="flex justify-between">
@@ -31,14 +33,16 @@ function Index({ topics }) {
                                 Seluruh topik artikel dan serie
                             </CardDescription>
                         </div>
-                        <Button
-                            size="sm"
-                            variant="secondary"
-                            className="flex gap-x-1"
-                        >
-                            <IconPlus className="w-4 h-4" />
-                            <span>Tambah Topik</span>
-                        </Button>
+                        <Link href={route("admin.topics.create")}>
+                            <Button
+                                size="sm"
+                                variant="secondary"
+                                className="flex gap-x-1"
+                            >
+                                <IconPlus className="w-4 h-4" />
+                                <span>Tambah Topik</span>
+                            </Button>
+                        </Link>
                     </div>
                 </CardHeader>
                 <CardContent>
@@ -58,7 +62,7 @@ function Index({ topics }) {
                                         {topic.image ? (
                                             <div>
                                                 <img
-                                                    src={topic.image}
+                                                    src={"/images/topics/" + topic.image}
                                                     alt=""
                                                     className="w-10 h-10 rounded-full"
                                                 />

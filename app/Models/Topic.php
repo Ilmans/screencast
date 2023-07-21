@@ -11,6 +11,14 @@ class Topic extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'slug',
+        'image',
+        'type',
+        'description',
+    ];
+
     public function series(): MorphToMany
     {
         return $this->morphedByMany(Serie::class, "topicable");
