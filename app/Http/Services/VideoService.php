@@ -38,6 +38,22 @@ class VideoService
 
     // manage
 
+
+    public function storeVideo ($request)
+    {
+        $order_num = Video::where('serie_id', $request->serie_id)->max('order_num');
+
+        $duration = $this->validatedYoutubeVideo($request->unique_video_id);
+        Video::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'unique_video_id' => $request->unique_video_id,
+            'is_free' => $request->is_free,
+            'seconds_time' => $duration,
+            'order_num' => $order_num + 1,
+            'serie_id' => $request->serie_id,
+        ]);
+    }
     public function updateVideo($request, $video)
     {
         $duration = $this->validatedYoutubeVideo($request->unique_video_id);
@@ -66,19 +82,22 @@ class VideoService
         }
 
         $duration = $video[0]['contentDetails']['duration'];
+      
         return $this->getDurationInSeconds($duration);
     }
 
     function getDurationInSeconds($iso8601Duration)
     {
-        $iso8601Duration = str_replace('PT', 'P0DT0H', $iso8601Duration);
-        $interval = new DateInterval($iso8601Duration);
-        $seconds =
-            $interval->days * 24 * 60 * 60 +
-            $interval->h * 60 * 60 +
-            $interval->i * 60 +
-            $interval->s;
-
-        return $seconds;
+        $pattern = '/^P(?:T(?:([0-9]+)H)?(?:([0-9]+)M)?(?:([0-9]+)S)?)?$/';
+        if (preg_match($pattern, $iso8601Duration, $matches)) {
+            $hours = isset($matches[1]) ? (int)$matches[1] : 0;
+            $minutes = isset($matches[2]) ? (int)$matches[2] : 0;
+            $seconds = isset($matches[3]) ? (int)$matches[3] : 0;
+    
+            $totalSeconds = $hours * 3600 + $minutes * 60 + $seconds;
+            return $totalSeconds;
+        }
+    
+        return -1; // Atau kembalikan nilai lain untuk menandakan kesalahan jika format tidak sesuai.
     }
 }

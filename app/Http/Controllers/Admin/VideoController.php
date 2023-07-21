@@ -19,8 +19,22 @@ class VideoController extends Controller
 
     public function update(Video $video, VideoRequest $request)
     {
+        try {
+            $this->serviceVideo->updateVideo($request, $video);
+            return back()->with('success', 'Video updated successfully');
+        } catch (\Throwable $th) {
+            return back()->with('error', $th->getMessage());
+        }
+    }
+
+    public function store(Request $request)
+    {
        
-        $this->serviceVideo->updateVideo($request, $video);
-        return back()->with('success', 'Video updated successfully');
+        try {
+            $this->serviceVideo->storeVideo($request);
+            return back()->with('success', 'Video created successfully');
+        } catch (\Throwable $th) {
+            return back()->with('error', $th->getMessage());
+        }
     }
 }

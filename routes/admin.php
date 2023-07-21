@@ -26,6 +26,7 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
 
     
     Route::get('/series/{serie}/manage/videos',[SeriesController::class,'manageSerieVideos'])->name('admin.series.videos');
+    Route::post('/videos',[VideoController::class,'store'])->name('admin.videos.store');
     Route::put('/video/{video}',[VideoController::class,'update'])->name('admin.video.update');
     //end series routes
 });

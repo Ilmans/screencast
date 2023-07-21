@@ -29,6 +29,14 @@ class VideoRequest extends FormRequest
                 'unique_video_id' => 'required|string|max:255|unique:videos,unique_video_id,'.$this->video->id,
                 'is_free' => 'required|boolean',
             ];
-        }
+        } 
+
+        return [
+            'serie_id' => 'required|exists:series,id',
+            'title' => 'required|string|max:255|unique:videos,title',
+            'description' => 'required|string',
+            'unique_video_id' => 'required|string|max:255|unique:videos,unique_video_id',
+            'is_free' => 'required|boolean',
+        ];
     }
 }
