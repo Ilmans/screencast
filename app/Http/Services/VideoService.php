@@ -23,17 +23,19 @@ class VideoService
 
     public function canWatch(Video $video): bool
     {
-        if (auth()->check()) {
-            if ($video->is_free) {
-                return true;
-            }
-            $check = Subscription::where('user_id', auth()->id())
-                ->where('is_active', true)
-                ->first();
-            return $check ? true : false;
+        if (!auth()->check()) {
+            return false;
         }
+        $user = auth()->user();
+        $isSeriePublished = $video->serie()->first()->status === 'published';
+        $isVideoFree = $video->is_free;
+        $isUserAdmin = $user->is_admin;
 
-        return false;
+        if($isUserAdmin || ($isSeriePublished && $isVideoFree) || ($isSeriePublished && $user->isHaveActiveSubscription())) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // manage
