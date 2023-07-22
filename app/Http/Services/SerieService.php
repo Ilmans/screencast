@@ -98,6 +98,7 @@ class SerieService extends SerieManagementService
 
     public function isSavedWatchLater($serie): bool
     {
+       
         if (!auth()->check()) {
             return false;
         }

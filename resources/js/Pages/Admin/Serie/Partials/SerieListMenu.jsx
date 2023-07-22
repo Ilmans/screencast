@@ -30,7 +30,7 @@ function SerieListMenu({serie}) {
                 <DropdownMenuItem>
                     <Link
                         className="flex items-center gap-x-2"
-                        href={`/admin/series/${serie.id}/manage/videos`}
+                        href={`/serie/${serie.slug}/watch`}
                     >
                         <IconEye className="w-4 h-4" />
                         <span>Preview</span>
