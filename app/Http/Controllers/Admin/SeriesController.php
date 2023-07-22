@@ -49,7 +49,11 @@ class SeriesController extends Controller
     public function toggleStatus (Serie $serie)
     {
         try {
-            $serie->update([
+            $hasChildren =  $serie->videos()->count() > 0;
+            if($serie->status === 'draft' && !$hasChildren) {
+                return back()->with('error',"Cant publish, no videos in this serie ");
+            }
+            $serie->update([ 
                 'status' => $serie->status === 'published' ? 'draft' : 'published'
             ]);
             return redirect()->back()->with('success','Serie status updated successfully.');
