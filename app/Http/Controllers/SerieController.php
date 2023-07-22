@@ -23,7 +23,7 @@ class SerieController extends Controller
     public function show(Serie $serie,)
     {
 
-        $serie = $this->serieService->getSingle($serie->id);
+        $serie = $this->serieService->published()->getSingle($serie->id);
         $isSavedWatchLater = $this->serieService->isSavedWatchLater($serie);
 
         return inertia('Serie/Show', compact('serie', 'isSavedWatchLater'));
@@ -31,6 +31,10 @@ class SerieController extends Controller
 
     public function watch(Serie $serie, Video $video)
     {
+
+        if(!$this->authorize('watch', $video)) {
+            abort(403);
+        }
         $serie = $this->serieService->getSingle($serie->id);
         $canWatch = $this->videoService->canWatch($video);
 

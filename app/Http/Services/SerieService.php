@@ -15,6 +15,11 @@ class SerieService extends SerieManagementService
         $this->series = Serie::query();
     }
 
+    public function published (){
+        $this->series->where('status', 'published');
+        return $this;
+    }
+
     
     public function setSeries(Builder $series)
     {
