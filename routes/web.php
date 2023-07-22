@@ -21,7 +21,7 @@ Route::get("/topic/{topic:slug}", [TopicController::class, 'show'])->name("topic
 
 // serie
 Route::get("/serie/{serie:slug}", [SerieController::class, "show"])->name("serie.show");
-Route::get("/serie/{serie:slug}/{video:order_num}", [SerieController::class, "watch"])->name("serie.watch");
+Route::get("/serie/{serie:slug}/watch/{video:order_num?}", [SerieController::class, "watch"])->name("serie.watch");
 
 
 // article

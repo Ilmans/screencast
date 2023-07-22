@@ -20,7 +20,7 @@ function VideoList({ serie, activeVideo = null }) {
                         preserveScroll={true}
                         preserveState={true}
                         className="flex items-center text-slate-800 dark:text-slate-50 dark:hover:text-primary-400 justify-between hover:text-primary-500 py-3.5 font-medium fade group"
-                        href={`/serie/${serie.slug}/${video.order_num}`}
+                        href={route('serie.watch', [serie.slug, video.order_num])}
                     >
                         <span className="flex">
                             <span className="flex-shrink-0 mr-2 print:hidden md:mr-3 group-hover:text-slate-500 text-slate-500">
