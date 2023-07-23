@@ -1,3 +1,4 @@
+import { Input } from "@/Components/ui/input";
 import {
     Table,
     TableBody,
@@ -19,6 +20,7 @@ function ListUser({ users }) {
                     <TableCell>Total Artikel</TableCell>
                     <TableCell></TableCell>
                 </TableRow>
+               
             </TableHeader>
             <TableBody>
                 {users.data.map((user, index) => (

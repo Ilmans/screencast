@@ -53,14 +53,15 @@ class ArticleService
     public function useFilter($request)
     {
 
-        if ($request->search) {
-            $this->article->where('title', 'like', '%' . $request->search . '%')->orWhere('body', 'like', '%' . $request->search . '%');
-        }
-        if ($request->topic) {
-            $this->article->whereHas('topics', function ($query) use ($request) {
-                return $query->where('slug', $request->topic);
+        $request->whenFilled('topic', function ($topic) {
+            $this->article->whereHas('topics', function ($query) use ($topic) {
+                $query->where('slug', $topic);
             });
-        }
+        });
+        $request->whenFilled('search', function ($search) {
+            $this->article->where('title', 'like', '%' . $search . '%');
+        });
+
         return $this;
     }
 

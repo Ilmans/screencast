@@ -8,14 +8,13 @@ import {
 } from "@/Components/ui/select";
 import { router, usePage } from "@inertiajs/react";
 
-function FormFilter() {
-    const { topic } = usePage().props;
+function SelectFiltering({name,label,filterOptions}) {
     const params = new URLSearchParams(window.location.search);
 
-    const topicParams = params.get("topic");
+    const filterParams = params.get(name);
     const currentUrl = new URL(window.location.href);
 
-    const [selectedTopic, setSelectedTopic] = React.useState(topicParams || "");
+    const [selectedFilter, setSelectedFilter] = React.useState(filterParams || "");
     const isFirstRender = useRef(true);
 
     useEffect(() => {
@@ -24,28 +23,28 @@ function FormFilter() {
             return;
         }
 
-        params.set("topic", selectedTopic);
+        params.set(name, selectedFilter);
         router.replace(currentUrl.pathname + "?" + params.toString());
        
-    }, [ selectedTopic]);
+    }, [ selectedFilter]);
 
     useEffect(() => {
-        setSelectedTopic(topicParams || "");
-    } ,[topicParams])
+        setSelectedFilter(filterParams || "");
+    } ,[filterParams])
 
 
     return (
         <Select
-            value={selectedTopic}
-            onValueChange={(value) => setSelectedTopic(value)}
+            value={selectedFilter}
+            onValueChange={(value) => setSelectedFilter(value)}
         >
             <SelectTrigger  className="w-[180px]">
-                <SelectValue  placeholder="Berdasarkan Topik" />
+                <SelectValue  placeholder={label} />
             </SelectTrigger>
             <SelectContent>
-                <SelectItem value="">Semua Topik</SelectItem>
-                {topic.articles.map((t, i) => (
-                    <SelectItem key={i} value={t.slug}>
+                <SelectItem value="">Semua {name}</SelectItem>
+                {filterOptions.map((t, i) => (
+                    <SelectItem key={i} value={t.value}>
                         {t.name}
                     </SelectItem>
                 ))}
@@ -54,4 +53,4 @@ function FormFilter() {
     );
 }
 
-export default FormFilter;
+export default SelectFiltering;

@@ -15,8 +15,12 @@ import ArticleList from "./partials/ArticleList";
 import Pagination from "@/Components/Page/Pagination";
 import FormFilter from "./partials/FormFilter";
 import Searching from "@/Components/Searching";
+import SelectFiltering from "@/Components/SelectFiltering";
 
 function MyArticles({ articles }) {
+    const {topic} =usePage().props;
+    const filterOptions = topic.articles.map((topic) => ({ name: topic.name, value: topic.slug }));
+         
     return (
         <div className="">
             <Head title="My Articles" />
@@ -41,7 +45,7 @@ function MyArticles({ articles }) {
                 </CardHeader>
                 <CardContent>
                     <div className="flex items-center justify-end py-2 gap-x-2">
-                        <FormFilter />
+                       <SelectFiltering name="topic" label="Berdasarkan Topik" filterOptions={filterOptions} />
                         <Searching placeholder={"Cari artikel"} />
                     </div>
                     {/* <FormFilter /> */}
