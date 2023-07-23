@@ -14,6 +14,7 @@ import React from "react";
 import ArticleList from "./partials/ArticleList";
 import Pagination from "@/Components/Page/Pagination";
 import FormFilter from "./partials/FormFilter";
+import Searching from "@/Components/Searching";
 
 function MyArticles({ articles }) {
     return (
@@ -28,7 +29,7 @@ function MyArticles({ articles }) {
                                 Daftar artikel yang telah anda buat
                             </CardDescription>
                         </div>
-                        <div className="col-span 1 flex justify-end">
+                        <div className="flex justify-end col-span 1">
                             <Link href="/article/create" className="">
                                 <Button className="flex gap-x-1" size="sm">
                                     <IconBookUpload className="w-4 h-4" />
@@ -39,7 +40,11 @@ function MyArticles({ articles }) {
                     </div>
                 </CardHeader>
                 <CardContent>
-                    <FormFilter />
+                    <div className="flex items-center justify-end py-2 gap-x-2">
+                        <FormFilter />
+                        <Searching placeholder={"Cari artikel"} />
+                    </div>
+                    {/* <FormFilter /> */}
                     <ArticleList articles={articles} />
                     <div className="mt-4">
                         <Pagination links={articles.links} />
