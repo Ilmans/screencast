@@ -17,6 +17,9 @@ import {
 import { useForm } from "@inertiajs/react";
 import MDEditor from "@uiw/react-md-editor";
 
+import "@uiw/react-md-editor/dist/mdeditor.css";
+import "./../../../../../css/md-custom.css";
+
 import React from "react";
 
 function ModalAddVideo({ serie, openModal, setOpenModal }) {
@@ -87,11 +90,12 @@ function ModalAddVideo({ serie, openModal, setOpenModal }) {
                         </Select>
                         <InputError errors={errors} fieldName={"is_free"} />
                     </div>
-                    <div className="space-y-1">
+                    
+                    <div className="space-y-1 ">
                         <Label className="text-sm">Deskripsi Video</Label>
                         <MDEditor
                             preview={"edit"}
-                            className="w-full h-96 "
+                            className=""
                             value={data.description}
                             onChange={(value) =>
                                 setData({ ...data, description: value })

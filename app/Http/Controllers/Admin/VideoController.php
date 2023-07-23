@@ -78,4 +78,15 @@ class VideoController extends Controller
             ]);
         }
     }
+
+
+    public function destroy (Video $video)
+    {
+        try {
+            $video->delete();
+            return back()->with('success', 'Video deleted successfully');
+        } catch (\Throwable $th) {
+            return back()->with('error', $th->getMessage());
+        }
+    }
 }

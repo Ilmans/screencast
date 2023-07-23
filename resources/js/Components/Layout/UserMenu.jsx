@@ -50,6 +50,15 @@ function UserMenu({ dashboard = true }) {
                     >
                         Beranda
                     </VerticalNavLink>
+                    {user.is_admin && (
+                           <VerticalNavLink
+                           href="/admin/dashboard"
+                           icon="IconBrandAsana"
+                           active={route().current("admin.dashboard")}
+                       >
+                           Admin Dashboard
+                       </VerticalNavLink>
+                    )}
                     <VerticalNavLink
                         href="/profile"
                         icon="IconUserCircle"

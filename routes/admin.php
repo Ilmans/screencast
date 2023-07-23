@@ -30,6 +30,7 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
     Route::get('/series/{serie}/manage/videos',[SeriesController::class,'manageSerieVideos'])->name('admin.series.videos');
     Route::post('/videos',[VideoController::class,'store'])->name('admin.videos.store');
     Route::put('/video/{video}',[VideoController::class,'update'])->name('admin.video.update');
+    Route::delete('/videos/{video}',[VideoController::class,'destroy'])->name('admin.video.destroy');
     Route::post('/swap/videos',[VideoController::class,'swapVideos'])->name('admin.videos.swap');
     //end series routes
 
