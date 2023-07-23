@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Services;
 
+use App\Models\PackagePrice;
 use App\Models\Subscription;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
@@ -79,6 +81,23 @@ class ManageSubscriptionService
     }
 
 
+
+    public function store ($request)
+    {
+        $userId = User::where('email', $request->user_email)->first()->id;
+        $isAlreadyExist = Subscription::where('user_id', $userId)->first();
+        if ($isAlreadyExist) {
+           throw new \Exception('User already has a subscription');
+        }
+        $month = PackagePrice::find($request->package_id)->duration_months;
+        
+        $subscription = Subscription::create([
+            'user_id' => $userId,
+            'package_price_id' => $request->package_id,
+            'is_active' => true,
+            'ends_at' => now()->addMonths($month),
+        ]);
+    }
     public function update ($request, $subscription)
     {
         $subscription->update([

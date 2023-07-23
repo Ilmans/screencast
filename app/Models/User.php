@@ -90,7 +90,7 @@ class User extends Authenticatable
 
     public function scopeIsHaveActiveSubscription()
     {
-        return $this->subscription()->where('ends_at', '>', now())->exists();
+        return $this->subscription()->where('ends_at', '>', now())->whereIsActive(true)->exists();
     }
 
     public function scopeRemainsSubscriber()

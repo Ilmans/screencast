@@ -33,7 +33,7 @@ function ModalEditSubscription({ subscription, open, setOpen }) {
         <Dialog open={open}>
             <DialogContent setOpen={setOpen} className="w-96">
                 <DialogHeader>
-                    <DialogTitle>Edit User</DialogTitle>
+                    <DialogTitle>Edit Langganan</DialogTitle>
                     <DialogDescription>
                         Edit langganan pengguna {subscription.user.email}
                     </DialogDescription>
