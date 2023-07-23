@@ -54,6 +54,7 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
     Route::get('/subscriptions',[SubscriptionController::class,'index'])->name('admin.subscriptions.index');
     Route::post('/subscriptions',[SubscriptionController::class,'store'])->name('admin.subscription.store');
     Route::put('/subscriptions/{subscription}',[SubscriptionController::class,'update'])->name('admin.subscription.update');
+    Route::delete('/subscriptions/{subscription}',[SubscriptionController::class,'destroy'])->name('admin.subscription.destroy');
 
     // end subscription routes
 });

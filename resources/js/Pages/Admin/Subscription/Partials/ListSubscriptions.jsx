@@ -9,19 +9,29 @@ import {
 import React, { Fragment } from "react";
 import SubscriptionListMenu from "./SubscriptionListMenu";
 import ModalEditSubscription from "./ModalEditSubscription";
+import ConfirmDelete from "@/Components/ConfirmDelete";
 
 function ListSubscriptions({ subscriptions }) {
     const [selectedSubscription, setSelectedSubscription] =
         React.useState(null);
     const [openModalEdit, setOpenModalEdit] = React.useState(false);
+    const [modalConfirmDelete, setModalConfirmDelete] = React.useState(false);
     return (
         <Fragment>
             {selectedSubscription && (
-                <ModalEditSubscription
-                    open={openModalEdit}
-                    setOpen={setOpenModalEdit}
-                    subscription={selectedSubscription}
-                />
+                <Fragment>
+                    <ModalEditSubscription
+                        open={openModalEdit}
+                        setOpen={setOpenModalEdit}
+                        subscription={selectedSubscription}
+                    />
+                    <ConfirmDelete
+                        text={`Apakah anda yakin ingin menghapus langganan ${selectedSubscription.user.email} ?`}
+                        urlDelete={`admin/subscriptions/${selectedSubscription.id}`}
+                        openConfirmDelete={modalConfirmDelete}
+                        setOpenConfirmDelete={setModalConfirmDelete}
+                    />
+                </Fragment>
             )}
             <Table>
                 <TableHeader>
@@ -59,9 +69,12 @@ function ListSubscriptions({ subscriptions }) {
                             <TableCell>{subscription.updated_at}</TableCell>
                             <TableCell>{subscription.created_at}</TableCell>
                             <TableCell>
-                                <SubscriptionListMenu 
+                                <SubscriptionListMenu
                                     subscription={subscription}
-                                    setSelectedSubscription={setSelectedSubscription}
+                                    setSelectedSubscription={
+                                        setSelectedSubscription
+                                    }
+                                    setModalConfirmDelete={setModalConfirmDelete}
                                     setOpenModalEdit={setOpenModalEdit}
                                 />
                             </TableCell>

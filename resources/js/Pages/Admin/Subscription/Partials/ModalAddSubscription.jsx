@@ -9,9 +9,10 @@ import { useForm } from "@inertiajs/react";
 import React from "react";
 
 function ModalAddSubscription({open,setOpen,packages}) {
+  
     const {data,setData,post,processing,errors} = useForm({
         user_email : "",
-        package_id : packages[0].id
+        package_id : packages[0].id.toString()
     });
 
     const submit = (e) => {
@@ -39,22 +40,22 @@ function ModalAddSubscription({open,setOpen,packages}) {
                     <div className="space-y-1">
                         <Label className="text-sm">Jenis Subscription</Label>
                         <Select
-                            onValueChange={(value) => {
+                               value={data.package_id}
+                           onValueChange={(value) => {
                                 setData({
                                     ...data,
-                                    package_id: value
+                                    package_id: value.toString()
                                 });
-                            }}
-                            value={data.package_id}
+                           }}
                         >
                             <SelectTrigger>
-                                <SelectValue>
+                                <SelectValue placeholder="Pilih Paket">
                                   
                                 </SelectValue>
                             </SelectTrigger>
                             <SelectContent>
                               {packages.map((item) => (
-                                <SelectItem value={item.id}>{item.name}</SelectItem>
+                                <SelectItem value={item.id.toString()}>{item.name}</SelectItem>
                               ))}
                             </SelectContent>
                         </Select>

@@ -86,4 +86,12 @@ class SubscriptionController extends Controller
             ->back()
             ->with('success', 'Subscription updated successfully');
     }
+
+    public function destroy(Subscription $subscription)
+    {
+        $subscription->delete();
+        return redirect()
+            ->back()
+            ->with('success', 'Subscription deleted successfully');
+    }
 }
