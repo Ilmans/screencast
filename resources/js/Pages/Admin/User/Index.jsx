@@ -10,6 +10,7 @@ import React from "react";
 import ListUser from "./Partials/ListUser";
 
 import Searching from "@/Components/Searching";
+import SelectFiltering from "@/Components/SelectFiltering";
 
 function Index({ users }) {
     return (
@@ -22,8 +23,19 @@ function Index({ users }) {
                             Seluruh user terdaftar
                         </CardDescription>
                     </div>
-                    <div className="flex items-center justify-end py-1">
-                        <Searching />
+                    <div className="flex items-center justify-end py-1 gap-x-2">
+                        <SelectFiltering
+                            name={"sort"}
+                            filterOptions={[
+                                { name: "Terbaru", value: "latest" },
+                                { name: "Terlama", value: "oldest" },
+                                {name : "Langganan", value : "subscription"}
+                            ]}
+                            disabledDefault={true}
+                            label="Urutkan"
+                            needFirstItem={false}
+                        />
+                        <Searching placeholder={"Cari user"}  />
                     </div>
                 </CardHeader>
                 <CardContent>

@@ -8,13 +8,20 @@ import {
 } from "@/Components/ui/select";
 import { router, usePage } from "@inertiajs/react";
 
-function SelectFiltering({name,label,filterOptions}) {
+function SelectFiltering({
+    name,
+    label,
+    filterOptions,
+    disabledDefault = false,
+}) {
     const params = new URLSearchParams(window.location.search);
 
     const filterParams = params.get(name);
     const currentUrl = new URL(window.location.href);
 
-    const [selectedFilter, setSelectedFilter] = React.useState(filterParams || "");
+    const [selectedFilter, setSelectedFilter] = React.useState(
+        filterParams || ""
+    );
     const isFirstRender = useRef(true);
 
     useEffect(() => {
@@ -25,24 +32,25 @@ function SelectFiltering({name,label,filterOptions}) {
 
         params.set(name, selectedFilter);
         router.replace(currentUrl.pathname + "?" + params.toString());
-       
-    }, [ selectedFilter]);
+    }, [selectedFilter]);
 
     useEffect(() => {
         setSelectedFilter(filterParams || "");
-    } ,[filterParams])
-
+    }, [filterParams]);
 
     return (
         <Select
+           defaultValue=""
             value={selectedFilter}
             onValueChange={(value) => setSelectedFilter(value)}
         >
-            <SelectTrigger  className="w-[180px]">
-                <SelectValue  placeholder={label} />
+            <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder={label} />
             </SelectTrigger>
             <SelectContent>
-                <SelectItem value="">Semua {name}</SelectItem>
+             
+                    <SelectItem disabled={disabledDefault} value=""> {label}</SelectItem>
+                
                 {filterOptions.map((t, i) => (
                     <SelectItem key={i} value={t.value}>
                         {t.name}

@@ -18,7 +18,7 @@ class UserController extends Controller
 
     public function index(Request $request) 
     {
-        $users = $this->manageUserService->allUsers();
+        $users = $this->manageUserService->search()->allUsers();
         return inertia('Admin/User/Index',compact('users'));
     }
 }

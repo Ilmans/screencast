@@ -18,6 +18,7 @@ function ListUser({ users }) {
                     <TableCell>Email</TableCell>
                     <TableCell>Langganan</TableCell>
                     <TableCell>Total Artikel</TableCell>
+                    <TableCell>Created at</TableCell>
                     <TableCell></TableCell>
                 </TableRow>
                
@@ -42,6 +43,7 @@ function ListUser({ users }) {
                             </span>
                         </TableCell>
                         <TableCell className="font-mono">{user.articles_count}</TableCell>
+                        <TableCell>{user.created_at}</TableCell>
                     </TableRow>
                 ))}
             </TableBody>

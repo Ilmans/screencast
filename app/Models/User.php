@@ -88,7 +88,7 @@ class User extends Authenticatable
 
     //scope
 
-    public function isHaveActiveSubscription()
+    public function scopeIsHaveActiveSubscription()
     {
         return $this->subscription()->where('ends_at', '>', now())->exists();
     }
@@ -127,5 +127,10 @@ class User extends Authenticatable
     public function scopeExperience()
     {
         return floor($this->watchHistories()->sum('watch_duration')  / 60);
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->format('d M Y H:i');
     }
 }
