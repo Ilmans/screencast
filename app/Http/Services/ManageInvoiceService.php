@@ -28,11 +28,8 @@ class ManageInvoiceService
                 ->whereHas('user', function ($query) use ($searchTerm) {
                     $query->where('email', 'like', "%{$searchTerm}%");
                 })
-                ->orWhereHas('invoice_number', function ($query) use (
-                    $searchTerm
-                ) {
-                    $query->where('invoice_number', 'like', "%{$searchTerm}%");
-                });
+                ->orWhere('invoice_number', 'like', "%{$searchTerm}%");
+                
         });
         return $this;
     }
