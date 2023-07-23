@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SeriesController;
 use App\Http\Controllers\Admin\TopicController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VideoController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,5 +32,10 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
     Route::put('/video/{video}',[VideoController::class,'update'])->name('admin.video.update');
     Route::post('/swap/videos',[VideoController::class,'swapVideos'])->name('admin.videos.swap');
     //end series routes
+
+
+    // users routes
+    Route::get('/users',[UserController::class,'index'])->name('admin.users.index');
+    // end users routes
 });
 ?>

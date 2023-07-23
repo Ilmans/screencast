@@ -35,6 +35,13 @@ function AdminMenu({dashboard = true}) {
         >
             Series
         </VerticalNavLink>
+        <VerticalNavLink
+            href="/admin/users"
+            icon="IconUsers"
+            active={route().current("admin.users.index")}
+        >
+            Users
+        </VerticalNavLink>
 
        
         </ul>
