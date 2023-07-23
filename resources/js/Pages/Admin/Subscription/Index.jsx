@@ -10,6 +10,8 @@ import { Head } from "@inertiajs/react";
 import React from "react";
 import ListSubscriptions from "./Partials/ListSubscriptions";
 import Pagination from "@/Components/Page/Pagination";
+import Searching from "@/Components/Searching";
+import SelectFiltering from "@/Components/SelectFiltering";
 
 function Index({subscriptions}) {
     return (
@@ -23,6 +25,30 @@ function Index({subscriptions}) {
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
+                    <div className="flex items-center justify-end py-2 gap-x-2">
+                        <SelectFiltering
+                            disabledDefault={true}
+                            name={"sort"}
+                            label={"Urutkan"}
+                            filterOptions={[
+                              
+                                { value: "newest", name: "Terbaru" },
+                                { value: "oldest", name: "Terlama" },
+                                {value : "expired", name : "Waktu expired"}
+                            ]}
+                        />
+                        <SelectFiltering
+                            disabledDefault={true}
+                            name={"filter"}
+                            label={"Status"}
+                            filterOptions={[
+                                { value: "all", name: "Semua" },
+                                { value: "active", name: "Aktif" },
+                                { value: "expired", name: "Tidak Aktif" },
+                            ]}
+                        />
+                        <Searching placeholder={"Cari berdasarkan User"} />
+                    </div>
                     <ListSubscriptions subscriptions={subscriptions} />
                     <div className="mt-4">
                         <Pagination links={subscriptions.links} />

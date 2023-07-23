@@ -66,10 +66,10 @@ class ManageSubscriptionService
         if ($request->filter) {
             switch ($request->filter) {
                 case 'active':
-                    $this->subscriptions->active();
+                    $this->subscriptions->where('is_active', true);
                     break;
                 case 'expired':
-                    $this->subscriptions->expired();
+                    $this->subscriptions->where('ends_at', '<', now());
                     break;
                 default:
                     break;
