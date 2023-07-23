@@ -29,17 +29,18 @@ class ManageUserService
     {
         $request = request();
 
-        if ($request->filled('sort')) {
+        if ($request->sort) {
+           
            switch ($request->sort) {
                case 'latest':
-                    $this->user->latest();
+                    $this->user->orderBy('created_at', 'desc');
                    break;
                case 'oldest':
-                    $this->user->oldest();
+                    $this->user->orderBy('created_at', 'asc');
                    break;
                case 'subscription':
-                    $this->user->leftJoin('subscription', 'subscriptions.user_id', '=', 'users.id')
-                        ->orderBy('subscription.ends_at', 'desc');
+                    $this->user->leftJoin('subscriptions', 'subscriptions.user_id', '=', 'users.id')
+                        ->orderBy('subscriptions.ends_at', 'desc');
                     
                    break;
                default:
