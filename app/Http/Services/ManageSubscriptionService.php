@@ -77,6 +77,15 @@ class ManageSubscriptionService
         }
         return $this;
     }
+
+
+    public function update ($request, $subscription)
+    {
+        $subscription->update([
+            'is_active' => $request->status,
+            'ends_at' => $request->expired,
+        ]);
+    }
 }
 
 ?>

@@ -11,6 +11,12 @@ class Subscription extends Model
     use HasFactory;
 
 
+    protected $fillable = [
+        'user_id',
+        'package_price_id',
+        'is_active',
+        'ends_at',
+    ];
 
     public function user()
     {
@@ -26,10 +32,7 @@ class Subscription extends Model
         return Carbon::parse($this->attributes['created_at'])->format('d/m/Y');
     }
 
-    public function getEndsAtAttribute()
-    {
-        return Carbon::parse($this->attributes['ends_at'])->format('d/m/Y');
-    }
+ 
     public function getUpdatedAtAttribute()
     {
         return Carbon::parse($this->attributes['updated_at'])->format('d/m/Y');

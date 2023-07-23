@@ -30,6 +30,7 @@ class VideoService
         $isSeriePublished = $video->serie()->first()->status === 'published';
         $isVideoFree = $video->is_free;
         $isUserAdmin = $user->is_admin;
+        
 
         if($isUserAdmin || ($isSeriePublished && $isVideoFree) || ($isSeriePublished && $user->isHaveActiveSubscription())) {
             return true;

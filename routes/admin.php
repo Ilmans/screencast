@@ -52,6 +52,7 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
 
     // subscription routes
     Route::get('/subscriptions',[SubscriptionController::class,'index'])->name('admin.subscriptions.index');
+    Route::put('/subscriptions/{subscription}',[SubscriptionController::class,'update'])->name('admin.subscription.update');
     // end subscription routes
 });
 ?>
