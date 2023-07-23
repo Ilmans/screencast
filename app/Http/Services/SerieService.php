@@ -63,10 +63,10 @@ class SerieService extends SerieManagementService
                 $this->series->withCount('videos')->orderBy('videos_count');
                 break;
             case 'most_time':
-                $this->series->withSum('videos', 'seconds_time')->orderByDesc('videos_seconds_time_sum');
+                $this->series->withSum('videos', 'seconds_time')->orderByDesc('videos_sum_seconds_time');
                 break;
             case 'least_time':
-                $this->series->withSum('videos', 'seconds_time')->orderBy('videos_seconds_time_sum');
+                $this->series->withSum('videos', 'seconds_time')->orderBy('videos_sum_seconds_time');
                 break;
             default:
                 $this->series->latest();
@@ -76,10 +76,11 @@ class SerieService extends SerieManagementService
 
         return $this;
     }
-    public function search($keyword)
+    public function search()
     {
-        if ($keyword) {
-            $this->series->where('title', 'like', "%$keyword%");
+        $request = request();
+        if ($request->search) {
+            $this->series->where('title', 'LIKE', "%{$request->search}%");
         }
         return $this;
     }

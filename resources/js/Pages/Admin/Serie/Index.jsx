@@ -12,6 +12,8 @@ import ListSeries from "./Partials/ListSeries";
 import Pagination from "@/Components/Page/Pagination";
 import { Button } from "@/Components/ui/button";
 import { IconPlus } from "@tabler/icons-react";
+import Searching from "@/Components/Searching";
+import SelectFiltering from "@/Components/SelectFiltering";
 
 function Index({ series }) {
     return (
@@ -39,6 +41,44 @@ function Index({ series }) {
                     </div>
                 </CardHeader>
                 <CardContent>
+                    <div className="flex items-center justify-end py-2 gap-x-2">
+                        <SelectFiltering
+                            name="sort"
+                            label="Sort"
+                            filterOptions={[
+                                {
+                                    name: "Terbaru",
+                                    value: "newest",
+                                },
+                                {
+                                    name: "Terlama",
+                                    value: "oldest",
+                                },
+                                // most videos
+                                {
+                                    name: "Terbanyak Video",
+                                    value: "most_videos",
+                                },
+                                // least videos
+                                {
+                                    name: "Tersedikit Video",
+                                    value: "least_videos",
+                                },
+                                //most time
+                                {
+                                    name: "Durasi Terlama",
+                                    value: "most_time",
+                                },
+                                //least time
+                                {
+                                    name: "Durasi Terpendek",
+                                    value: "least_time",
+                                },
+                            ]}
+                            disabledDefault={true}
+                        />
+                        <Searching placeholder={"Judul Serie"} />
+                    </div>
                     <ListSeries series={series} />
                     <div className="mt-4">
                         <Pagination links={series.links} />
