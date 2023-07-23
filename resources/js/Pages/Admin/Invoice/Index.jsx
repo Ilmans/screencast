@@ -10,10 +10,13 @@ import React from "react";
 import ListInvoice from "./Partials/ListInvoice";
 import Searching from "@/Components/Searching";
 import SelectFiltering from "@/Components/SelectFiltering";
+import { Head } from "@inertiajs/react";
+import Pagination from "@/Components/Page/Pagination";
 
 function Index({ invoices }) {
     return (
         <div className="max-w-4xl">
+            <Head title="Invoices" />
             <Card className="p-6 space-y-6">
                 <CardHeader>
                     <CardTitle>Invoice</CardTitle>
@@ -53,6 +56,11 @@ function Index({ invoices }) {
                 </div>
                 <CardContent>
                     <ListInvoice invoices={invoices} />
+                    
+                    
+                    <div className="mt-4">
+                        <Pagination links={invoices.links} />
+                    </div>
                 </CardContent>
             </Card>
         </div>

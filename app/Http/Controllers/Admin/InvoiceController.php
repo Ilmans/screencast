@@ -30,4 +30,10 @@ class InvoiceController extends Controller
         return redirect()->back();
     }
 
+    public function destroy(Invoice $invoice)
+    {
+        $invoice->delete();
+        return redirect()->back()->with('success','Invoice deleted successfully');
+    }
+
 }
