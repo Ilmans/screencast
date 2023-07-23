@@ -64,6 +64,17 @@ class SeriesController extends Controller
     }
 
 
+    public function destroy (Serie $serie) {
+        try {
+            $serie->delete();
+            return redirect()->back()->with('success','Serie deleted successfully.');
+        } catch (\Throwable $th) {
+            throw $th;
+            return redirect()->back()->with('error','Something went wrong.');
+        }
+    }
+
+
   
 
 

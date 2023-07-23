@@ -7,10 +7,15 @@ import {
     DropdownMenuItem,
 } from "@/Components/ui/dropdown-menu";
 import { Link } from "@inertiajs/react";
-import { IconDotsVertical, IconEye, IconVideo } from "@tabler/icons-react";
+import {
+    IconDotsVertical,
+    IconEye,
+    IconTrash,
+    IconVideo,
+} from "@tabler/icons-react";
 import React from "react";
 
-function SerieListMenu({serie}) {
+function SerieListMenu({ serie, setSelectedSerie, setConfirmDelete }) {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger>
@@ -35,6 +40,18 @@ function SerieListMenu({serie}) {
                         <IconEye className="w-4 h-4" />
                         <span>Preview</span>
                     </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                    <button
+                        className="flex items-center gap-x-2"
+                        onClick={() => {
+                            setSelectedSerie(serie);
+                            setConfirmDelete(true);
+                        }}
+                    >
+                        <IconTrash className="w-4 h-4" />
+                        <span>Hapus</span>
+                    </button>
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

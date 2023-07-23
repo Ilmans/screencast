@@ -25,6 +25,7 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
     Route::get('/series/create',[SeriesController::class,'create'])->name('admin.series.create');
     Route::post('/series',[SeriesController::class,'store'])->name('admin.series.store');
     Route::post('/serie/{serie}/status/toggle',[SeriesController::class,'toggleStatus'])->name('admin.series.toggle-status');
+    Route::delete('/series/{serie}',[SeriesController::class,'destroy'])->name('admin.series.destroy');
 
     
     Route::get('/series/{serie}/manage/videos',[SeriesController::class,'manageSerieVideos'])->name('admin.series.videos');

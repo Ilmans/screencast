@@ -7,16 +7,28 @@ import {
     TableRow,
 } from "@/Components/ui/table";
 import { IconDotsVertical } from "@tabler/icons-react";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import SerieListMenu from "./SerieListMenu";
 import { Label } from "@/Components/ui/label";
 import { Switch } from "@/Components/ui/switch";
 import { router } from "@inertiajs/react";
+import ConfirmDelete from "@/Components/ConfirmDelete";
 
 function ListSeries({ series }) {
-    
+    const [selectedSerie, setSelectedSerie] = useState(null);
+    const [confirmDelete, setConfirmDelete] = useState(false);
+
     return (
         <Fragment>
+            {selectedSerie && (
+                <ConfirmDelete
+                    openConfirmDelete={confirmDelete}
+                    setOpenConfirmDelete={setConfirmDelete}
+                    text={`Apakah anda yakin ingin menghapus serie ${selectedSerie?.title}?`}
+                    urlDelete={`admin/series/${selectedSerie?.id}`}
+                ></ConfirmDelete>
+            )}
+
             <Table>
                 <TableHeader>
                     <TableRow className="bg-accent">
@@ -48,18 +60,32 @@ function ListSeries({ series }) {
                             </TableCell>
                             <TableCell>
                                 <div className="flex items-center space-x-2">
-                                    <Switch onClick={()=> {
-
-                                        router.post(route('admin.series.toggle-status', serie.id))
-                                    }}  checked={serie.status === 'published'} id={`status-${serie.id}`} />
+                                    <Switch
+                                        onClick={() => {
+                                            router.post(
+                                                route(
+                                                    "admin.series.toggle-status",
+                                                    serie.id
+                                                )
+                                            );
+                                        }}
+                                        checked={serie.status === "published"}
+                                        id={`status-${serie.id}`}
+                                    />
                                     <Label htmlFor={`status-${serie.id}`}>
-                                        {serie.status === 'published' ? 'Published' : 'Drafted'}
+                                        {serie.status === "published"
+                                            ? "Published"
+                                            : "Drafted"}
                                     </Label>
                                 </div>
                             </TableCell>
                             <TableCell>{serie.created_at}</TableCell>
                             <TableCell>
-                                <SerieListMenu serie={serie} />
+                                <SerieListMenu
+                                    setSelectedSerie={setSelectedSerie}
+                                    setConfirmDelete={setConfirmDelete}
+                                    serie={serie}
+                                />
                             </TableCell>
                         </TableRow>
                     ))}
