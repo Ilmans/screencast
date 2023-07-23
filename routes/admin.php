@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\SeriesController;
+use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\TopicController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VideoController;
@@ -48,5 +49,9 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
     Route::post('/invoices/{invoice}/toggle/status',[InvoiceController::class,'toggleStatus'])->name('admin.invoices.toggle-status');
     Route::delete('/invoices/{invoice}',[InvoiceController::class,'destroy'])->name('admin.invoice.destroy');
     // end invoice routes
+
+    // subscription routes
+    Route::get('/subscriptions',[SubscriptionController::class,'index'])->name('admin.subscriptions.index');
+    // end subscription routes
 });
 ?>

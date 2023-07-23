@@ -11,6 +11,11 @@ class Subscription extends Model
     use HasFactory;
 
 
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     public function packagePrice()
     {
         return $this->belongsTo(PackagePrice::class);
@@ -24,5 +29,9 @@ class Subscription extends Model
     public function getEndsAtAttribute()
     {
         return Carbon::parse($this->attributes['ends_at'])->format('d/m/Y');
+    }
+    public function getUpdatedAtAttribute()
+    {
+        return Carbon::parse($this->attributes['updated_at'])->format('d/m/Y');
     }
 }

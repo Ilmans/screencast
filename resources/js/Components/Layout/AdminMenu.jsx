@@ -36,6 +36,13 @@ function AdminMenu({dashboard = true}) {
             Series
         </VerticalNavLink>
         <VerticalNavLink
+            href="/admin/subscriptions"
+            icon="IconCoin"
+            active={route().current("admin.subscriptions.index")}
+        >
+            Langganan
+        </VerticalNavLink>
+        <VerticalNavLink
             href="/admin/invoices"
             icon="IconFileDollar"
             active={route().current("admin.invoices.index")}
