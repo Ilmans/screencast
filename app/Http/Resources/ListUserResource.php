@@ -17,6 +17,7 @@ class ListUserResource extends JsonResource
      
         return [
             'id' => $this->id,
+            'username' => $this->username, // 'username' => $this->username ?? 'N/A
             'name' => $this->name, 
             'email' => $this->email,
             'isHaveActiveSubscription' => $this->isHaveActiveSubscription(),

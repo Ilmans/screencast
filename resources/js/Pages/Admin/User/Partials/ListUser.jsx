@@ -7,8 +7,11 @@ import {
     TableRow,
 } from "@/Components/ui/table";
 import React from "react";
+import UserListMenu from "./UserListMenu";
 
-function ListUser({ users }) {
+function ListUser({ users ,
+    setSelectedUser,
+}) {
     return (
         <Table>
             <TableHeader>
@@ -44,6 +47,12 @@ function ListUser({ users }) {
                         </TableCell>
                         <TableCell className="font-mono">{user.articles_count}</TableCell>
                         <TableCell>{user.created_at}</TableCell>
+                        <TableCell>
+                            <UserListMenu 
+                                user={user}
+                                setSelectedUser={setSelectedUser}
+                             />
+                        </TableCell>
                     </TableRow>
                 ))}
             </TableBody>
