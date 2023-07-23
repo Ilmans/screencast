@@ -8,11 +8,14 @@ import {
 import {
     IconDotsVertical,
     IconPencil,
+    IconTrash,
 } from "@tabler/icons-react";
 import React from "react";
 
 function UserListMenu({ user,
-    setSelectedUser
+    setSelectedUser,
+    setOpenModalEditUser,
+    setOpenConfirmDelete,
 }) {
     return (
         <DropdownMenu>
@@ -25,10 +28,24 @@ function UserListMenu({ user,
                     <button
                         onClick={() => {
                             setSelectedUser(user);
+                          setOpenModalEditUser(true);
+                            
                         }}
                     className="flex items-center gap-x-1">
                         <IconPencil className="w-5 h-5" />
                         Edit
+                    </button>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                    <button
+                        onClick={() => { 
+                            setSelectedUser(user);
+                            setOpenConfirmDelete(true);
+                        }}
+                        className="flex items-center gap-x-1"
+                    >
+                        <IconTrash className="w-5 h-5" />
+                        Hapus
                     </button>
                 </DropdownMenuItem>
             </DropdownMenuContent>

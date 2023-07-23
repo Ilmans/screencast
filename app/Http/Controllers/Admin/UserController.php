@@ -42,4 +42,12 @@ class UserController extends Controller
             ->back()
             ->with('success', 'User updated successfully');
     }
+
+    public function destroy(User $user)
+    {
+        $this->manageUserService->delete($user);
+        return redirect()
+            ->back()
+            ->with('success', 'User deleted successfully');
+    }
 }

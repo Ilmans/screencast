@@ -72,5 +72,11 @@ class ManageUserService
             'password' => $password
         ]);
     }
+
+    public function delete ($user)
+    {
+        $user->delete();
+
+    }
 }
 ?>

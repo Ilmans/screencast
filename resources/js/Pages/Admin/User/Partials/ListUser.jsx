@@ -9,25 +9,32 @@ import {
 import React, { Fragment, useEffect } from "react";
 import UserListMenu from "./UserListMenu";
 import ModalEditUser from "./ModalEditUser";
+import ConfirmDelete from "@/Components/ConfirmDelete";
 
 function ListUser({ users }) {
     const [selectedUser, setSelectedUser] = React.useState(null);
     const [openModalEditUser, setOpenModalEditUser] = React.useState(false);
+    const [openConfirmDelete, setOpenConfirmDelete] = React.useState(false);
 
-    useEffect(() => {
-        if (selectedUser) {
-            setOpenModalEditUser(true);
-        }
-    }, [selectedUser]);
     return (
         <Fragment>
             {selectedUser && (
-                <ModalEditUser
-                    user={selectedUser}
-                    open={openModalEditUser}
-                    setOpen={setOpenModalEditUser}
-                />
+                <Fragment>
+                    <ModalEditUser
+                        user={selectedUser}
+                        open={openModalEditUser}
+                        setOpen={setOpenModalEditUser}
+                    />
+
+                    <ConfirmDelete
+                        text={`Apakah anda yakin ingin menghapus user ${selectedUser?.username}?`}
+                        urlDelete={`admin/users/${selectedUser?.id}`}
+                        openConfirmDelete={openConfirmDelete}
+                        setOpenConfirmDelete={setOpenConfirmDelete}
+                    />
+                </Fragment>
             )}
+
             <Table>
                 <TableHeader>
                     <TableRow className="bg-accent">
@@ -67,6 +74,8 @@ function ListUser({ users }) {
                                 <UserListMenu
                                     user={user}
                                     setSelectedUser={setSelectedUser}
+                                    setOpenModalEditUser={setOpenModalEditUser}
+                                    setOpenConfirmDelete={setOpenConfirmDelete}
                                 />
                             </TableCell>
                         </TableRow>
