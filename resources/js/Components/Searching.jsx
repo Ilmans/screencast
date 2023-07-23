@@ -3,7 +3,7 @@ import { router } from "@inertiajs/react";
 import { IconSearch } from "@tabler/icons-react";
 import React, { useEffect } from "react";
 
-function Searching({placeholder}) {
+function Searching({placeholder,preserveScroll = false}) {
     const params = new URLSearchParams(window.location.search);
     const search = params.get("search");
     const [searchValue, setSearchValue] = React.useState(search || "");
@@ -16,7 +16,9 @@ function Searching({placeholder}) {
             return;
         }
         const debounce = setTimeout(() => {
-            router.replace(currentUrl.pathname + "?search=" + searchValue);
+            router.replace(currentUrl.pathname + "?search=" + searchValue,{
+                preserveScroll: preserveScroll,
+            });
         }, 500);
 
         return () => clearTimeout(debounce);

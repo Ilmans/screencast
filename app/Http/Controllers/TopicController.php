@@ -24,6 +24,7 @@ class TopicController extends Controller
     {
         $topics = $this->topicService->getAllSeriesTopics();
         $series = $this->serieService
+            ->sort()
             ->search($request->search ?? null)
             ->published()
             ->getSeries();
@@ -36,6 +37,7 @@ class TopicController extends Controller
         $topics = $this->topicService->getAllSeriesTopics();
         $currentTopic = $topic;
         $series = $this->serieService
+            ->sort()
             ->search($request->search ?? null)
             ->byTopic($topic)
             ->published()

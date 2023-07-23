@@ -2,37 +2,66 @@ import React, { useEffect, useState } from "react";
 import { SearchIcon } from "../../../lib/Icon";
 import InputWithIcon from "../InputWithIcon";
 import { router } from "@inertiajs/react";
+import SelectFiltering from "../SelectFiltering";
+import Searching from "../Searching";
 
+
+const filterOptions = [
+    {
+        name: "Terbaru",
+        value: "newest",
+    },
+    {
+        name: "Terlama",
+        value: "oldest",
+    },
+    // most videos
+    {
+        name: "Terbanyak Video",
+        value: "most_videos",
+    },
+    // least videos
+    {
+        name: "Tersedikit Video",
+        value: "least_videos",
+    },
+    //most time
+    {
+        name: "Durasi Terlama",
+        value: "most_time",
+    },
+    //least time
+    {
+        name: "Durasi Terpendek",
+        value: "least_time",
+    },
+];
 function FilterSeries() {
-    const [searchTerm, setSearchTerm] = useState(null);
+    // const [searchTerm, setSearchTerm] = useState(null);
 
-    useEffect(() => {
-        if (searchTerm === null) return;
+    // useEffect(() => {
+    //     if (searchTerm === null) return;
 
-        const delayDebounceFn = setTimeout(() => {
-            router.reload({ data: { search: searchTerm } });
-        }, 500);
-        return () => clearTimeout(delayDebounceFn);
-    }, [searchTerm]); // Memonitor perubahan searchTerm
+    //     const delayDebounceFn = setTimeout(() => {
+    //         router.reload({ data: { search: searchTerm } });
+    //     }, 500);
+    //     return () => clearTimeout(delayDebounceFn);
+    // }, [searchTerm]); // Memonitor perubahan searchTerm
 
-    const handleChange = (e) => {
-        setSearchTerm(e.target.value);
-    };
+    // const handleChange = (e) => {
+    //     setSearchTerm(e.target.value);
+    // };
     return (
         <div className="flex items-center justify-between mb-8">
-            <select
-                id="countries"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            >
-                <option selected>Terbaru</option>
-                <option selected>Terbaru</option>
-                <option selected>Terbaru</option>
-            </select>
-            <InputWithIcon
-                onChange={handleChange}
-                icon={<SearchIcon />}
-                placeholder="Cari video"
+            <SelectFiltering
+                name="sort"
+                label="Sort"
+                filterOptions={filterOptions}
+                disabledDefault={true}
+                preserveScroll={true}
             />
+                    
+            <Searching placeholder={"Judul Serie"} preserveScroll={true} />
         </div>
     );
 }

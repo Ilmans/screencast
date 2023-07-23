@@ -13,6 +13,8 @@ function SelectFiltering({
     label,
     filterOptions,
     disabledDefault = false,
+    preserveScroll = false,
+    
 }) {
     const params = new URLSearchParams(window.location.search);
 
@@ -31,7 +33,9 @@ function SelectFiltering({
         }
 
         params.set(name, selectedFilter);
-        router.replace(currentUrl.pathname + "?" + params.toString());
+        router.replace(currentUrl.pathname + "?" + params.toString(),{
+            preserveScroll: preserveScroll,
+        });
     }, [selectedFilter]);
 
     useEffect(() => {
