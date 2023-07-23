@@ -12,9 +12,10 @@ import ListUser from "./Partials/ListUser";
 import Searching from "@/Components/Searching";
 import SelectFiltering from "@/Components/SelectFiltering";
 import { Head } from "@inertiajs/react";
+import Pagination from "@/Components/Page/Pagination";
 
 function Index({ users }) {
-  
+console.log(users);
     return (
         <div className="max-w-4xl">
             <Head title="Users" />
@@ -45,7 +46,7 @@ function Index({ users }) {
                 <CardContent>
                     <ListUser users={users} />
                     <div className="mt-4">
-                        {/* <Pagination links={users.data.links} /> */}
+                        <Pagination links={users.meta.links} />
                     </div>
                 </CardContent>
             </Card>
