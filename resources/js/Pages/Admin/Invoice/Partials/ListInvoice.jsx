@@ -7,6 +7,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/Components/ui/table";
+import { router } from "@inertiajs/react";
 import React, { Fragment } from "react";
 
 function ListInvoice({ invoices }) {
@@ -37,7 +38,11 @@ function ListInvoice({ invoices }) {
                             <TableCell>
                                 <div className="flex items-center gap-x-1">
                                     <Switch
-                                        onClick={() => {}}
+                                        onClick={() => {
+                                            router.post(route("admin.invoices.toggle-status", invoice.id), {
+                                                preserveScroll: true,
+                                            });
+                                        }}
                                         checked={invoice.status === "paid"}
                                         id={`status-${invoice.id}`}
                                     />

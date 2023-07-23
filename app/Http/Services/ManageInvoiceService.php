@@ -17,7 +17,7 @@ class ManageInvoiceService
         return $this->invoice
             ->with('user')
             ->with('packagePrice')
-            ->paginate(10);
+            ->paginate(10)->withQueryString();
     }
 
     public function search()

@@ -45,6 +45,7 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
 
     //invoice routes
     Route::get('/invoices',[InvoiceController::class,'index'])->name('admin.invoices.index');
+    Route::post('/invoices/{invoice}/toggle/status',[InvoiceController::class,'toggleStatus'])->name('admin.invoices.toggle-status');
     // end invoice routes
 });
 ?>
