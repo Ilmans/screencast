@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\SeriesController;
 use App\Http\Controllers\Admin\TopicController;
 use App\Http\Controllers\Admin\UserController;
@@ -41,5 +42,9 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
     Route::put('/users/{user}',[UserController::class,'update'])->name('admin.user.update');
     Route::delete('/users/{user}',[UserController::class,'destroy'])->name('admin.user.destroy');
     // end users routes
+
+    //invoice routes
+    Route::get('/invoices',[InvoiceController::class,'index'])->name('admin.invoices.index');
+    // end invoice routes
 });
 ?>

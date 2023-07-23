@@ -17,4 +17,7 @@ class PackagePrice extends Model
     ];
 
     public $timestamps = false;
+
+
+    
 }

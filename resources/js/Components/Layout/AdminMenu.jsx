@@ -36,6 +36,13 @@ function AdminMenu({dashboard = true}) {
             Series
         </VerticalNavLink>
         <VerticalNavLink
+            href="/admin/invoices"
+            icon="IconFileDollar"
+            active={route().current("admin.invoices.index")}
+        >
+            Invoices
+        </VerticalNavLink>
+        <VerticalNavLink
             href="/admin/users"
             icon="IconUsers"
             active={route().current("admin.users.index")}
