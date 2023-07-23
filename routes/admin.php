@@ -36,6 +36,7 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
 
     // users routes
     Route::get('/users',[UserController::class,'index'])->name('admin.users.index');
+    Route::put('/users/{user}',[UserController::class,'update'])->name('admin.user.update');
     // end users routes
 });
 ?>

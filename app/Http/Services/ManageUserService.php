@@ -59,5 +59,18 @@ class ManageUserService
     {
         return ListUserResource::collection($this->user->withCount('articles')->paginate(10));
     }
+
+
+
+    public function update ($request,$user)
+    {
+        $password = $request->password ? bcrypt($request->password) : $user->password;
+        $user->update([
+            'username' => $request->username,
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $password
+        ]);
+    }
 }
 ?>
