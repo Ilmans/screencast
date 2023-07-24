@@ -9,6 +9,7 @@ import AdminLayout from "@/Layouts/AdminLayout";
 import React from "react";
 import General from "./Partials/General";
 import Socials from "./Partials/Socials";
+import Contacts from "./Partials/Contacts";
 
 function Index({website}) {
     return (
@@ -17,9 +18,10 @@ function Index({website}) {
                 <CardTitle>Setting Website</CardTitle>
                 <CardDescription>Pengaturan website andaa</CardDescription>
             </CardHeader>
-            <div className="grid grid-cols-2 gap-x-1">
+            <div className="grid grid-cols-2 gap-4">
                 <General website={website} />
                 <Socials website={website} />
+                <Contacts website={website} />
             </div>
         </div>
     );

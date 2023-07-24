@@ -9,35 +9,42 @@ use Illuminate\Support\Facades\Cache;
 
 class SettingsController extends Controller
 {
-    
-
-    public function index () {
+    public function index()
+    {
         $settings = Website::first();
         return inertia('Admin/Setting/Index', [
-            'settings' => $settings
+            'settings' => $settings,
         ]);
     }
 
-
-    public function set (Request $request)
+    public function set(Request $request)
     {
+        $data = $request->all();
 
-       $socials = $request->socials ? json_encode($request->socials) : null;
-       $data = $request->all();
-       $data['socials'] =  $socials;
 
-    
+        if ($request->socials) {
+            $socials = json_encode($request->socials);
+            $data['socials'] = $socials;
+        }
 
-       $checkIsExist = Website::first();
-         if ($checkIsExist) {
-              $checkIsExist->update($data);
-         } else {
-              Website::create($data);
-         }
+        if($request->contacts)
+        {
+            $contacts = json_encode($request->contacts);
+            $data['contact'] = $contacts;
+        }
 
-         Cache::forget('website');
-         $rand = rand(1, 10);
+        $checkIsExist = Website::first();
+        if ($checkIsExist) {
+            $checkIsExist->update($data);
+        } else {
+            Website::create($data);
+        }
 
-        return redirect()->back()->with('success', 'Settings updated successfully ' . $rand);
+        Cache::forget('website');
+        $rand = rand(1, 10);
+
+        return redirect()
+            ->back()
+            ->with('success', 'Settings updated successfully ' . $rand);
     }
 }
