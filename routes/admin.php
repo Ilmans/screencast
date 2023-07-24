@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\SeriesController;
@@ -38,7 +39,7 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
     //end series routes
 
     // articles routes
-       // Route::get()
+        Route::get('/articles',[ArticleController::class,'index'])->name('admin.articles.index');
     // end articles routes
 
 
