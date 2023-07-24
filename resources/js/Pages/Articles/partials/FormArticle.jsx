@@ -9,6 +9,7 @@ import { router, useForm, usePage } from "@inertiajs/react";
 import React, { useState } from "react";
 import { Button } from "@/Components/ui/button";
 import InputError from "@/Components/InputError";
+import InputImage from "@/Components/InputImage";
 
 function FormArticle() {
     const topic = usePage().props.topic;
@@ -20,6 +21,7 @@ function FormArticle() {
     const { data, setData, processing, errors, post, recentlySuccessful } =
         useForm({
             topic: [],
+            image: null,
             title: "",
             synopsis: "",
             body: "",
@@ -51,6 +53,15 @@ function FormArticle() {
                 />
                 <InputError errors={errors} fieldName={"title"} />
             </div>
+            <div>
+            <InputImage 
+                data={data}
+                setData={setData}
+                errors={errors}
+                width={720}
+                height={480}
+                />
+            </div>
             <div className="space-y-1">
                 <Label htmlFor="synopsis" value="">
                     Sinopsis
@@ -80,7 +91,7 @@ function FormArticle() {
                     placeholder="Pilih topik"
                     name="topic"
                     isClearable={true}
-                    className=" h-10 w-full items-center justify-between rounded-md border border-input bg-transparent  text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="items-center justify-between w-full h-10 text-sm bg-transparent border rounded-md border-input ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     isMulti={true}
                     options={options}
                 />

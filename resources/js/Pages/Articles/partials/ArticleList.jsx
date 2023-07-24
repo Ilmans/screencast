@@ -43,23 +43,33 @@ function ArticleList({ articles }) {
                                 {article.topics.map((topic, index) => (
                                     <span
                                         key={index}
-                                        className="mr-1 px-2 py-1 bg-accent rounded-full"
+                                        className="px-2 py-1 mr-1 rounded-full bg-accent"
                                     >
                                         {topic.name}
                                     </span>
                                 ))}
                             </TableCell>
-                            <TableCell>{article.published}</TableCell>
+                            <TableCell>
+                                {article.is_published ? (
+                                    <span className="px-2 py-1 text-xs text-white bg-green-500 rounded-full">
+                                        Published
+                                    </span>
+                                ) : (
+                                    <span className="px-2 py-1 text-xs text-white bg-gray-500 rounded-full">
+                                        Draft
+                                    </span>
+                                )}
+                            </TableCell>
                             <TableCell>{article.views}</TableCell>
                             <TableCell>
-                                <div className="flex gap-x-1 justify-center ">
+                                <div className="flex justify-center gap-x-1 ">
                                     <Link href={`/article/${article.slug}`}>
-                                        <IconEye className="w-4 text-blue-400 h-4" />
+                                        <IconEye className="w-4 h-4 text-blue-400" />
                                     </Link>
                                     <Link
                                         href={`/article/${article.slug}/edit`}
                                     >
-                                        <IconEdit className="w-4 text-yellow-400 h-4" />
+                                        <IconEdit className="w-4 h-4 text-yellow-400" />
                                     </Link>
                                     <button
                                         onClick={() => {
@@ -67,7 +77,7 @@ function ArticleList({ articles }) {
                                             setOpenConfirmDelete(true);
                                         }}
                                     >
-                                        <IconTrash className="w-4 text-red-400 h-4" />
+                                        <IconTrash className="w-4 h-4 text-red-400" />
                                     </button>
                                 </div>
                             </TableCell>

@@ -9,7 +9,7 @@ function ArticleCard({ popular = false, children, ...props }) {
 
 function ArticleImage({ image }) {
     return (
-        <div className="object-cover w-1/3  bg-primary/50 rounded-lg">
+        <div className="object-cover w-1/3 rounded-lg bg-primary/50">
             <img className="w-full h-full rounded-lg " src={image} alt="" />
         </div>
     );
@@ -17,12 +17,12 @@ function ArticleImage({ image }) {
 
 function ArticleTopics({ topics }) {
     return (
-        <p className="text-sm font-medium text-foreground">
+        <p className="flex text-sm font-medium text-foreground gap-x-2">
             {topics.map((topic) => (
                 <a
                     key={topic.id}
                     href="#"
-                    className="hover:underline text-blue-400"
+                    className="text-blue-400 hover:underline"
                 >
                     {topic.name}
                 </a>

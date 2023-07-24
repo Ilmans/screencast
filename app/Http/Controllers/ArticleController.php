@@ -27,7 +27,7 @@ class ArticleController extends Controller
     public function index(Request $request)
     {
 
-        $popularArticles = $this->articleService->getPopularArticle();
+        $popularArticles = $this->articleService->onlyPublished()->getPopularArticle();
         $articles = Inertia::lazy(function () use ($request) {
             return $this->articleService->onlyPublished()->useFilter($request)->getAllArticles();
         });
@@ -42,6 +42,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
+        abort_if($this->articleService->canView($article) == false, 404);
         $article->load('user', 'topics');
         $article->increment('views');
         return inertia("Articles/Show", compact('article'));
@@ -70,7 +71,7 @@ class ArticleController extends Controller
 
         try {
             $this->articleService->createArticle($request);
-            return redirect()->route('myArticles')->with('success', 'Article created successfully');
+            return redirect()->route('my_articles')->with('success', 'Article created successfully');
         } catch (\Throwable $th) {
             throw $th;
             return back()->with('error', 'Something went wrong');

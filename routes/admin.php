@@ -37,6 +37,10 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
     Route::post('/swap/videos',[VideoController::class,'swapVideos'])->name('admin.videos.swap');
     //end series routes
 
+    // articles routes
+       // Route::get()
+    // end articles routes
+
 
     // users routes
     Route::get('/users',[UserController::class,'index'])->name('admin.users.index');
@@ -55,7 +59,6 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
     Route::post('/subscriptions',[SubscriptionController::class,'store'])->name('admin.subscription.store');
     Route::put('/subscriptions/{subscription}',[SubscriptionController::class,'update'])->name('admin.subscription.update');
     Route::delete('/subscriptions/{subscription}',[SubscriptionController::class,'destroy'])->name('admin.subscription.destroy');
-
     // end subscription routes
 });
 ?>

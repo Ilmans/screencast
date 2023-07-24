@@ -21,6 +21,7 @@ function FormEditArticle({ article }) {
 
     //convert selected topic in articles to array of object (only ID)
     const selectedTopicIds = article.topics.map((topic) => topic.id);
+   
 
     const { data, setData, processing, errors, put, recentlySuccessful } =
         useForm({
@@ -72,11 +73,7 @@ function FormEditArticle({ article }) {
                     Topik Artikel
                 </Label>
                 <Select
-                    value={data.topic.map((id) => ({
-                        value: id,
-                        label: topic.articles.find((topic) => topic.id === id)
-                            .name,
-                    }))}
+                    value={options.filter((option) => data.topic.includes(option.value)).map((option) => ({value: option.value, label: option.label }))}
                     onChange={(value) => {
                         const newValue = value.map((value) => value.value);
                         setData({ ...data, topic: newValue });
@@ -84,7 +81,7 @@ function FormEditArticle({ article }) {
                     placeholder="Pilih topik"
                     name="topic"
                     isClearable={true}
-                    className=" h-10 w-full items-center justify-between rounded-md border border-input bg-transparent  text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="items-center justify-between w-full h-10 text-sm bg-transparent border rounded-md border-input ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     isMulti={true}
                     options={options}
                 />
@@ -107,7 +104,7 @@ function FormEditArticle({ article }) {
                     {processing ? "Loading..." : "Update Artikel"}
                 </Button>
                 {recentlySuccessful && (
-                    <span className="text-muted-foreground ml-1">
+                    <span className="ml-1 text-muted-foreground">
                         Berhasil diupdate
                     </span>
                 )}

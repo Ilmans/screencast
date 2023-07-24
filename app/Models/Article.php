@@ -15,6 +15,7 @@ class Article extends Model
         'title',
         'slug',
         'body',
+        'image',
         'synopsis',
         'user_id',
         'views',

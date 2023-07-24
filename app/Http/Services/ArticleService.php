@@ -6,7 +6,7 @@ use App\Models\Article;
 use App\Models\Topic;
 use Illuminate\Database\Eloquent\Builder;
 
-class ArticleService
+class ArticleService extends UploadImageService
 {
 
 
@@ -31,7 +31,7 @@ class ArticleService
 
     public function getPopularArticle()
     {
-        return Article::with('topics')->with('user')->orderBy('views', 'desc')->take(3)->get();
+        return $this->article->with('topics')->with('user')->orderBy('views', 'desc')->take(3)->get();
     }
 
 
@@ -87,10 +87,15 @@ class ArticleService
      */
     public function createArticle($request): void
     {
-
-        $request->merge(['slug' => \Str::slug($request->title), 'published' => true]);
+        $imageName = $this->uploadImage($request->title, $request->image, '/images/articles/');
         $topicId = Topic::whereIn('id', $request->topic)->pluck('id');
-        $article = $request->user()->articles()->create($request->all());
+        $article = $request->user()->articles()->create([
+            'title' => $request->title,
+            'slug' => \Str::slug($request->title),
+            'image' => $imageName,
+            'synopsis' => $request->synopsis,
+            'body' => $request->body,
+        ]);
         $article->topics()->attach($topicId);
     }
 
@@ -118,5 +123,17 @@ class ArticleService
     public function deleteArticle($article): void
     {
         $article->delete();
+    }
+
+
+    public function canView ($article) : bool
+    {
+        $isAuth = auth()->check();
+        $isAuthor = $isAuth && auth()->user()->id === $article->user_id;
+        $isAdmin = $isAuth && auth()->user()->is_admin;
+        $isPublished = $article->published;
+
+        return $isPublished || $isAuthor || $isAdmin;
+
     }
 }

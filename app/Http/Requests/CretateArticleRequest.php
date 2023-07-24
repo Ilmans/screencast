@@ -23,7 +23,9 @@ class CretateArticleRequest extends FormRequest
     public function rules(): array
     {
         return [
+            
             'title' => ['required', 'string', 'max:255'],
+            'image' => ['required', 'image', 'max:1024'],
             'synopsis' => ['required', 'string', 'min:15', 'max:255'],
             'body' => ['required', 'string'],
             'topic' => [
