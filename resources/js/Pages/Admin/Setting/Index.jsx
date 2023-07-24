@@ -8,6 +8,7 @@ import {
 import AdminLayout from "@/Layouts/AdminLayout";
 import React from "react";
 import General from "./Partials/General";
+import Socials from "./Partials/Socials";
 
 function Index({website}) {
     return (
@@ -18,6 +19,7 @@ function Index({website}) {
             </CardHeader>
             <div className="grid grid-cols-2 gap-x-1">
                 <General website={website} />
+                <Socials website={website} />
             </div>
         </div>
     );

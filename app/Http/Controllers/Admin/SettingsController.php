@@ -22,12 +22,17 @@ class SettingsController extends Controller
     public function set (Request $request)
     {
 
+       $socials = $request->socials ? json_encode($request->socials) : null;
+       $data = $request->all();
+       $data['socials'] =  $socials;
+
+    
 
        $checkIsExist = Website::first();
          if ($checkIsExist) {
-              $checkIsExist->update($request->all());
+              $checkIsExist->update($data);
          } else {
-              Website::create($request->all());
+              Website::create($data);
          }
 
          Cache::forget('website');

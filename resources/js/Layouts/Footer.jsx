@@ -3,7 +3,9 @@ import Logo from "@/Components/Logo";
 import { Link, usePage } from "@inertiajs/react";
 
 function Footer() {
+    
     const website = usePage().props.website;
+    
     const { topic } = usePage().props;
 
     return (
@@ -43,9 +45,10 @@ function Footer() {
 
                     <LinkSection
                         title={"Socials"}
-                        links={website && website.socials ? JSON.parse(website.socials).map((social) => ({
-                            name: social.name,
-                            href: social.link,
+                        links={website && website.socials ? Object.keys(JSON.parse(website.socials)).map((social) => ({
+                            // name = key social with capital first letter , href = value social
+                            name: social.charAt(0).toUpperCase() + social.slice(1),
+                            href: website.socials[social],
                         })) : []}
                     />
                     {/* legal */}
