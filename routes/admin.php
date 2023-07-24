@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InvoiceController;
+use App\Http\Controllers\Admin\PaymentMethodController;
 use App\Http\Controllers\Admin\SeriesController;
 use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\TopicController;
@@ -61,5 +62,10 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
     Route::put('/subscriptions/{subscription}',[SubscriptionController::class,'update'])->name('admin.subscription.update');
     Route::delete('/subscriptions/{subscription}',[SubscriptionController::class,'destroy'])->name('admin.subscription.destroy');
     // end subscription routes
+
+    //payment method routes
+    Route::get('/payment_methods',[PaymentMethodController::class,'index'])->name('admin.payment_methods.index');
+    Route::post('/payment_methods',[PaymentMethodController::class,'store'])->name('admin.payment_methods.store');
+    // end payment method routes
 });
 ?>

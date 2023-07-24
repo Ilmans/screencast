@@ -57,6 +57,13 @@ function AdminMenu({dashboard = true}) {
             Invoices
         </VerticalNavLink>
         <VerticalNavLink
+            href="/admin/payment_methods"
+            icon="IconCreditCard"
+            active={route().current("admin.payment_methods.index")}
+        >
+            Metode Pembayaran
+        </VerticalNavLink>
+        <VerticalNavLink
             href="/admin/users"
             icon="IconUsers"
             active={route().current("admin.users.index")}

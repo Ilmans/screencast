@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
@@ -52,7 +52,7 @@
     }
 </script>
 
-<body  class="antialiased px-4 font-sans scrollbar-thin scrollbar-track-gray-300 scrollbar-thumb-gray-500 bg-primary text-foreground ">
+<body  class="px-4 font-sans antialiased scrollbar-thin scrollbar-track-gray-300 scrollbar-thumb-gray-500 bg-primary text-foreground ">
     @inertia
 </body>
 
