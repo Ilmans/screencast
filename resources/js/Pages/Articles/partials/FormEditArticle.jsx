@@ -10,6 +10,7 @@ import { router, useForm, usePage } from "@inertiajs/react";
 import React, { useState } from "react";
 import { Button } from "@/Components/ui/button";
 import InputError from "@/Components/InputError";
+import InputImage from "@/Components/InputImage";
 
 function FormEditArticle({ article }) {
     // convert topic to options,there is value and lable
@@ -23,9 +24,10 @@ function FormEditArticle({ article }) {
     const selectedTopicIds = article.topics.map((topic) => topic.id);
    
 
-    const { data, setData, processing, errors, put, recentlySuccessful } =
+    const { data, setData, processing, errors, post, recentlySuccessful } =
         useForm({
             topic: selectedTopicIds,
+            image: null,
             title: article.title,
             synopsis: article.synopsis,
             body: article.body,
@@ -37,7 +39,7 @@ function FormEditArticle({ article }) {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        put(`/article/${article.slug}`, {
+        post(`/article/${article.slug}`, {
             preserveScroll: true,
         });
     };
@@ -55,6 +57,18 @@ function FormEditArticle({ article }) {
                     value={data.title}
                 />
                 <InputError errors={errors} fieldName={"title"} />
+            </div>
+            <div>
+                <InputImage
+                    data={data}
+                    setData={setData}
+                    errors={errors}
+                    width={720}
+                    height={480}
+                    name="image"
+                    label="Image"
+                    defaultimage={"/images/articles/" + article.image}
+                />
             </div>
             <div className="space-y-1">
                 <Label htmlFor="synopsis" value="">

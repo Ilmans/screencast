@@ -12,7 +12,9 @@ function InputImage({
     height = 100,
     name = "image",
     label = "Image",
+ 
     defaultimage = null,
+ 
     
     
 }) {
@@ -62,10 +64,10 @@ function InputImage({
                 />
             </div>
         )}
-    {defaultimage && (
+    {!imagePreview && defaultimage && (
         <div className="flex py-4 mt-4">
             <img
-                src={`/images/topics/${defaultimage}`}
+                src={`${defaultimage}`}
                 alt=""
                 className="border border-gray-300 rounded-lg shadow-lg max-h-64"
             />

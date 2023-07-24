@@ -92,7 +92,7 @@ class ArticleController extends Controller
         $this->authorize('update', $article);
         try {
             $this->articleService->updateArticle($request, $article);
-            return back();
+            return redirect()->route('my_articles')->with('success', 'Article updated successfully' . $article->title);
         } catch (\Throwable $th) {
             return back()->with('error', 'Something went wrong');
         }

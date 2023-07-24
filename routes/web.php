@@ -29,7 +29,7 @@ Route::get("/articles", [ArticleController::class, "index"])->name("articles");
 Route::get("/article/create", [ArticleController::class, "create"])->name("article.create")->middleware('auth');
 Route::get("/article/{article:slug}", [ArticleController::class, "show"])->name("article.show");
 Route::get("/article/{article:slug}/edit", [ArticleController::class, "edit"])->name("article.edit")->middleware('auth');
-Route::put("/article/{article:slug}", [ArticleController::class, "update"])->name("article.update")->middleware('auth');
+Route::post("/article/{article:slug}", [ArticleController::class, "update"])->name("article.update")->middleware('auth');
 Route::delete("/article/{article:slug}", [ArticleController::class, "destroy"])->name("article.destroy")->middleware('auth');
 
 // pricing

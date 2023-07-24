@@ -107,10 +107,21 @@ class ArticleService extends UploadImageService
 
     public function updateArticle($request, $article): void
     {
-
-        $request->merge(['slug' => \Str::slug($request->title), 'published' => $article->published]);
+        $imageName = $article->image;
+        if($request->hasFile('image')){
+            $this->deleteImage("/images/articles/", $article->image);
+            $imageName = $this->uploadImage($request->title, $request->image, '/images/articles/');
+        }
         $selectedTopicIds = Topic::whereIn('id', $request->topic)->pluck('id');
-        $article->update($request->all());
+        $article->update([
+            'title' => $request->title,
+            'slug' => \Str::slug($request->title),
+            'image' => $imageName,
+            'synopsis' => $request->synopsis,
+            'body' => $request->body,
+            'published' => $request->published,
+
+        ]);
         $article->topics()->sync($selectedTopicIds);
     }
 
