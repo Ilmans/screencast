@@ -50,7 +50,7 @@ function UserMenu({ dashboard = true }) {
                     >
                         Beranda
                     </VerticalNavLink>
-                    {user.is_admin && (
+                    {user.is_admin ? (
                            <VerticalNavLink
                            href="/admin/dashboard"
                            icon="IconBrandAsana"
@@ -58,7 +58,7 @@ function UserMenu({ dashboard = true }) {
                        >
                            Admin Dashboard
                        </VerticalNavLink>
-                    )}
+                    ) : ""}
                     <VerticalNavLink
                         href="/profile"
                         icon="IconUserCircle"

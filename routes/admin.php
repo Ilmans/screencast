@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\PaymentMethodController;
 use App\Http\Controllers\Admin\SeriesController;
+use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\TopicController;
 use App\Http\Controllers\Admin\UserController;
@@ -68,5 +69,9 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
     Route::post('/payment_methods',[PaymentMethodController::class,'store'])->name('admin.payment_methods.store');
     Route::delete('/payment_methods/{paymentMethod}',[PaymentMethodController::class,'destroy'])->name('admin.payment_methods.delete');
     // end payment method routes
+
+    // website setting route
+    Route::get('/settings',[SettingsController::class,'index'])->name('admin.settings.index');
+    Route::post('/settings',[SettingsController::class,'set'])->name('admin.settings.set');
 });
 ?>

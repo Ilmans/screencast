@@ -70,6 +70,13 @@ function AdminMenu({dashboard = true}) {
         >
             Users
         </VerticalNavLink>
+        <VerticalNavLink
+            href="/admin/settings"
+            icon="IconSettingsBolt"
+            active={route().current("admin.settings.index")}
+        >
+            Website Setting
+        </VerticalNavLink>
 
        
         </ul>

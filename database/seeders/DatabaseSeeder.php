@@ -37,28 +37,29 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
-        \App\Models\Topic::factory(5)
-            ->create()
-            ->each(function ($topic) {
-                $series = Serie::factory()
-                    ->count(20)
-                    ->create();
-                $topic->series()->attach($series);
-                $series->each(function ($serie) {
-                    Video::factory()
-                        ->count(20)->create(
-                            ['serie_id' => $serie->id]
-                        );
-                });
-            });
+    //     \App\Models\Topic::factory(5)
+    //         ->create()
+    //         ->each(function ($topic) {
+    //             $series = Serie::factory()
+    //                 ->count(20)
+    //                 ->create();
+    //             $topic->series()->attach($series);
+    //             $series->each(function ($serie) {
+    //                 Video::factory()
+    //                     ->count(20)->create(
+    //                         ['serie_id' => $serie->id]
+    //                     );
+    //             });
+    //         });
 
 
-        // cretae 3 topic and each topic have 10 articles and article user id is 1
-        Topic::factory(3)
-            ->create()->each(function ($topic) {
-                $topic->articles()->createMany(
-                    \App\Models\Article::factory(10)->make(['user_id' => 1])->toArray()
-                );
-            });
+    //     // cretae 3 topic and each topic have 10 articles and article user id is 1
+    //     Topic::factory(3)
+    //         ->create()->each(function ($topic) {
+    //             $topic->articles()->createMany(
+    //                 \App\Models\Article::factory(10)->make(['user_id' => 1])->toArray()
+    //             );
+    //         });
+    
     }
 }
