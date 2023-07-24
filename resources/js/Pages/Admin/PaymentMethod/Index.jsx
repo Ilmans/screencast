@@ -10,17 +10,28 @@ import {
 } from "@/Components/ui/table";
 import AdminLayout from "@/Layouts/AdminLayout";
 import { Head } from "@inertiajs/react";
-import { IconPlus } from "@tabler/icons-react";
-import React from "react";
+import { IconPlus, IconTrash } from "@tabler/icons-react";
+import React, { useState } from "react";
 import ModalAddPayment from "./Partials/ModalAddPayment";
+import ConfirmDelete from "@/Components/ConfirmDelete";
 
 function Index({ paymentMethods }) {
     const [modalAdd, setModalAdd] = React.useState(false);
-    
+    const [modalConfirmDelete, setModalConfirmDelete] = useState(false);
+    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
+
     return (
         <div className="max-w-4xl">
-            
             <Head title="Payment Methods" />
+
+            {selectedPaymentMethod && (
+                <ConfirmDelete
+                    text={`Anda yakin ingin menghapus ${selectedPaymentMethod.bank_name}`}
+                    urlDelete={`admin/payment_methods/${selectedPaymentMethod.id}`}
+                    openConfirmDelete={modalConfirmDelete}
+                    setOpenConfirmDelete={setModalConfirmDelete}
+                />
+            )}
             <ModalAddPayment openModal={modalAdd} setOpenModal={setModalAdd} />
             <Card className="p-6 space-y-6">
                 <CardHeader className="">
@@ -28,8 +39,9 @@ function Index({ paymentMethods }) {
                         <CardTitle> Metode Pembayaran</CardTitle>
                         <Button
                             onClick={() => setModalAdd(true)}
-                            
-                        variant="secondary" className="flex items-center gap-x-1">
+                            variant="secondary"
+                            className="flex items-center gap-x-1"
+                        >
                             <IconPlus className="w-4 h-4" />
                             <span>Tambah Metode Pembayaran</span>
                         </Button>
@@ -50,7 +62,11 @@ function Index({ paymentMethods }) {
                             {paymentMethods.map((paymentMethod, index) => (
                                 <TableRow key={paymentMethod.id}>
                                     <TableCell>
-                                        <img className="rounded-lg" src={`/images/payment-methods/${paymentMethod.logo}`} alt="logo" />
+                                        <img
+                                            className="rounded-lg"
+                                            src={`/images/payment-methods/${paymentMethod.logo}`}
+                                            alt="logo"
+                                        />
                                     </TableCell>
                                     <TableCell>
                                         {" "}
@@ -63,6 +79,21 @@ function Index({ paymentMethods }) {
                                     <TableCell>
                                         {" "}
                                         {paymentMethod.account_number}
+                                    </TableCell>
+                                    <TableCell>
+                                        <div className="flex items-center gap-x-1">
+                                            <button
+                                                onClick={() => {
+                                                    setSelectedPaymentMethod(
+                                                        paymentMethod
+                                                    );
+                                                    setModalConfirmDelete(true);
+                                                }}
+                                                className="text-red-800"
+                                            >
+                                                <IconTrash className="w-4 h-4" />
+                                            </button>
+                                        </div>
                                     </TableCell>
                                 </TableRow>
                             ))}

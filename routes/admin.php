@@ -66,6 +66,7 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
     //payment method routes
     Route::get('/payment_methods',[PaymentMethodController::class,'index'])->name('admin.payment_methods.index');
     Route::post('/payment_methods',[PaymentMethodController::class,'store'])->name('admin.payment_methods.store');
+    Route::delete('/payment_methods/{paymentMethod}',[PaymentMethodController::class,'destroy'])->name('admin.payment_methods.delete');
     // end payment method routes
 });
 ?>

@@ -9,21 +9,20 @@ use Illuminate\Http\Request;
 
 class PaymentMethodController extends Controller
 {
-
     private $uploadImageService;
 
     public function __construct(UploadImageService $uploadImageService)
     {
         $this->uploadImageService = $uploadImageService;
     }
-    
-    public function index ()
+
+    public function index()
     {
         $paymentMethods = PaymentMethod::all();
-        return inertia('Admin/PaymentMethod/Index',compact('paymentMethods'));
+        return inertia('Admin/PaymentMethod/Index', compact('paymentMethods'));
     }
 
-    public function store (Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'logo' => 'required|image',
@@ -33,7 +32,11 @@ class PaymentMethodController extends Controller
         ]);
 
         $name = time();
-        $logo = $this->uploadImageService->uploadImage($name,$request->file('logo'),'images/payment-methods');
+        $logo = $this->uploadImageService->uploadImage(
+            $name,
+            $request->file('logo'),
+            'images/payment-methods'
+        );
         PaymentMethod::create([
             'logo' => $logo,
             'bank_name' => $request->bank_name,
@@ -41,6 +44,20 @@ class PaymentMethodController extends Controller
             'account_name' => $request->account_name,
         ]);
 
-        return redirect()->back()->with('success','Payment method created successfully');
+        return redirect()
+            ->back()
+            ->with('success', 'Payment method created successfully');
+    }
+
+    public function destroy(PaymentMethod $paymentMethod)
+    {
+        if ($paymentMethod->logo) {
+            $this->uploadImageService->deleteImage(
+                'images/payment-methods/',
+                $paymentMethod->logo
+            );
+        }
+        $paymentMethod->delete();
+        return back()->with('success', 'Payment method deleted successfully');
     }
 }
