@@ -19,9 +19,13 @@ import { Head } from "@inertiajs/react";
 import React from "react";
 import ModalAddPackage from "./Partials/ModalAddPackage";
 import { Button } from "@/Components/ui/button";
+import ConfirmDelete from "@/Components/ConfirmDelete";
+import { IconTrash } from "@tabler/icons-react";
 
 function Index({ packagePrices }) {
     const [showAddModal, setShowAddModal] = React.useState(false);
+    const [selectedPackage, setSelectedPackage] = React.useState(null); // [1
+    const [showDeleteConfirmation, setShowDeleteConfirmation] = React.useState( false);
     return (
         <div className="max-w-4xl">
             <Head title="Packages" />
@@ -29,6 +33,14 @@ function Index({ packagePrices }) {
                 openModal={showAddModal}
                 setOpenModal={setShowAddModal}
             />
+            {selectedPackage && (
+                <ConfirmDelete 
+                    text={`Apakah anda yakin ingin menghapus paket ${selectedPackage.name}?`}
+                    urlDelete={`admin/package-prices/${selectedPackage.id}`}
+                    openConfirmDelete={showDeleteConfirmation}
+                    setOpenConfirmDelete={setShowDeleteConfirmation}
+                />
+            )}
             <Card className="p-6 space-y-6">
                 <CardHeader>
                     <div className="flex items-center justify-between">
@@ -56,6 +68,7 @@ function Index({ packagePrices }) {
                                 <TableHead>Harga</TableHead>
                                 <TableHead>Durasi (bulan)</TableHead>
                                 <TableHead>Deskripsi</TableHead>
+                                <TableHead></TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -68,6 +81,16 @@ function Index({ packagePrices }) {
                                     </TableCell>
                                     <TableCell>
                                         {packagePrice.description}
+                                    </TableCell>
+                                    <TableCell>
+                                        <button
+                                            onClick={() => {
+                                                setSelectedPackage(packagePrice);
+                                                setShowDeleteConfirmation(true);
+                                            }}
+                                        className="text-red-500">
+                                            <IconTrash className="w-4 h-4" />
+                                        </button>
                                     </TableCell>
                                 </TableRow>
                             ))}

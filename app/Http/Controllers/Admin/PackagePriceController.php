@@ -28,4 +28,10 @@ class PackagePriceController extends Controller
         PackagePrice::create($request->all());
         return redirect()->back()->with('success','Package price created successfully');
     }
+
+    public function destroy(PackagePrice $packagePrice)
+    {
+        $packagePrice->delete();
+        return redirect()->back()->with('success','Package price deleted successfully');
+    }
 }

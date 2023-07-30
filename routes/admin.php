@@ -73,6 +73,7 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
 
     Route::get('/package-prices',[PackagePriceController::class,'index'])->name('admin.package_prices.index');
     Route::post('/package-prices',[PackagePriceController::class,'store'])->name('admin.package_prices.store');
+    Route::delete('/package-prices/{packagePrice}',[PackagePriceController::class,'destroy'])->name('admin.package_prices.destroy');
 
     // website setting route
     Route::get('/settings',[SettingsController::class,'index'])->name('admin.settings.index');
