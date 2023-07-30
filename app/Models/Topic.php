@@ -28,4 +28,16 @@ class Topic extends Model
     {
         return $this->morphedByMany(Article::class, "topicable");
     }
+
+
+    // boot when update ,clear cache topic
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::updated(function () {
+            cache()->forget('topics_series');
+            cache()->forget('topics_articles');
+        });
+    }
 }

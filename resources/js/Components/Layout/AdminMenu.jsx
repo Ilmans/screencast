@@ -50,6 +50,13 @@ function AdminMenu({dashboard = true}) {
             Langganan
         </VerticalNavLink>
         <VerticalNavLink
+            href="/admin/package-prices"
+            icon="IconReceipt2"
+            active={route().current("admin.package_prices.index")}
+        >
+            Daftar Harga
+        </VerticalNavLink>
+        <VerticalNavLink
             href="/admin/invoices"
             icon="IconFileDollar"
             active={route().current("admin.invoices.index")}

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InvoiceController;
+use App\Http\Controllers\Admin\PackagePriceController;
 use App\Http\Controllers\Admin\PaymentMethodController;
 use App\Http\Controllers\Admin\SeriesController;
 use App\Http\Controllers\Admin\SettingsController;
@@ -62,13 +63,15 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
     Route::post('/subscriptions',[SubscriptionController::class,'store'])->name('admin.subscription.store');
     Route::put('/subscriptions/{subscription}',[SubscriptionController::class,'update'])->name('admin.subscription.update');
     Route::delete('/subscriptions/{subscription}',[SubscriptionController::class,'destroy'])->name('admin.subscription.destroy');
-    // end subscription routes
+    // end subscription routesd
 
     //payment method routes
     Route::get('/payment_methods',[PaymentMethodController::class,'index'])->name('admin.payment_methods.index');
     Route::post('/payment_methods',[PaymentMethodController::class,'store'])->name('admin.payment_methods.store');
     Route::delete('/payment_methods/{paymentMethod}',[PaymentMethodController::class,'destroy'])->name('admin.payment_methods.delete');
     // end payment method routes
+
+    Route::get('/package-prices',[PackagePriceController::class,'index'])->name('admin.package_prices.index');
 
     // website setting route
     Route::get('/settings',[SettingsController::class,'index'])->name('admin.settings.index');
