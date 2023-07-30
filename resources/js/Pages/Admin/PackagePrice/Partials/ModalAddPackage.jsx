@@ -22,6 +22,11 @@ function ModalAddPackage({ openModal, setOpenModal }) {
     });
     const submit = (e) => {
         e.preventDefault();
+        post(route("admin.package_prices.store"),{
+            onSuccess: () => {
+                setOpenModal(false);
+            }
+        });
     };
 
     const onChange = (e) => {
