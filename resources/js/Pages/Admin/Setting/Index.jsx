@@ -10,10 +10,12 @@ import React from "react";
 import General from "./Partials/General";
 import Socials from "./Partials/Socials";
 import Contacts from "./Partials/Contacts";
+import { Head } from "@inertiajs/react";
 
 function Index({website}) {
     return (
         <div className="max-w-4xl space-y-4">
+            <Head title="Setting website" />
             <CardHeader>
                 <CardTitle>Setting Website</CardTitle>
                 <CardDescription>Pengaturan website andaa</CardDescription>

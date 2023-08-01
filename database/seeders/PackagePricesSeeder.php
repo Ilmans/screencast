@@ -16,19 +16,19 @@ class PackagePricesSeeder extends Seeder
         $packagePrices = [
             [
                 'name' => 'Basic',
-                'price' => 100,
+                'price' => 100000,
                 'duration_months' => 1,
                 'description' => 'Basic package',
             ],
             [
                 'name' => 'Standard',
-                'price' => 200,
+                'price' => 200000,
                 'duration_months' => 3,
                 'description' => 'Standard package',
             ],
             [
                 'name' => 'Premium',
-                'price' => 300,
+                'price' => 300000,
                 'duration_months' => 6,
                 'description' => 'Premium package',
             ],

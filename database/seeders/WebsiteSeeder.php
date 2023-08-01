@@ -13,32 +13,25 @@ class WebsiteSeeder extends Seeder
     public function run(): void
     {
         $socials = [
-            [
-                'name' => 'facebook',
-                'link' => 'https://www.facebook.com/codingasik',
-            ],
-            [
-                'name' => 'twitter',
-                'link' => 'https://twitter.com/codingasik',
-            ],
-            [
-                'name' => 'instagram',
-                'link' => 'https://www.instagram.com/codingasik',
-            ],
-            [
-                'name' => 'youtube',
-                'link' => 'https://www.youtube.com/channel/UCQ6VgOYpWj0QY5Y1XRy2t5w',
-            ],
+            'facebook' => 'https://www.facebook.com/ilman_sn',
+
+            'twitter' => 'https://twitter.com/codingasik',
+
+            'instagram' => 'https://www.instagram.com/ilman.sn',
+
+            'youtube' =>
+                'https://www.youtube.com/channel/UCQ6asdfasfsdaVgOYpWj0QY5Y1XRy2t5w',
         ];
-        $about = "CodingAsik adalah sebuah website yang berisi tutorial pemrograman berbahasa Indonesia. CodingAsik berdiri pada tahun 2021 dengan tujuan untuk mempermudah para developer pemula dalam mempelajari pemrograman berbahasa Indonesia.";
+        $about =
+            'CodingAsik adalah sebuah website yang berisi tutorial pemrograman berbahasa Indonesia. CodingAsik berdiri pada tahun 2021 dengan tujuan untuk mempermudah para developer pemula dalam mempelajari pemrograman berbahasa Indonesia.';
         $contact = [
             [
                 'name' => 'email',
-                'value' => 'codingasik@gmail.com'
+                'value' => 'codingasik@gmail.com',
             ],
             [
                 'name' => 'whatsapp',
-                'value' => '6282298859671'
+                'value' => '6282298859671',
             ],
         ];
 
