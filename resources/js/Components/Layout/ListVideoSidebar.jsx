@@ -9,7 +9,7 @@ function ListVideoSidebar({
 }) {
     return (
         <div
-            className={`fixed inset-0 w-2/3  lg:max-h-screen lg:static top-0 bg-primary  ${
+            className={`fixed z-20 inset-0 w-2/3  lg:max-h-screen lg:static top-0 bg-primary  ${
                 showInMobile ? "" : "-translate-x-full lg:translate-x-0"
             } z-10 p-4  duration-200 ease-in-out border-r rounded-lg transiton-all   lg:rounded-none lg:sticky lg:w-1/4 border-slate-200 dark:border-slate-800`}
         >
@@ -17,12 +17,12 @@ function ListVideoSidebar({
                 <ButtonCloseSidebar setShowMobileList={setShowInMobile} />
             </div>
 
-            <div className="px-2 bg-primary z-20">
+            <div className="z-20 px-2 bg-primary">
                 <h2 className="text-lg font-semibold font-poppins ">{title}</h2>
                 <p className="text-sm">{description} </p>
             </div>
 
-            <div className="absolute inset-0 top-20 overflow-y-scroll   scrollbar-thin scrollbar-none">
+            <div className="absolute inset-0 overflow-y-scroll top-20 scrollbar-thin scrollbar-none">
                 {children}
             </div>
         </div>

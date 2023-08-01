@@ -21,6 +21,10 @@ function Player({ video, canWatch }) {
     }, [currentTime]);
 
     const saveWatchTime = (time) => {
+        if (user.is_admin) {
+            console.log("preview mode");
+            return;
+        }
         setPrevWatchTime(time);
 
         axios
@@ -43,12 +47,14 @@ function Player({ video, canWatch }) {
     const handleContextMenu = (event) => {
         event.preventDefault();
         // You can add custom behavior here if needed
-      };
+    };
     return (
-        <div onContextMenu={handleContextMenu} className="relative w-full overflow-hidden rounded-lg aspect-video">
+        <div
+            onContextMenu={handleContextMenu}
+            className="relative w-full overflow-hidden rounded-lg aspect-video"
+        >
             {play ? (
                 <ReactPlayer
-                
                     onProgress={(e) => {
                         setCurrentTime(e.playedSeconds);
                     }}

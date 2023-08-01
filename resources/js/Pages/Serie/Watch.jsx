@@ -5,9 +5,11 @@ import { DoubleArrowRight } from "../../../lib/Icon";
 import BadgeButton from "@/Components/BadgeButton";
 import Player from "./Player";
 import ListVideoSidebar from "@/Components/Layout/ListVideoSidebar";
+import { usePage } from "@inertiajs/react";
 
 function Watch({ serie, video, canWatch }) {
     const [showInMobile, setShowInMobile] = useState(false);
+    const {user} = usePage().props.auth;
 
     return (
         <div className="relative lg:px-4 lg:flex lg:gap-x-4">
@@ -33,7 +35,13 @@ function Watch({ serie, video, canWatch }) {
                 </BadgeButton>
             </button>
 
-            <div className="lg:w-3/4 lg:p-4">
+            <div className="relative lg:w-3/4 ">
+                {user && user.is_admin && (
+                    <div className="absolute z-10 w-full px-4 py-2 mx-2 font-mono text-xs bg-blue-800 rounded-lg">
+                        Anda sedang menonton sebagai admin mode atau preview
+                        mode, progress menonton tidak akan di simpan.
+                    </div>
+                )}
                 {/* Video Player */}
 
                 <div className="p-2.5 relative ">
