@@ -14,6 +14,11 @@ class PageController extends Controller
         return inertia('Admin/Page/Index',compact('pages'));
     }
 
+    public function show (Page $page)
+    {
+        return inertia('Page/Show',compact('page'));
+    }
+
     public function store (Request $request) {
         $request->validate([
             'title' => 'string|min:5|max:30',

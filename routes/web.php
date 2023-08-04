@@ -7,6 +7,7 @@ use App\Http\Controllers\TopicController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\VideoController;
@@ -16,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name("home");
 //topic
+
+
+
 Route::get("/topics", [TopicController::class, "index"])->name("topics");
 Route::get("/topic/{topic:slug}", [TopicController::class, 'show'])->name("topic.show");
 
@@ -60,6 +64,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/watch_later', [WatchLaterController::class, 'store'])->name('watch_later.store');
     Route::delete('/watch_later/{watchLater:id}', [WatchLaterController::class, 'destroy'])->name('watch_later.destroy');
 });
+
+Route::get('/{page:slug}',[PageController::class,'show'])->name('page.show');
 
 
 require __DIR__ . '/auth.php';
