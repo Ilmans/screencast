@@ -71,7 +71,7 @@ function Index({ topics }) {
                                         {topic.image ? (
                                             <div>
                                                 <img
-                                                    src={"/images/topics/" + topic.image}
+                                                    src={`${topic.image.includes('https') ? topic.image : `/images/topics/${topic.image}`}`}
                                                     alt=""
                                                     className="w-10 h-10 rounded-full"
                                                 />
