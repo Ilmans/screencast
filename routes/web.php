@@ -65,8 +65,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/watch_later/{watchLater:id}', [WatchLaterController::class, 'destroy'])->name('watch_later.destroy');
 });
 
-Route::get('/{page:slug}',[PageController::class,'show'])->name('page.show');
 
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';
+Route::get('/{page:slug}',[PageController::class,'show'])->name('page.show');

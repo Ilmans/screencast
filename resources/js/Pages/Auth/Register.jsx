@@ -1,15 +1,15 @@
-import { useEffect } from 'react';
-
-import { Head, Link, useForm } from "@inertiajs/react";
+import Logo from "@/Components/Logo";
 import PublicLayout from "@/Layouts/PublicLayout";
+import { Head, Link, useForm } from "@inertiajs/react";
+import { useEffect } from "react";
+import { KeyIcon, UserIcon } from "../../../lib/Icon";
 import InputWithIcon from "@/Components/InputWithIcon";
-import { EnpeloveIcon, KeyIcon, UserIcon } from "../../../lib/Icon";
-import Button from "@/Components/Button";
+import { Button } from "@/Components/ui/button";
 
-export default function Register() {
+export default function Register({  }) {
     const { data, setData, post, processing, errors, reset } = useForm({
-        username: "",
-        name: "",
+        name : "",
+        username : "",
         email: "",
         password: "",
         password_confirmation: "",
@@ -17,7 +17,7 @@ export default function Register() {
 
     useEffect(() => {
         return () => {
-            reset("password", "password_confirmation");
+            reset("password");
         };
     }, []);
 
@@ -28,25 +28,34 @@ export default function Register() {
     };
 
     const onChange = (e) => {
-        setData({ ...data, [e.target.name]: e.target.value });
+        const { name, value, type, checked } = e.target;
+        const newValue = type === "checkbox" ? checked : value;
+       
+
+        setData({ ...data, [name]: newValue });
     };
 
     return (
-        <div className="flex items-center h-screen bg-gradient-to-b from-slate-950  from-65% to-slate-900">
-            <div className="hidden w-1/2 p-24 lg:block">
-                <p className="text-lg font-semibold text-slate-300">
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Quidem, ut? Atque vero aut saepe ut adipisci. Ratione,
-                    deleniti? Aliquam repellendus consequuntur voluptas possimus
-                    eum placeat doloribus cumque minima! Repudiandae, eum.""
-                </p>
-                <p>- John Doe</p>
+        <div className="relative flex items-center justify-center h-screen overflow-hidden isolate bg-slate-100 dark:bg-primary">
+            <Head title="Register" />
+             <div
+                className="absolute -left-96 dark:-z-0 -z-10 transform-gpu blur-3xl "
+                aria-hidden="true"
+            >
+                <div
+                    className="aspect-[801/1036] w-[50.0625rem] bg-gradient-to-tr from-violet-500 to-blue-600 opacity-30"
+                    style={{
+                        clipPath:
+                            "polygon(63.1% 29.6%, 100% 17.2%, 76.7% 3.1%, 48.4% 0.1%, 44.6% 4.8%, 54.5% 25.4%, 59.8% 49.1%, 55.3% 57.9%, 44.5% 57.3%, 27.8% 48%, 35.1% 81.6%, 0% 97.8%, 39.3% 100%, 35.3% 81.5%, 97.2% 52.8%, 63.1% 29.6%)",
+                    }}
+                />
             </div>
+           
             <div className="flex items-center w-full p-12 lg:w-1/2">
-                <div className="w-full p-8 shadow-lg lg:w-2/3 shadow-slate-700 bg-slate-800">
+                <div className="w-full p-8 shadow-lg lg:w-2/3 bg-primary dark:shadow-slate-700">
                     <div className="mb-8">
                         <h2 className="text-lg font-semibold font-poppins">
-                            Register akun baru
+                            Daftar Akun 
                         </h2>
                         <p className="text-xs">
                             Sudah punya akun?{" "}
@@ -56,9 +65,9 @@ export default function Register() {
                         </p>
                     </div>
                     <form onSubmit={submit}>
-                        <div className="space-y-2 group ">
+                        <div className="space-y-2 group">
                             <label
-                                htmlFor="username"
+                                htmlFor="email"
                                 className="text-sm text-slate-400 "
                             >
                                 Nama Lengkap
@@ -68,7 +77,7 @@ export default function Register() {
                                 onChange={onChange}
                                 value={data.name}
                                 id="name"
-                                placeholder="Your full name"
+                                placeholder="Nama Lengkap"
                                 icon={<UserIcon className="w-4 h-4" />}
                             />
                             {errors && errors.name && (
@@ -79,17 +88,18 @@ export default function Register() {
                         </div>
                         <div className="mt-4 space-y-2 group">
                             <label
-                                htmlFor="username"
+                                htmlFor="email"
                                 className="text-sm text-slate-400 "
                             >
-                                username
+                                Username
                             </label>
                             <InputWithIcon
                                 name="username"
                                 onChange={onChange}
                                 value={data.username}
                                 id="username"
-                                placeholder="Your username"
+                                type="text"
+                                placeholder="Nama Pengguna"
                                 icon={<UserIcon className="w-4 h-4" />}
                             />
                             {errors && errors.username && (
@@ -103,15 +113,16 @@ export default function Register() {
                                 htmlFor="email"
                                 className="text-sm text-slate-400 "
                             >
-                                email
+                                Email
                             </label>
                             <InputWithIcon
                                 name="email"
                                 onChange={onChange}
                                 value={data.email}
                                 id="email"
+                                type="email"
                                 placeholder="Your email"
-                                icon={<EnpeloveIcon className="w-4 h-4" />}
+                                icon={<UserIcon className="w-4 h-4" />}
                             />
                             {errors && errors.email && (
                                 <span className="text-xs text-red-600">
@@ -122,7 +133,7 @@ export default function Register() {
 
                         <div className="mt-4 space-y-2 group">
                             <label
-                                htmlFor="password"
+                                htmlFor=""
                                 className="text-sm text-slate-400"
                             >
                                 Password
@@ -136,7 +147,7 @@ export default function Register() {
                                 name="password"
                                 icon={<KeyIcon className="w-4 h-4" />}
                             />
-                            {errors && errors.password && (
+                             {errors && errors.password && (
                                 <span className="text-xs text-red-600">
                                     {errors.password}
                                 </span>
@@ -144,7 +155,7 @@ export default function Register() {
                         </div>
                         <div className="mt-4 space-y-2 group">
                             <label
-                                htmlFor="password_confirmation"
+                                htmlFor=""
                                 className="text-sm text-slate-400"
                             >
                                 Konfirmasi Password
@@ -154,24 +165,20 @@ export default function Register() {
                                 value={data.password_confirmation}
                                 id="password_confirmation"
                                 type="password"
-                                placeholder="Konfirmasi Password"
+                                placeholder="Password"
                                 name="password_confirmation"
                                 icon={<KeyIcon className="w-4 h-4" />}
                             />
-                            {errors && errors.password_confirmation && (
+                             {errors && errors.password_confirmation && (
                                 <span className="text-xs text-red-600">
                                     {errors.password_confirmation}
                                 </span>
                             )}
                         </div>
-
+                        
                         <div className="mt-10 group">
-                            <Button
-                                disabled={processing}
-                                type="submit"
-                                bg={"secondary"}
-                            >
-                                {processing ? "Daftar..." : "Daftar "}
+                            <Button variant="secondary" size="lg" type="submit">
+                                Daftar
                             </Button>
                         </div>
                     </form>
