@@ -32,8 +32,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Test User',
-            'username' => 'test',
+            'name' => 'Mpedia',
+            'username' => 'mpedia',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('12345678'),
             'is_admin' => true,

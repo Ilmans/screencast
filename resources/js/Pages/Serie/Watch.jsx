@@ -5,7 +5,7 @@ import { DoubleArrowRight } from "../../../lib/Icon";
 import BadgeButton from "@/Components/BadgeButton";
 import Player from "./Player";
 import ListVideoSidebar from "@/Components/Layout/ListVideoSidebar";
-import { usePage } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 
 function Watch({ serie, video, canWatch }) {
     const [showInMobile, setShowInMobile] = useState(false);
@@ -13,6 +13,9 @@ function Watch({ serie, video, canWatch }) {
 
     return (
         <div className="relative lg:px-4 lg:flex lg:gap-x-4">
+            <Head>
+                <title>{video.title}</title>
+            </Head>
             {/* List video */}
             <ListVideoSidebar
                 showInMobile={showInMobile}

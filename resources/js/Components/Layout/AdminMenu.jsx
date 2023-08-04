@@ -80,6 +80,13 @@ function AdminMenu({ open = false }) {
                     Users
                 </VerticalNavLink>
                 <VerticalNavLink
+                    href="/admin/pages"
+                    icon="IconBrandPagekit"
+                    active={route().current("admin.pages.index")}
+                >
+                    Pages
+                </VerticalNavLink>
+                <VerticalNavLink
                     href="/admin/settings"
                     icon="IconSettingsBolt"
                     active={route().current("admin.settings.index")}

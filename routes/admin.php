@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\TopicController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VideoController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/admin')->middleware('auth','admin')->group(function (){
@@ -74,6 +75,12 @@ Route::prefix('/admin')->middleware('auth','admin')->group(function (){
     Route::get('/package-prices',[PackagePriceController::class,'index'])->name('admin.package_prices.index');
     Route::post('/package-prices',[PackagePriceController::class,'store'])->name('admin.package_prices.store');
     Route::delete('/package-prices/{packagePrice}',[PackagePriceController::class,'destroy'])->name('admin.package_prices.destroy');
+
+    // page route
+    Route::get('/pages',[PageController::class,'index'])->name('admin.pages.index');
+    Route::post('/pages',[PageController::class,'store'])->name('admin.pages.store');
+    Route::delete('/pages/{page}',[PageController::class,'destroy'])->name('admin.pages.destroy');
+    //end page route
 
     // website setting route
     Route::get('/settings',[SettingsController::class,'index'])->name('admin.settings.index');

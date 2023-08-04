@@ -5,7 +5,7 @@ import VideoListWrapper from "./Partials/VideoListWrapper";
 
 function Show({ serie, isSavedWatchLater }) {
     return (
-        <div className="container relative py-8 bg-primary   lg:py-20">
+        <div className="relative py-8 lg:container bg-primary lg:py-20">
             <div className="grid grid-cols-12 mx-auto max-w-screen-2xl">
                 <section className="col-span-12 ">
                     <div className="relative flex flex-col items-start gap-12 md:flex-row">
