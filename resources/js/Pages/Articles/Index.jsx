@@ -93,51 +93,58 @@ function Index({ popularArticles }) {
                 <Popular popularArticles={popularArticles} />
 
                 <div ref={listArticleRef} className="flex py-12 mt-8 gap-x-8">
-                    <div className="w-2/3 space-y-4">
-                        {listArticles?.data.map((article) => (
-                            <Link
-                                key={article.id}
-                                href={`/article/${article.slug}`}
-                            >
-                                <ArticleCard key={article.id} popular={false}>
-                                    <ArticleImage image={article.image} />
-                                    <div className="w-2/3">
-                                        <ArticleTopics
-                                            topics={article.topics}
-                                        />
-                                        <TitleDescSection
-                                            title={article.title}
-                                            desc={article.body}
-                                        />
-                                        <AuthorSection
-                                            author={article.user}
-                                            date={article.created_at}
-                                        />
-                                    </div>
-                                </ArticleCard>
-                            </Link>
-                        ))}
-
-                        {listArticles === undefined ||
-                        processLoadmore ||
-                        listArticles === null ? (
-                            <ArticleSkeleton />
-                        ) : (
-                            ""
-                        )}
-
-                        {listArticles?.last_page >
-                            listArticles?.current_page && (
-                            <div className="flex justify-center">
-                                <button
-                                    onClick={loadMore}
-                                    className="px-4 py-2 font-semibold dark:text-white bg-primary rounded-md hover:bg-primary/90"
+                    {popularArticles.length === 0 || listArticles?.data.length === 0 ? (
+                        <div className="w-2/3">Belum ada artikel/keyword pencarian tidak di temukan.</div>
+                    ) : (
+                        <div className="w-2/3 space-y-4">
+                            {listArticles?.data.map((article) => (
+                                <Link
+                                    key={article.id}
+                                    href={`/article/${article.slug}`}
                                 >
-                                    Load More
-                                </button>
-                            </div>
-                        )}
-                    </div>
+                                    <ArticleCard
+                                        key={article.id}
+                                        popular={false}
+                                    >
+                                        <ArticleImage image={article.image} />
+                                        <div className="w-2/3">
+                                            <ArticleTopics
+                                                topics={article.topics}
+                                            />
+                                            <TitleDescSection
+                                                title={article.title}
+                                                desc={article.body}
+                                            />
+                                            <AuthorSection
+                                                author={article.user}
+                                                date={article.created_at}
+                                            />
+                                        </div>
+                                    </ArticleCard>
+                                </Link>
+                            ))}
+
+                            {listArticles === undefined ||
+                            processLoadmore ||
+                            listArticles === null ? (
+                                <ArticleSkeleton />
+                            ) : (
+                                ""
+                            )}
+
+                            {listArticles?.last_page >
+                                listArticles?.current_page && (
+                                <div className="flex justify-center">
+                                    <button
+                                        onClick={loadMore}
+                                        className="px-4 py-2 font-semibold rounded-md dark:text-white bg-primary hover:bg-primary/90"
+                                    >
+                                        Load More
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    )}
                     <FormFilterLazy setListArticles={setListArticles} />
                 </div>
             </div>
