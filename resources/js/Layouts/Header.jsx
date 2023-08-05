@@ -44,12 +44,13 @@ function Header() {
                 </NavLink>
             </div>
             <div className="flex items-center gap-2">
-                <div className="hidden lg:block">
+                {/* <div className="hidden lg:block">
                     <InputWithIcon
+                        
                         placeholder="Cari video.."
                         icon={<SearchIcon />}
                     />
-                </div>
+                </div> */}
                 <ThemeProvider />
                 <MobileNavButton />
             </div>

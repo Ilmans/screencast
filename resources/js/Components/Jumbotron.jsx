@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "./ui/button";
+import { Link } from "@inertiajs/react";
 
 function Jumbotron() {
     return (
@@ -20,19 +21,26 @@ function Jumbotron() {
                 />
             </div>
             <p className="relative text-3xl font-semibold ">
-                Mari asik ngoding bersama <span className="text-slate-400">CodingAsik</span> 
+                Mari asik ngoding bersama{" "}
+                <span className="text-slate-400">CodingAsik</span>
             </p>
 
             <p className="relative text-sm lg:text-lg">
-                Belajar pemrograman lebih mudah dan asik dengan mengedepankan studi kasus dan dengan stack stack terbaru yang di butuhkan oleh industri.
+                Belajar pemrograman lebih mudah dan asik dengan mengedepankan
+                studi kasus dan dengan stack stack terbaru yang di butuhkan oleh
+                industri.
             </p>
             <div className="relative space-x-4">
-                <Button variant={"default"} size="lg">
-                    Jelajahi Video
-                </Button>
-                <Button variant={"outline"} size="lg">
-                    Baca Artikel
-                </Button>
+                <Link href="/topics">
+                    <Button variant={"outline"} size="lg">
+                        Jelajahi Video
+                    </Button>
+                </Link>
+                <Link href="/articles">
+                    <Button variant={"secondary"} size="lg">
+                        Baca Artikel
+                    </Button>
+                </Link>
             </div>
         </section>
     );

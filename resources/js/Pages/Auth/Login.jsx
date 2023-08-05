@@ -37,11 +37,8 @@ export default function Login({ status, canResetPassword }) {
         <div className="flex items-center h-screen bg-slate-100 dark:bg-primary">
             <div className="hidden w-1/2 p-24 lg:block">
                 <p className="text-sm font-semibold text-foreground font-poppins">
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Quidem, ut? Atque vero aut saepe ut adipisci. Ratione,
-                    deleniti? Aliquam repellendus consequuntur voluptas possimus
-                    eum placeat doloribus cumque minima! Repudiandae, eum.""
-                    <p>- John Doe</p>
+                    "Everyone should learn how to program a computer because it teaches you how to think.""
+                    <p>- Steve Jobs</p>
                 </p>
             </div>
             <div className="flex items-center w-full lg:p-12 lg:w-1/2">
