@@ -44,7 +44,7 @@ export default function Login({ status, canResetPassword }) {
                     <p>- John Doe</p>
                 </p>
             </div>
-            <div className="flex items-center w-full p-12 lg:w-1/2">
+            <div className="flex items-center w-full lg:p-12 lg:w-1/2">
                 <div className="w-full p-8 shadow-lg lg:w-2/3 bg-primary dark:shadow-slate-700">
                     <div className="mb-8">
                         <h2 className="text-lg font-semibold font-poppins">

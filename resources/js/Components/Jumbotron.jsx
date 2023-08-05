@@ -8,7 +8,7 @@ function Jumbotron() {
             <div className="absolute inset-0    bg-gradient-to-bl from-transparent to-70% to-primary"></div>
             <div className="absolute inset-0  -top-6   bg-gradient-to-bl from-primary to-60% to-transparent"></div>
             <div
-                className="absolute -top-96 dark:-z-0 -z-10 transform-gpu blur-3xl "
+                className="absolute w-full mb-40 dark:-z-0 -z-10 transform-gpu blur-3xl "
                 aria-hidden="true"
             >
                 <div
@@ -20,15 +20,11 @@ function Jumbotron() {
                 />
             </div>
             <p className="relative text-3xl font-semibold ">
-                Lorem <span className="text-slate-400">Ipsums</span> dolor sit,
-                amet{" "}
+                Mari asik ngoding bersama <span className="text-slate-400">CodingAsik</span> 
             </p>
 
             <p className="relative text-sm lg:text-lg">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Tempore sint sit, perspiciatis sed quibusdam omnis temporibus
-                laboriosam tempora at laudantium possimus odio est praesentium
-                consequatur sapiente incidunt iste rerum corrupti.
+                Belajar pemrograman lebih mudah dan asik dengan mengedepankan studi kasus dan dengan stack stack terbaru yang di butuhkan oleh industri.
             </p>
             <div className="relative space-x-4">
                 <Button variant={"default"} size="lg">

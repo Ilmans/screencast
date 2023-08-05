@@ -3,43 +3,17 @@ import VerticalNavLink from "../VerticalNavLink";
 import { cn } from "@/lib/utils";
 import { usePage } from "@inertiajs/react";
 
-function UserMenu({ dashboard = true }) {
+function UserMenu({ open = false }) {
     const user = usePage().props.auth.user;
     return (
         <ul
             className={cn(
-                "flex flex-col ",
-                dashboard ? "text-sm gap-y-2" : "gap-y-1 text-xs mb-2"
+                !open
+                    ? "translate-y-full duration-300 h-0 opacity-0 transition-all  md:p-0 md:translate-y-0 md:opacity-100 "
+                    : "translate-y-0 duration-300 opacity-100 transition-all p-4 md:p-0",
+                `text-sm gap-y-2 gap-x-2 space-y-2 mb-2 bg-muted md:bg-background  md:p-0 rounded-lg md:rounded-none`
             )}
         >
-            {/* only guest can access this menu, this menu show in nav mobile */}
-
-            {/* home */}
-            <div className="md:hidden">
-                <VerticalNavLink
-                    href="/"
-                    icon="IconHomeEco"
-                    active={route().current("home")}
-                >
-                    Halaman Utama
-                </VerticalNavLink>
-                <VerticalNavLink
-                    href="/topics"
-                    icon="IconBrandTidal"
-                    active={route().current("topics")}
-                >
-                    Topik
-                </VerticalNavLink>
-                {/* Articles */}
-                <VerticalNavLink
-                    href="/articles"
-                    icon="IconBook"
-                    active={route().current("articles")}
-                >
-                    Artikel
-                </VerticalNavLink>
-            </div>
-
             {/* only user login can access this menu, this menu show in dashboard & nav mobile */}
             {user && (
                 <Fragment>
@@ -51,14 +25,16 @@ function UserMenu({ dashboard = true }) {
                         Beranda
                     </VerticalNavLink>
                     {user.is_admin ? (
-                           <VerticalNavLink
-                           href="/admin/dashboard"
-                           icon="IconBrandAsana"
-                           active={route().current("admin.dashboard")}
-                       >
-                           Admin Dashboard
-                       </VerticalNavLink>
-                    ) : ""}
+                        <VerticalNavLink
+                            href="/admin/dashboard"
+                            icon="IconBrandAsana"
+                            active={route().current("admin.dashboard")}
+                        >
+                            Admin Dashboard
+                        </VerticalNavLink>
+                    ) : (
+                        ""
+                    )}
                     <VerticalNavLink
                         href="/profile"
                         icon="IconUserCircle"

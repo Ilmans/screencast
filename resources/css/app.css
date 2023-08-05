@@ -46,12 +46,7 @@
 
 
 
-@media screen and (max-width: 920px) {
-    section {
-        padding-right: 25px;
-        padding-left: 25px;
-    }
-}
+
 
 @font-face {
     font-family: "poppins";

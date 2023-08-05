@@ -8,6 +8,7 @@ import ListTopics from "@/Components/Item/ListTopics";
 import FilterSeries from "@/Components/Page/FilterSeries";
 import Pagination from "@/Components/Page/Pagination";
 import GreetingPage from "@/Components/Page/GreetingPage";
+import { IconListSearch } from "@tabler/icons-react";
 
 function Show({ currentTopic, topics, series }) {
     return (
@@ -33,6 +34,16 @@ function Show({ currentTopic, topics, series }) {
 
             <section className="py-4 border-t md:container">
                 <FilterSeries />
+                {series.data.length === 0 && (
+                        <div className="flex items-center justify-center w-full text-lg">
+                            <div className="flex items-center text-sm font-poppins gap-x-2">
+                                <IconListSearch className="w-5 h-5" />
+                                <p>
+                                    Tidak ada data atau pencarian tidak sesuai.
+                                </p>
+                            </div>
+                        </div>
+                    )}
                 <div className="grid gap-16 md:grid-cols-3">
                     {series.data.map((serie) => (
                         <Serie serie={serie} />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "./Header";
 import AdminMenu from "@/Components/Layout/AdminMenu";
 import { cn } from "@/lib/utils";
@@ -6,6 +6,9 @@ import { IconMenu2 } from "@tabler/icons-react";
 
 function AdminLayout({ header = true, children, needFull = false }) {
     const [openMobileMenu, setOpenMobileMenu] = React.useState(false);
+    useEffect(() => {
+        setOpenMobileMenu(false)
+    },[children])
     return (
         <div className={` `}>
             {header && <Header />}

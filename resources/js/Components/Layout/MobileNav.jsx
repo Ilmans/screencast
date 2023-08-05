@@ -41,7 +41,37 @@ function MobileNav({ show, setShow }) {
                 show ? "scale-100" : "scale-0"
             } duration-100  transition-all ease-in-out lg:w-72  border rounded-lg bg-background shadow-sm text-foreground/80 lg:top-12 top-10  shadow-foreground/40 p-4`}
         >
-            <UserMenu dashboard={false} />
+            <ul className="flex flex-col mb-2 text-xs gap-y-1">
+                <VerticalNavLink
+                    href="/dashboard"
+                    icon="IconDashboard"
+                    active={route().current("dashboard")}
+                >
+                    Dashboard
+                </VerticalNavLink>
+                <VerticalNavLink
+                    href="/"
+                    icon="IconHomeEco"
+                    active={route().current("home")}
+                >
+                    Halaman Utama
+                </VerticalNavLink>
+                <VerticalNavLink
+                    href="/topics"
+                    icon="IconBrandTidal"
+                    active={route().current("topics")}
+                >
+                    Topik
+                </VerticalNavLink>
+                {/* Articles */}
+                <VerticalNavLink
+                    href="/articles"
+                    icon="IconBook"
+                    active={route().current("articles")}
+                >
+                    Artikel
+                </VerticalNavLink>
+            </ul>
             <hr className="border border-border/90" />
             <ul className="flex flex-col g">
                 {user ? (
