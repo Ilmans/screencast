@@ -39,7 +39,7 @@ export default function Register({  }) {
         <div className="relative flex items-center justify-center h-screen overflow-hidden isolate bg-slate-100 dark:bg-primary">
             <Head title="Register" />
              <div
-                className="absolute -left-96 dark:-z-0 -z-10 transform-gpu blur-3xl "
+                className="absolute hidden md:block -left-96 dark:-z-0 -z-10 transform-gpu blur-3xl "
                 aria-hidden="true"
             >
                 <div
@@ -51,7 +51,7 @@ export default function Register({  }) {
                 />
             </div>
            
-            <div className="flex items-center w-full p-12 lg:w-1/2">
+            <div className="flex items-center w-full lg:p-12 lg:w-1/2">
                 <div className="w-full p-8 shadow-lg lg:w-2/3 bg-primary dark:shadow-slate-700">
                     <div className="mb-8">
                         <h2 className="text-lg font-semibold font-poppins">

@@ -111,7 +111,7 @@ export default function Login({ status, canResetPassword }) {
                                 <label htmlFor="remember">Ingat saya</label>
                             </div>
                             <Link
-                                href="#"
+                                href="/forgot-password"
                                 className="text-slate-400 hover:text-white"
                             >
                                 Lupa password?
