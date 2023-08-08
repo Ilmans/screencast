@@ -16,7 +16,7 @@ function ListTopics({ topics }) {
                 className="rounded-lg"
                 width={25}
                 height={25}
-                src={topic.image}
+                src={`${topic.image.includes('https') ? topic.image : `/images/topics/${topic.image}`}`}
                 alt=""
             />
             <p>{topic.name}</p>

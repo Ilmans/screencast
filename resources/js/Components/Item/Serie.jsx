@@ -15,7 +15,7 @@ function Serie({ serie }) {
             <div className="">
                 <LazyLoadImage
                     className="object-cover w-full h-full rounded-lg"
-                    src={serie.image}
+                    src={`${serie.image.includes('https') ? serie.image : `/images/series/thumbnails/${serie.image}`}`}
                     alt=""
                     effect="opacity"
                     delayTime={1000}
@@ -37,7 +37,7 @@ function Serie({ serie }) {
             <p className="mb-2 text-xs text-muted-foreground line-clamp-2">
                 {serie.description}
             </p>
-            <div className="flex gap-2 mt-2 text-muted text-teal-600 dark:text-teal-200">
+            <div className="flex gap-2 mt-2 text-teal-600 text-muted dark:text-teal-200">
                 <div className="flex items-center gap-1">
                     <ClockIcon />
                     <span className="text-xs">
