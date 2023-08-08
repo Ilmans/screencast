@@ -4,13 +4,15 @@ import {
     AuthorSection,
     TitleDescSection,
 } from "@/Components/Item/ArticleCard";
+import { Link } from "@inertiajs/react";
 import React from "react";
 
 function Popular({ popularArticles }) {
     return (
-        <div className="grid gap-8  lg:grid-cols-3">
+        <div className="grid gap-8 lg:grid-cols-3">
             {popularArticles.map((article) => (
-                <ArticleCard key={article.id} popular={true}>
+                <Link key={article.id} href={`/article/${article.slug}`}>
+                <ArticleCard  popular={true}>
                     <ArticleTopics topics={article.topics} />
                     <TitleDescSection
                         title={article.title}
@@ -21,6 +23,7 @@ function Popular({ popularArticles }) {
                         date={article.created_at}
                     />
                 </ArticleCard>
+                </Link>
             ))}
         </div>
     );

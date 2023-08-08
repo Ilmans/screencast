@@ -10,7 +10,9 @@ function ArticleCard({ popular = false, children, ...props }) {
 function ArticleImage({ image }) {
     return (
         <div className="object-cover w-1/3 rounded-lg bg-primary/50">
-            <img className="w-full h-full rounded-lg " src={image} alt="" />
+            <img className="w-full h-full rounded-lg " 
+           src={`${image.includes('https') ? image : `/images/articles/${image}`}`}
+             alt="" />
         </div>
     );
 }
@@ -51,7 +53,7 @@ function AuthorSection({ author, date }) {
                     <img
                         className="w-8 h-8 rounded-full"
                         // dummy image
-                        src="https://chat.openai.com/_next/image?url=https%3A%2F%2Flh3.googleusercontent.com%2Fa%2FAAcHTtdpLReGHWaCtXGOhW7LDSB4NgkhOIqOWJzeMKA9KbXv3LM%3Ds96-c&w=64&q=75"
+                        src={`https://ui-avatars.com/api/?name=${author.name}`}
                         alt=""
                     />
                 </a>
