@@ -35,6 +35,10 @@ class Topic extends Model
     {
         parent::boot();
 
+        static::created(function(){
+            cache()->forget('topics_series');
+            cache()->forget('topics_articles');
+        });
         static::updated(function () {
             cache()->forget('topics_series');
             cache()->forget('topics_articles');

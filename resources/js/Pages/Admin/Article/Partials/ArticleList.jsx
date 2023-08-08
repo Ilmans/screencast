@@ -52,7 +52,7 @@ function ArticleList({ articles }) {
                                 ))}
                             </TableCell>
                             <TableCell>
-                                {article.is_published ? (
+                                {article.published ? (
                                     <span className="px-2 py-1 text-xs text-white bg-green-500 rounded-full">
                                         Published
                                     </span>
@@ -64,11 +64,34 @@ function ArticleList({ articles }) {
                             </TableCell>
                             <TableCell>{article.views}</TableCell>
                             <TableCell>
-                                <div className="flex justify-center gap-x-1 ">
+                                <div className="flex items-center justify-center gap-x-1">
+                                    {!article.published ? (
+                                        <Link
+                                            method="post"
+                                            href={route(
+                                                "article.publish",
+                                                article.id
+                                            )}
+                                            className="px-1 py-0.5 text-xs bg-blue-700 rounded-lg"
+                                        >
+                                            publish
+                                        </Link>
+                                    ) : (
+                                        <Link
+                                            method="post"
+                                            href={route(
+                                                "article.unpublish",
+                                                article.id
+                                            )}
+                                            className="px-1 py-0.5 text-xs bg-gray-700 rounded-lg"
+                                        >
+                                            unpublish
+                                        </Link>
+                                    )}
                                     <Link href={`/article/${article.slug}`}>
                                         <IconEye className="w-4 h-4 text-blue-400" />
                                     </Link>
-                                   
+
                                     <button
                                         onClick={() => {
                                             setSelectedArticle(article);

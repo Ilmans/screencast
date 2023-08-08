@@ -44,6 +44,8 @@ Route::prefix('/admin')->middleware('auth','admin','demo')->group(function (){
 
     // articles routes
         Route::get('/articles',[ArticleController::class,'index'])->name('admin.articles.index');
+        Route::post('/articles/{article}',[ArticleController::class,'publish'])->name('article.publish');
+        Route::post('/articles/unpublish/{article}',[ArticleController::class,'unpublish'])->name('article.unpublish');
     // end articles routes
 
 

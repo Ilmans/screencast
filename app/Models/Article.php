@@ -19,6 +19,7 @@ class Article extends Model
         'synopsis',
         'user_id',
         'views',
+        'published'
     ];
 
     

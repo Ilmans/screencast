@@ -27,10 +27,10 @@ function Footer() {
                             { name: "Series", href: "/series" },
                             { name: "Articles", href: "/articles" },
                             { name: "Pricing", href: "/pricing" },
-                            {
-                                name: "Kontak Kami",
-                                href: "https://wa.me/62895354534986",
-                            },
+                            // {
+                            //     name: "Kontak Kami",
+                            //     href: "https://wa.me/62895354534986",
+                            // },
                         ]}
                     />
 
