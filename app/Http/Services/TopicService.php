@@ -9,9 +9,8 @@ use Illuminate\Support\Facades\Cache;
 class TopicService extends UploadImageService
 {
 
-  
-    private $pathImage = 'images/topics/';
 
+    private $pathImage = 'images/topics/';
     public function createTopic ($request) : void
     {
         $slug = \Str::slug($request->name);
@@ -28,7 +27,7 @@ class TopicService extends UploadImageService
 
     public function updateTopic($request,$topic) : void
     {
-       
+
         $slug = \Str::slug($request->name);
         $imageName = $request->file('image') ? $this->uploadImage($slug, $request->file('image'), $this->pathImage) : $topic->image;
         if ($request->file('image') && $topic->image) {
@@ -40,7 +39,7 @@ class TopicService extends UploadImageService
             'image' => $imageName,
             'type' => $request->type,
             'description' => $request->description ?? ' ',
-        ]); 
+        ]);
     }
 
     public function deleteTopic ($topic) : void
@@ -64,7 +63,7 @@ class TopicService extends UploadImageService
         return Cache::rememberForever('topics_series', function () {
             return Topic::whereType('serie')->get();
         });
-        
+
     }
 
 
