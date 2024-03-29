@@ -5,7 +5,7 @@ import {
     ToastProvider,
     ToastTitle,
     ToastViewport,
-} from "@/components/ui/toast";
+} from "@/Components/ui/toast"
 
 import { usePage } from "@inertiajs/react";
 import { useEffect } from "react";
