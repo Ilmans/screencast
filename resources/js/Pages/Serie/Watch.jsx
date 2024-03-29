@@ -57,9 +57,9 @@ function Watch({ serie, video }) {
                     </ul>
                 </div>
                 <main className="w-full">
-                    <div className="mt-2 flex flex-col gap-y-4 px-4 pb-4 lg:mt-0 lg:gap-y-6">
+                    <div className="mt-2 flex relative flex-col gap-y-4 px-4 pb-4 lg:mt-0 lg:gap-y-6">
                         {user && user.is_admin && (
-                            <div className="absolute z-40 w-fit px-4 py-2 mx-2 font-mono text-xs bg-blue-800 rounded-lg">
+                            <div className="absolute z-40 right-0 left-0  text-white px-4 py-2 text-xs bg-blue-400 ">
                                 admin Preview mode
                             </div>
                         )}
@@ -129,7 +129,7 @@ function Watch({ serie, video }) {
                                 </div>
                             </div>
                         </div>
-                        <Comment />
+                        {/* <Comment /> */}
                     </div>
                 </main>
             </div>

@@ -33,13 +33,13 @@ function Footer() {
                         ]}
                     />
 
-                    <LinkSection
+                    {/* <LinkSection
                         title="Topics"
                         links={topic.series.map((topicc) => ({
                             name: topicc.name,
                             href: `/topic/${topicc.slug}`,
                         }))}
-                    />
+                    /> */}
 
                     <LinkSection
                         title={"Socials"}

@@ -16,12 +16,12 @@ class DemoMiddleware
     public function handle(Request $request, Closure $next): Response
     {
 
-       if(!env('DEMO_MODE')){
-        return $next($request);
-       }
-      
-        if($request->method() === 'POST' || $request->method() === 'PUT' || $request->method() === 'DELETE' ) {
-            return back()->with('error',"Tidak diizinkan operasi admin di demo.");
+        if (!env('DEMO_MODE')) {
+            return $next($request);
+        }
+
+        if ($request->method() === 'POST' || $request->method() === 'PUT' || $request->method() === 'DELETE') {
+            return back()->with('error', "Tidak diizinkan operasi admin di demo.");
         }
         return $next($request);
     }
