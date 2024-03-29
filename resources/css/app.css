@@ -3,11 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+body {
+        @apply font-body;
 
-}
-
-@layer base {
-
+    }
 }
 
 .bgkeren {
@@ -46,9 +45,31 @@
 
 
 
-
+@font-face {
+    font-family: 'GTWalsheimPro';
+    src: url('../fonts/GtWalse/GTWalsheimPro-Regular.woff2') format('woff2'),
+        url('../fonts/GtWalse/GTWalsheimPro-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 @font-face {
+    font-family: 'GTWalsheimPro';
+    src: url('../fonts/GtWalse/GTWalsheimPro-Medium.woff2') format('woff2'),
+        url('../fonts/GtWalse/GTWalsheimPro-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GTWalsheimPro';
+    src: url('../fonts/GtWalse/GTWalsheimPro-Bold.woff2') format('woff2'),
+        url('../fonts/GtWalse/GTWalsheimPro-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* @font-face {
     font-family: "poppins";
     src: url("../fonts/poppins/Poppins-Regular.ttf");
     font-weight: normal;
@@ -91,7 +112,7 @@
     src: url("../fonts/syne/Syne-Bold.ttf");
     font-weight: bold;
     font-style: normal;
-}
+} */
 
 
 .markdown h2 {

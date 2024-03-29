@@ -6,10 +6,10 @@ import { KeyIcon, UserIcon } from "../../../lib/Icon";
 import InputWithIcon from "@/Components/InputWithIcon";
 import { Button } from "@/Components/ui/button";
 
-export default function Register({  }) {
+export default function Register({}) {
     const { data, setData, post, processing, errors, reset } = useForm({
-        name : "",
-        username : "",
+        name: "",
+        username: "",
         email: "",
         password: "",
         password_confirmation: "",
@@ -30,7 +30,6 @@ export default function Register({  }) {
     const onChange = (e) => {
         const { name, value, type, checked } = e.target;
         const newValue = type === "checkbox" ? checked : value;
-       
 
         setData({ ...data, [name]: newValue });
     };
@@ -38,7 +37,7 @@ export default function Register({  }) {
     return (
         <div className="relative flex items-center justify-center h-screen overflow-hidden isolate bg-slate-100 dark:bg-primary">
             <Head title="Register" />
-             <div
+            <div
                 className="absolute hidden md:block -left-96 dark:-z-0 -z-10 transform-gpu blur-3xl "
                 aria-hidden="true"
             >
@@ -50,13 +49,11 @@ export default function Register({  }) {
                     }}
                 />
             </div>
-           
+
             <div className="flex items-center w-full lg:p-12 lg:w-1/2">
                 <div className="w-full p-8 shadow-lg lg:w-2/3 bg-primary dark:shadow-slate-700">
                     <div className="mb-8">
-                        <h2 className="text-lg font-semibold font-poppins">
-                            Daftar Akun 
-                        </h2>
+                        <h2 className="text-lg font-semibold  ">Daftar Akun</h2>
                         <p className="text-xs">
                             Sudah punya akun?{" "}
                             <Link className="text-blue-400" href="/login">
@@ -147,7 +144,7 @@ export default function Register({  }) {
                                 name="password"
                                 icon={<KeyIcon className="w-4 h-4" />}
                             />
-                             {errors && errors.password && (
+                            {errors && errors.password && (
                                 <span className="text-xs text-red-600">
                                     {errors.password}
                                 </span>
@@ -169,13 +166,13 @@ export default function Register({  }) {
                                 name="password_confirmation"
                                 icon={<KeyIcon className="w-4 h-4" />}
                             />
-                             {errors && errors.password_confirmation && (
+                            {errors && errors.password_confirmation && (
                                 <span className="text-xs text-red-600">
                                     {errors.password_confirmation}
                                 </span>
                             )}
                         </div>
-                        
+
                         <div className="mt-10 group">
                             <Button variant="secondary" size="lg" type="submit">
                                 Daftar

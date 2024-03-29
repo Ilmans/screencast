@@ -9,7 +9,7 @@ import { Head, usePage } from "@inertiajs/react";
 
 function Watch({ serie, video, canWatch }) {
     const [showInMobile, setShowInMobile] = useState(false);
-    const {user} = usePage().props.auth;
+    const { user } = usePage().props.auth;
 
     return (
         <div className="relative lg:px-4 lg:flex lg:gap-x-4">
@@ -53,7 +53,7 @@ function Watch({ serie, video, canWatch }) {
                 </div>
 
                 {/* Video Title & description */}
-                <h2 className="px-4 py-8 text-3xl font-semibold font-poppins">
+                <h2 className="px-4 py-8 text-3xl font-semibold  ">
                     {video.title}
                 </h2>
                 <div className="p-4 border-t border-border ">

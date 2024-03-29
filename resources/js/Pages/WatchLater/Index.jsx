@@ -39,10 +39,10 @@ function Index({ series }) {
                 {series.data.map((serie) => (
                     <Card key={serie.id} className="p-4 ">
                         <CardHeader>
-                            <CardTitle className="text-xs font-poppins font-medium">
+                            <CardTitle className="text-xs   font-medium">
                                 {serie.serie.title}
                             </CardTitle>
-                            <CardDescription className="text-xs font-poppins">
+                            <CardDescription className="text-xs  ">
                                 Ditambahkan {serie.created_at}
                             </CardDescription>
                         </CardHeader>

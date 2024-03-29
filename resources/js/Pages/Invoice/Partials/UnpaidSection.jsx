@@ -34,7 +34,7 @@ function UnpaidSection({ invoice, paymentMethods }) {
 
     return (
         <Fragment>
-            <div className="text-sm font-poppins font-medium text-muted-foreground">
+            <div className="text-sm   font-medium text-muted-foreground">
                 Invoice anda belum dibayar, silahkan lakukan pembayaran sesuai
                 dengan nominal yang telah ditentukan. Pembayaran akan otomatis
                 di konfirmasi otomatis oleh system.

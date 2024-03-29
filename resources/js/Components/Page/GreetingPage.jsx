@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 
 function GreetingPage({ title, desc, children, variant = "default" }) {
     return (
-        <section className="md:container relative bg-primary font-poppins   lg:py-16">
+        <section className="md:container relative bg-primary     lg:py-16">
             <div className="absolute inset-0 bgkeren"></div>
             <div className="absolute -top-4 inset-0    bg-gradient-to-b from-transparent to-60% to-primary"></div>
 

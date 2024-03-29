@@ -4,7 +4,7 @@ import { Link } from "@inertiajs/react";
 
 function Jumbotron() {
     return (
-        <section className="relative px-4 py-12 space-y-6 overflow-hidden text-center isolate bg-background md:container lg:px-48 font-poppins lg:py-32 ">
+        <section className="relative px-4 py-12 space-y-6 overflow-hidden text-center isolate bg-background md:container lg:px-48   lg:py-32 ">
             <div className="absolute inset-0 bgkeren"></div>
             <div className="absolute inset-0    bg-gradient-to-bl from-transparent to-70% to-primary"></div>
             <div className="absolute inset-0  -top-6   bg-gradient-to-bl from-primary to-60% to-transparent"></div>

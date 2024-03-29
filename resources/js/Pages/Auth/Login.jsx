@@ -36,15 +36,16 @@ export default function Login({ status, canResetPassword }) {
     return (
         <div className="flex items-center h-screen bg-slate-100 dark:bg-primary">
             <div className="hidden w-1/2 p-24 lg:block">
-                <p className="text-sm font-semibold text-foreground font-poppins">
-                    "Everyone should learn how to program a computer because it teaches you how to think.""
+                <p className="text-sm font-semibold text-foreground  ">
+                    "Everyone should learn how to program a computer because it
+                    teaches you how to think.""
                     <p>- Steve Jobs</p>
                 </p>
             </div>
             <div className="flex items-center w-full lg:p-12 lg:w-1/2">
                 <div className="w-full p-8 shadow-lg lg:w-2/3 bg-primary dark:shadow-slate-700">
                     <div className="mb-8">
-                        <h2 className="text-lg font-semibold font-poppins">
+                        <h2 className="text-lg font-semibold  ">
                             Masuk ke akun anda
                         </h2>
                         <p className="text-xs">

@@ -11,6 +11,15 @@ export default {
         "./resources/js/**/*.jsx",
     ],
     presets: [shadcnPreset],
+    theme: {
+        extend: {
+            fontFamily: {
+                // body: ["'Inter', sans-serif"],
+                // body: ["'Poppins', sans-serif"],
+                body: ["GtWalsheimPro", "sans-serif"],
+            },
+        },
+    },
 
     plugins: [require("tailwindcss-animate")],
 

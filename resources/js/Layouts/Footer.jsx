@@ -3,9 +3,8 @@ import Logo from "@/Components/Logo";
 import { Link, usePage } from "@inertiajs/react";
 
 function Footer() {
-    
     const website = usePage().props.website;
-    
+
     const { topic } = usePage().props;
 
     return (
@@ -16,7 +15,7 @@ function Footer() {
                         <div className="py-2 -ml-2">
                             <Logo />
                         </div>
-                        <p className="text-sm font-medium text-muted-foreground font-poppins">
+                        <p className="text-sm font-medium text-muted-foreground  ">
                             {website && website.about && website.about}
                         </p>
                     </div>
@@ -42,14 +41,21 @@ function Footer() {
                         }))}
                     />
 
-
                     <LinkSection
                         title={"Socials"}
-                        links={website && website.socials ? Object.keys(JSON.parse(website.socials)).map((social) => ({
-                            // name = key social with capital first letter , href = value social
-                            name: social.charAt(0).toUpperCase() + social.slice(1),
-                            href: website.socials[social],
-                        })) : []}
+                        links={
+                            website && website.socials
+                                ? Object.keys(JSON.parse(website.socials)).map(
+                                      (social) => ({
+                                          // name = key social with capital first letter , href = value social
+                                          name:
+                                              social.charAt(0).toUpperCase() +
+                                              social.slice(1),
+                                          href: website.socials[social],
+                                      })
+                                  )
+                                : []
+                        }
                     />
                     {/* legal */}
                     <LinkSection
@@ -61,11 +67,11 @@ function Footer() {
                     />
                 </div>
             </section>
-            <div className="flex flex-col items-center justify-center gap-2 p-8 border-t bg-primary">
+            <div className="flex flex-col items-center justify-center gap-2 p-8 border-t ">
                 <p className="text-xs text-muted-foreground">
-                    Coding asik adalah merek dagang dari Ilman Sunanuddin
+                    Coding asik platform kursus programming
                 </p>
-                <p className="text-xs text-center font-poppins">
+                <p className="text-xs text-center  ">
                     <span className="font-semibold">
                         @Copyright 2023 CodingAsik.
                     </span>{" "}
@@ -79,8 +85,8 @@ function Footer() {
 function LinkSection({ title, links }) {
     return (
         <div key={title}>
-            <h1 className="mb-4 text-lg font-medium font-poppins">{title}</h1>
-            <ul className="space-y-2 text-sm md:space-y-4 font-poppins">
+            <h1 className="mb-4 text-lg font-medium  ">{title}</h1>
+            <ul className="space-y-2 text-sm md:space-y-4  ">
                 {links.map((link) => (
                     <li key={link.name}>
                         <Link

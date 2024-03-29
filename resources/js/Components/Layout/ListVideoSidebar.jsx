@@ -18,7 +18,7 @@ function ListVideoSidebar({
             </div>
 
             <div className="z-20 px-2 bg-primary">
-                <h2 className="text-lg font-semibold font-poppins ">{title}</h2>
+                <h2 className="text-lg font-semibold   ">{title}</h2>
                 <p className="text-sm">{description} </p>
             </div>
 

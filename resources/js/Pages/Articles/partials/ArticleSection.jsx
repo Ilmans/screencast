@@ -19,7 +19,7 @@ function ArticleSection({ article }) {
                             </a>
                         ))}
                     </p>
-                    <h1 className="flex items-center text-3xl font-bold text-accent-foreground font-poppins gap-x-1">
+                    <h1 className="flex items-center text-3xl font-bold text-accent-foreground   gap-x-1">
                         {article.title}
                         {/* is preview mode */}
                         {!article.is_published &&
@@ -31,7 +31,7 @@ function ArticleSection({ article }) {
                             )}
                     </h1>
                     {/* write By */}
-                    <Link className="mt-2 text-sm font-medium font-poppins">
+                    <Link className="mt-2 text-sm font-medium  ">
                         Ditulis oleh{" "}
                         <a
                             href="#"

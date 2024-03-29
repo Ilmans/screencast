@@ -30,10 +30,10 @@ function Index({ watchHistories }) {
                 {watchHistories.data.map((watchHistory) => (
                     <Card key={watchHistory.id} className="p-4 ">
                         <CardHeader>
-                            <CardTitle className="text-xs font-poppins font-medium">
+                            <CardTitle className="text-xs   font-medium">
                                 {watchHistory.video.title}
                             </CardTitle>
-                            <CardDescription className="text-xs font-poppins">
+                            <CardDescription className="text-xs  ">
                                 Terakhri ditonton pada{" "}
                                 {watchHistory.last_watched_at}
                             </CardDescription>

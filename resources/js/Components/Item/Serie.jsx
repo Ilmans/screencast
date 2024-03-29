@@ -9,13 +9,17 @@ function Serie({ serie }) {
     return (
         <Link
             href={`/serie/${serie.slug}`}
-            className="space-y-2 rounded-lg font-poppins"
+            className="space-y-2 rounded-lg  "
             key={serie.id}
         >
             <div className="">
                 <LazyLoadImage
                     className="object-cover w-full h-full rounded-lg"
-                    src={`${serie.image.includes('https') ? serie.image : `/images/series/thumbnails/${serie.image}`}`}
+                    src={`${
+                        serie.image.includes("https")
+                            ? serie.image
+                            : `/images/series/thumbnails/${serie.image}`
+                    }`}
                     alt=""
                     effect="opacity"
                     delayTime={1000}
@@ -24,7 +28,7 @@ function Serie({ serie }) {
             <div className="flex gap-2 ">
                 {serie.topics.map((topic, i) => (
                     <div
-                        className="text-sm font-semibold text-blue-400 rounded-lg font-poppins"
+                        className="text-sm font-semibold text-blue-400 rounded-lg  "
                         key={i}
                     >
                         {topic.name}

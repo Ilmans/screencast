@@ -58,7 +58,7 @@ function FakeVideoPlayer({
 function needLogin({ title, desc, needLogin = false }) {
     return (
         <div className="relative z-50 text-white">
-            <h2 className="font-bold font-poppins">{title}</h2>
+            <h2 className="font-bold  ">{title}</h2>
             <p className="mt-2 text-sm ">
                 {" "}
                 {desc} <br />

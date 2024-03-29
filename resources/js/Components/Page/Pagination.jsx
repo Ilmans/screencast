@@ -12,7 +12,7 @@ function Pagination({ links }) {
         });
     };
     return (
-        <div className="flex items-center justify-between w-full text-sm font-semibold lg:justify-center gap-x-2 font-poppins">
+        <div className="flex items-center justify-between w-full text-sm font-semibold lg:justify-center gap-x-2  ">
             {links.map((link, i) => (
                 <Link
                     preserveScroll={true}
@@ -23,7 +23,9 @@ function Pagination({ links }) {
                             ? "bg-muted text-muted-foreground border"
                             : "bg-accent text-foreground border-accent hover:bg-slate-200 dark:hover:bg-muted-foreground"
                     } px-4 py-2 rounded-lg ${
-                        link.active ? "bg-muted-foreground text-muted  dark:bg-muted-foreground" : ""
+                        link.active
+                            ? "bg-muted-foreground text-muted  dark:bg-muted-foreground"
+                            : ""
                     }  ${
                         link.label === "&laquo; Previous" ||
                         link.label === "Next &raquo;"

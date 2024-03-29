@@ -27,7 +27,7 @@ function Show({ currentTopic, topics, series }) {
                 }
                 desc={currentTopic.description}
             >
-                <div className="flex flex-wrap items-center text-xs border-gray-600 rounded-md lg:text-sm lg:w-3/5 gap-x-4 font-poppins ">
+                <div className="flex flex-wrap items-center text-xs border-gray-600 rounded-md lg:text-sm lg:w-3/5 gap-x-4   ">
                     <ListTopics topics={topics} />
                 </div>
             </GreetingPage>
@@ -35,15 +35,13 @@ function Show({ currentTopic, topics, series }) {
             <section className="py-4 border-t md:container">
                 <FilterSeries />
                 {series.data.length === 0 && (
-                        <div className="flex items-center justify-center w-full text-lg">
-                            <div className="flex items-center text-sm font-poppins gap-x-2">
-                                <IconListSearch className="w-5 h-5" />
-                                <p>
-                                    Tidak ada data atau pencarian tidak sesuai.
-                                </p>
-                            </div>
+                    <div className="flex items-center justify-center w-full text-lg">
+                        <div className="flex items-center text-sm   gap-x-2">
+                            <IconListSearch className="w-5 h-5" />
+                            <p>Tidak ada data atau pencarian tidak sesuai.</p>
                         </div>
-                    )}
+                    </div>
+                )}
                 <div className="grid gap-16 md:grid-cols-3">
                     {series.data.map((serie) => (
                         <Serie serie={serie} />

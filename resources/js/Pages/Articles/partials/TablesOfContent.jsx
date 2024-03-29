@@ -34,7 +34,7 @@ function TablesOfContent({ markdown }) {
     return (
         <Card className="sticky top-20 hidden w-72 max-h-96 overflow-y-auto rounded-lg md:block mt-4">
             <div className="p-4">
-                <h1 className="text-xl font-bold text-accent-foreground font-poppins">
+                <h1 className="text-xl font-bold text-accent-foreground  ">
                     Daftar Isi
                 </h1>
                 <div className="mt-4 space-y-2 ">

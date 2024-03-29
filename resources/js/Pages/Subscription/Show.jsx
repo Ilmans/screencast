@@ -21,7 +21,7 @@ function Show({ subscription }) {
             {subscription !== null && (
                 <Card className="p-6">
                     <CardContent>
-                        <ul className="font-poppins text-muted-foreground">
+                        <ul className="  text-muted-foreground">
                             <li className="grid grid-cols-4 border-b border-t border-border py-4 items-center">
                                 <span className="col-span-1 text-sm font-medium">
                                     Paket
@@ -56,7 +56,7 @@ function Show({ subscription }) {
                     tampilkan disini jika anda sudah berlangganan. untuk
                     berlangganan anda bisa
                     <Link
-                        className="font-poppins font-medium text-sm mx-1 px-2 py-1 bg-accent rounded-lg"
+                        className="  font-medium text-sm mx-1 px-2 py-1 bg-accent rounded-lg"
                         href="/pricing"
                     >
                         kunjungi halaman ini

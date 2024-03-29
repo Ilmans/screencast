@@ -7,44 +7,36 @@ import { IconLockAccess, IconLockOpen } from "@tabler/icons-react";
 function VideoList({ serie, activeVideo = null }) {
     const isUserSubscribed = usePage().props.isUserSubscribed;
     return (
-        <ul className="relative divide-y dark:divide-slate-800">
+        <ul className="relative divide-y divide-dashed">
             {serie.videos.map((video, i) => (
-                <li
-                    key={i}
-                    className={`px-2 rounded-lg ${
-                        activeVideo === video.order_num &&
-                        "dark:bg-slate-900 shadow-sm bg-slate-200"
-                    } hover:bg-slate-200 dark:hover:bg-slate-800`}
-                >
+                <li key={i}>
                     <Link
-                        preserveScroll={true}
-                        preserveState={true}
-                        className="flex items-center text-slate-800 dark:text-slate-50 dark:hover:text-primary-400 justify-between hover:text-primary-500 py-3.5 font-medium fade group"
-                        href={route('serie.watch', [serie.slug, video.order_num])}
+                        className="flex py-3 [&_svg]:size-4 text-foreground hover:text-muted-foreground  items-center justify-between"
+                        href={route("serie.watch", [
+                            serie.slug,
+                            video.order_num,
+                        ])}
                     >
-                        <span className="flex">
-                            <span className="flex-shrink-0 mr-2 print:hidden md:mr-3 group-hover:text-slate-500 text-slate-500">
-                                {i + 1}.
+                        <span className="flex items-center text-sm sm:text-base">
+                            <span className="mr-2 flex-shrink-0 text-muted-foreground print:hidden md:mr-3">
+                                {i + 1}
                             </span>
-                            <span>
-                                <span className="mb-0.5 block text-sm line-clamp-1 md:text-tiny">
-                                    {activeVideo !== null
-                                        ? video.title.slice(0, 28) + "..."
-                                        : video.title}
-                                </span>
+                            <span className="line-clamp-1 block flex-none">
+                                {activeVideo !== null
+                                    ? video.title.slice(0, 28) + "..."
+                                    : video.title}
                             </span>
                         </span>
-                        <div className="flex items-center gap-x-2">
-                            {!video.is_free && !isUserSubscribed ? (
-                                <div className="flex items-center justify-center w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-300">
-                                    <LockIcon />
-                                </div>
-                            ) : (
-                                <div className="flex items-center justify-center w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-300">
-                                    <IconLockOpen />
-                                </div>
+                        <div className="flex items-center gap-x-2 text-muted-foreground">
+                            {!video.is_free && !isUserSubscribed && (
+                                <LockIcon className="w-5 h-5" />
                             )}
-                            <span className="w-8 text-xs text-right ">
+                            <div
+                                data-orientation="vertical"
+                                role="none"
+                                className="shrink-0 bg-border w-[1px] ml-2 h-5"
+                            />
+                            <span className="w-8 text-right font-light group-hover:text-foreground lg:w-12">
                                 {convertSecondsToMinutes(video.seconds_time)}
                             </span>
                         </div>

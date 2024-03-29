@@ -35,12 +35,10 @@ function FormManageVideos({ serie, videos }) {
             });
     };
 
-
     // refresh data after delete and other action
     useEffect(() => {
         setOrderedVideos(videos);
     }, [videos]);
-        
 
     return (
         <div>
@@ -83,7 +81,7 @@ function FormManageVideos({ serie, videos }) {
                                             >
                                                 <Card className="p-4 my-4">
                                                     <div className="flex items-center justify-between">
-                                                        <h3 className="flex text-sm font-semibold gap-x-2 font-poppins">
+                                                        <h3 className="flex text-sm font-semibold gap-x-2  ">
                                                             <span>
                                                                 {video.title}
                                                             </span>
@@ -105,20 +103,27 @@ function FormManageVideos({ serie, videos }) {
                                                                     video.seconds_time
                                                                 )}
                                                             </span>
-                                                            <button 
+                                                            <button
                                                                 onClick={() => {
-                                                                    setSelectedVideo(video);
-                                                                    setFormModal(true);
+                                                                    setSelectedVideo(
+                                                                        video
+                                                                    );
+                                                                    setFormModal(
+                                                                        true
+                                                                    );
                                                                 }}
-                                                                
                                                                 className="text-accent-foreground"
                                                             >
                                                                 <IconPencil className="w-4 h-4" />
                                                             </button>
                                                             <button
                                                                 onClick={() => {
-                                                                    setSelectedVideo(video);
-                                                                    setConfirmDelete(true);
+                                                                    setSelectedVideo(
+                                                                        video
+                                                                    );
+                                                                    setConfirmDelete(
+                                                                        true
+                                                                    );
                                                                 }}
                                                                 className="text-red-500"
                                                             >

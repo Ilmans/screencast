@@ -41,7 +41,7 @@ function ArticleBody({ markdown }) {
 
                     return !inline && match ? (
                         <div>
-                            <div className="z-50 flex items-center justify-between p-1 pb-5 -mb-6 text-xs border border-border rounded-lg bg-accent px-2 font-poppins text-foreground">
+                            <div className="z-50 flex items-center justify-between p-1 pb-5 -mb-6 text-xs border border-border rounded-lg bg-accent px-2   text-foreground">
                                 <p>{match ? match[1] : "Bash"}</p>
                                 <CopyToClipboard
                                     text={children}

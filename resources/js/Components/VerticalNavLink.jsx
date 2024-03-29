@@ -9,7 +9,7 @@ function VerticalNavLink({ icon, active, ...props }) {
         <li className="-mx-2">
             <Link
                 className={cn(
-                    "flex items-center gap-x-2 rounded-lg px-2 py-2  font-medium font-poppins  transition-all ease-in-out duration-100 ",
+                    "flex items-center gap-x-2 rounded-lg px-2 py-2  font-medium    transition-all ease-in-out duration-100 ",
 
                     active
                         ? "bg-accent/80 text-accent-foreground font-medium"

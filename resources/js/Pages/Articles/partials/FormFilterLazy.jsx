@@ -41,7 +41,7 @@ function FormFilterLazy({ setListArticles }) {
 
     return (
         <div className="w-1/3 space-y-4 ">
-            <p className="text-lg font-semibold font-poppins">
+            <p className="text-lg font-semibold  ">
                 Temukan apa yang kamu cari disini
             </p>
             <div className="flex gap-4 flex-wrap">

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  
+
     <title inertia>{{ config('app.name', 'CodingAsik') }}</title>
 
     <!-- Fonts -->
@@ -26,7 +26,8 @@
 
     function updateMode() {
         let isSystemDarkMode = darkModeMediaQuery.matches
-        let isDarkMode = window.localStorage.isDarkMode === 'true' || (!('isDarkMode' in window.localStorage) && isSystemDarkMode)
+        let isDarkMode = window.localStorage.isDarkMode === 'true' || (!('isDarkMode' in window.localStorage) &&
+            isSystemDarkMode)
 
         if (isDarkMode) {
             document.documentElement.classList.add('dark')
@@ -52,7 +53,7 @@
     }
 </script>
 
-<body  class="px-4 font-sans antialiased scrollbar-thin scrollbar-track-gray-300 scrollbar-thumb-gray-500 bg-primary text-foreground ">
+<body class="px-4  antialiased scrollbar-thin scrollbar-track-gray-300 scrollbar-thumb-gray-500  ">
     @inertia
 </body>
 
