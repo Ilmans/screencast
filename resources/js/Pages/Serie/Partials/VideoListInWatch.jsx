@@ -15,7 +15,7 @@ function VideoListInWatch({ serie, activeVideo }) {
                         <Link
                             className={`${
                                 activeVideo.id === video.id && "bg-accent"
-                            } text-foreground hover:bg-muted group flex justify-between pr-4 pl-3 py-2 items-center gap-x-3 lg:rounded-sm text-sm font-medium leading-6 tracking-tighter`}
+                            } text-foreground hover:bg-muted  group flex justify-between pr-4 pl-3 py-2 items-center gap-x-3 lg:rounded-sm text-sm font-medium leading-6 tracking-tighter`}
                             href={route("serie.watch", [
                                 serie.slug,
                                 video.order_num,

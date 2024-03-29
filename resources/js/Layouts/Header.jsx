@@ -8,10 +8,8 @@ import NavLink from "@/Components/NavLink";
 import { Toaster } from "@/Components/ui/toaster";
 
 function Header() {
-    
     return (
         <nav className="flex items-center justify-between pt-4 pb-2 border-b lg:container border-border/60 ">
-           
             <Logo />
             <div className="items-center hidden lg:flex">
                 <Toaster />
@@ -46,7 +44,7 @@ function Header() {
             <div className="flex items-center gap-2">
                 {/* <div className="hidden lg:block">
                     <InputWithIcon
-                        
+
                         placeholder="Cari video.."
                         icon={<SearchIcon />}
                     />
