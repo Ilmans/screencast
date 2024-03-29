@@ -21,28 +21,10 @@ class VideoService
             ->get();
     }
 
-    public function canWatch(Video $video): bool
-    {
-        if (!auth()->check()) {
-            return false;
-        }
-        $user = auth()->user();
-        $isSeriePublished = $video->serie()->first()->status === 'published';
-        $isVideoFree = $video->is_free;
-        $isUserAdmin = $user->is_admin;
-        
-
-        if($isUserAdmin || ($isSeriePublished && $isVideoFree) || ($isSeriePublished && $user->isHaveActiveSubscription())) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    // manage
 
 
-    public function storeVideo ($request)
+
+    public function storeVideo($request)
     {
         $order_num = Video::where('serie_id', $request->serie_id)->max('order_num');
 
@@ -85,7 +67,7 @@ class VideoService
         }
 
         $duration = $video[0]['contentDetails']['duration'];
-      
+
         return $this->getDurationInSeconds($duration);
     }
 
@@ -96,11 +78,11 @@ class VideoService
             $hours = isset($matches[1]) ? (int)$matches[1] : 0;
             $minutes = isset($matches[2]) ? (int)$matches[2] : 0;
             $seconds = isset($matches[3]) ? (int)$matches[3] : 0;
-    
+
             $totalSeconds = $hours * 3600 + $minutes * 60 + $seconds;
             return $totalSeconds;
         }
-    
+
         return -1; // Atau kembalikan nilai lain untuk menandakan kesalahan jika format tidak sesuai.
     }
 }

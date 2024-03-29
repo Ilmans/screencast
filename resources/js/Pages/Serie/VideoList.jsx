@@ -2,7 +2,6 @@ import { Link, usePage } from "@inertiajs/react";
 import React, { useEffect } from "react";
 import { convertSecondsToMinutes } from "../../../lib/Helper";
 import { LockIcon } from "../../../lib/Icon";
-import { IconLockAccess, IconLockOpen } from "@tabler/icons-react";
 
 function VideoList({ serie, activeVideo = null }) {
     const isUserSubscribed = usePage().props.isUserSubscribed;
@@ -11,7 +10,7 @@ function VideoList({ serie, activeVideo = null }) {
             {serie.videos.map((video, i) => (
                 <li key={i}>
                     <Link
-                        className="flex py-3 [&_svg]:size-4 text-foreground hover:text-muted-foreground  items-center justify-between"
+                        className="flex py-4 [&_svg]:size-4 text-foreground hover:text-muted-foreground  items-center justify-between"
                         href={route("serie.watch", [
                             serie.slug,
                             video.order_num,

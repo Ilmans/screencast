@@ -32,15 +32,8 @@ class SerieController extends Controller
     public function watch(Serie $serie, Video $video)
     {
         abort_if($serie->videos()->count() < 1, 404);
-        try {
-            $canWatch = $this->videoService->canWatch($video);
-        } catch (\Throwable $th) {
-                $video = $serie->videos()->first();
-                return redirect()->route('serie.watch', [$serie->slug, $video->order_num]);
-           
-        }
         $serie = $this->serieService->getSingle($serie->id);
 
-        return inertia('Serie/Watch', compact('serie', 'video', 'canWatch'));
+        return inertia('Serie/Watch', compact('serie', 'video'));
     }
 }

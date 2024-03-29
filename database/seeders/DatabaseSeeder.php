@@ -117,6 +117,7 @@ class DatabaseSeeder extends Seeder
                 $ser = Serie::create([
                     'slug' => Str::slug($serie),
                     'title' => $serie,
+                    'teaser' => "Mari kita belajar $serie",
                     'description' => 'Video ini hanya contoh dan bersumber dari sumber external.',
                     'image' => "https://via.placeholder.com/1280x720/$c/FFFFFF?text=$serie",
                     'status' => 'published'
@@ -130,7 +131,7 @@ class DatabaseSeeder extends Seeder
         Serie::all()->map(function ($s) {
             for ($i = 1; $i < 10; $i++) {
                 $s->videos()->create([
-                    'title' => "Belajar $s->title sesi $i",
+                    'title' => "Belajar kursus ini sesi $i",
                     'unique_video_id' => 'JmPgWUd896g',
                     'order_num' => $i,
                     'seconds_time' => 1250,

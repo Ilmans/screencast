@@ -25,7 +25,7 @@ function SerieInfo({ serie, isSavedWatchLater }) {
                     backgroundImage: `url(${serie.image})`,
                 }}
             />
-            <div className="flex flex-col h-full md:p-6 lg:p-12 gap-y-3 md:gap-y-6 md:backdrop-blur-3xl bg-gradient-to-b from-transparent via-white/80 to-white dark:from-transparent dark:via-slate-950/60 dark:to-slate-950">
+            <div className="flex h-full rounded-2xl flex-col gap-y-3 bg-gradient-to-b from-slate-100 via-slate-200 dark:via-black  to-white dark:to-black md:gap-y-6 md:p-6 md:backdrop-blur-3xl lg:p-12">
                 <div className="LazyLoad is-visible">
                     <img
                         className="z-10 rounded-lg md:rounded-2xl md:shadow-xl"
