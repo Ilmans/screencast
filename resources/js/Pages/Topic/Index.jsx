@@ -19,7 +19,7 @@ function Index({ topics, series }) {
                     <>
                         {" "}
                         Pilihan <span className="text-slate-400">
-                            Vidoe
+                            Video
                         </span>{" "}
                         pemrograman
                     </>

@@ -39,9 +39,9 @@ function Serie({ serie }) {
                 {serie.title}
             </h2>
             <p className="mb-2 text-xs text-muted-foreground line-clamp-2">
-                {serie.description}
+                {serie.teaser}
             </p>
-            <div className="flex gap-2 mt-2 text-teal-600 text-muted dark:text-teal-200">
+            <div className="flex gap-2 mt-2 text-blue-600 text-muted dark:text-blue-200">
                 <div className="flex items-center gap-1">
                     <ClockIcon />
                     <span className="text-xs">

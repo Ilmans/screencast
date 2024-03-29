@@ -2,9 +2,9 @@ import React, { Fragment } from "react";
 
 function GreetingPage({ title, desc, children, variant = "default" }) {
     return (
-        <section className="md:container relative bg-primary     lg:py-16">
-            <div className="absolute inset-0 bgkeren"></div>
-            <div className="absolute -top-4 inset-0    bg-gradient-to-b from-transparent to-60% to-primary"></div>
+        <section className="md:container relative     lg:py-16">
+            {/* <div className="absolute inset-0 bgkeren"></div>
+            <div className="absolute -top-4 inset-0    bg-gradient-to-b from-transparent to-60% to-primary"></div> */}
 
             <div className="relative py-12 space-y-6">
                 <h1 className="text-xl font-semibold lg:text-2xl z-2 ">

@@ -10,9 +10,9 @@ export default function Home({ series }) {
         <Fragment>
             <Head title="Home"></Head>
             <Jumbotron />
-            <section  className="relative md:container ">
-                <div className="absolute inset-0 bgkeren"></div>
-                <div className="absolute inset-0    bg-gradient-to-tr from-transparent to-50% to-primary"></div>
+            <section className="relative md:container ">
+                {/* <div className="absolute inset-0 bgkeren"></div>
+                <div className="absolute inset-0    bg-gradient-to-tr from-transparent to-50% to-primary"></div> */}
 
                 <TitleSection
                     title="Baru baru ini di tambahkan."

@@ -27,17 +27,15 @@ function ThemeProvider() {
     }
 
     return (
-        <BadgeButton>
-            <button
-                type="button"
-                className="flex cursor-pointer items-center justify-center rounded-full focus:outline-none"
-                aria-label="Toggle dark mode"
-                onClick={toggleMode}
-            >
-                <IconSun className="dark:hidden w-4 h-4" />
-                <IconMoon className="hidden dark:block w-4 h-4" />
-            </button>
-        </BadgeButton>
+        <button
+            type="button"
+            className="flex cursor-pointer text-muted-foreground hover:text-foreground items-center justify-center rounded-full focus:outline-none"
+            aria-label="Toggle dark mode"
+            onClick={toggleMode}
+        >
+            <IconSun className="dark:hidden w-4 h-4" />
+            <IconMoon className="hidden dark:block w-4 h-4" />
+        </button>
     );
 }
 

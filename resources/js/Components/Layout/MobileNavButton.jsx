@@ -17,21 +17,16 @@ function MobileNavButton() {
     return (
         <Fragment>
             {user ? (
-                <BadgeButton>
-                    <button
-                        onClick={(e) => {
-                            
-                            setShowNav(!showNav);
-                        }}
-                        className="relative"
-                    >
-                        {user.name.slice(1, 7)} ...
-                        <span>
-                            <ChevronDownIcon className="inline w-4 h-4" />
-                        </span>
-                        <MobileNav show={showNav} setShow={setShowNav} />
-                    </button>
-                </BadgeButton>
+                <button
+                    onClick={(e) => {
+                        setShowNav(!showNav);
+                    }}
+                    className="relative flex gap-x-2 items-center text-muted-foreground hover:text-foreground"
+                >
+                    <UserIcon className="w-4 h-4" />
+
+                    <MobileNav show={showNav} setShow={setShowNav} />
+                </button>
             ) : (
                 <>
                     <BadgeButton className="hidden lg:block">
