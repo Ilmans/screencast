@@ -5,11 +5,11 @@ import {
     ToastProvider,
     ToastTitle,
     ToastViewport,
-} from "@/Components/ui/toast"
+} from "@/Components/ui/toast";
 
 import { usePage } from "@inertiajs/react";
 import { useEffect } from "react";
-import { useToast } from "./use-toast";
+import { useToast } from "@/Components/ui/use-toast.js";
 
 export function Toaster() {
     const { toasts, toast } = useToast();

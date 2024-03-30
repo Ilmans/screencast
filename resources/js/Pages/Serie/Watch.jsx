@@ -2,7 +2,7 @@ import PublicLayout from "@/Layouts/PublicLayout";
 import React, { useState } from "react";
 import BadgeButton from "@/Components/BadgeButton";
 import Player from "./Player";
-import { Head, usePage } from "@inertiajs/react";
+import { Head, Link, router, usePage } from "@inertiajs/react";
 import VideoListInWatch from "./Partials/VideoListInWatch";
 import DoubleArrowLeftIcon from "@/Components/Icons/DoubleArrowLeftIcon";
 import DoubleArrowRightIcon from "@/Components/Icons/DoubleArrowRightIcon";
@@ -39,14 +39,6 @@ function Watch({ serie, video }) {
                                     <div className="text-sm justify-between flex text-muted-foreground items-center">
                                         <span>
                                             {serie.videos_count} Total videos
-                                        </span>
-                                        <span>
-                                            <a
-                                                className="hover:text-foreground transition"
-                                                href="https://parsinta.com/series/tags/filament"
-                                            >
-                                                Should be category here
-                                            </a>
                                         </span>
                                     </div>
                                 </div>
@@ -108,18 +100,48 @@ function Watch({ serie, video }) {
                                         </p>
                                     </div>
                                     <div className="mt-4 hidden w-full sm:mt-0 sm:w-auto sm:justify-end sm:gap-x-1 lg:flex">
-                                        <span
-                                            className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 bg-secondary border dark:border-zinc-700 text-secondary-foreground hover:bg-secondary/80 size-9 opacity-30"
-                                            disabled=""
+                                        <button
+                                            className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 bg-secondary border dark:border-zinc-700 text-secondary-foreground hover:bg-secondary/80 size-9"
+                                            disabled={video.order_num === 1}
+                                            onClick={() => {
+                                                if (video.order_num > 1) {
+                                                    router.get(
+                                                        route("serie.watch", {
+                                                            serie: serie.slug,
+                                                            video:
+                                                                video.order_num -
+                                                                1,
+                                                        })
+                                                    );
+                                                }
+                                            }}
                                         >
                                             <DoubleArrowLeftIcon className="w-5 h-5" />
-                                        </span>
-                                        <a
+                                        </button>
+                                        <button
+                                            disabled={
+                                                video.order_num >=
+                                                serie.videos_count
+                                            }
                                             className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 bg-secondary border dark:border-zinc-700 text-secondary-foreground hover:bg-secondary/80 size-9"
-                                            href="https://parsinta.com/series/belajar-laravel-filament-dari-awal/2"
+                                            onClick={() => {
+                                                if (
+                                                    video.order_num <
+                                                    serie.videos_count
+                                                ) {
+                                                    router.get(
+                                                        route("serie.watch", {
+                                                            serie: serie.slug,
+                                                            video:
+                                                                video.order_num +
+                                                                1,
+                                                        })
+                                                    );
+                                                }
+                                            }}
                                         >
                                             <DoubleArrowRightIcon className="w-5 h-5" />
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
